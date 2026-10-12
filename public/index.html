@@ -197,7 +197,16 @@
   .trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap);}
 
   /* 观点摘录：一次一段，居中大字 */
-  .excerpts{margin-top:calc(64px - var(--inset));padding:88px var(--tx) 96px;text-align:center;}
+  /* 开篇自我介绍：一句大字说清是谁、这里是什么，下面三栏讲来历 */
+  .intro{padding:60px var(--tx) 56px;}
+  .intro-lead{max-width:30em;font-size:clamp(26px,3.1vw,40px);font-weight:300;line-height:1.42;letter-spacing:-.005em;text-wrap:balance;}
+  .intro-lead span{color:var(--faint);}
+  .intro-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 48px;margin-top:40px;}
+  .intro-k{font-size:14px;color:var(--mute);margin-bottom:10px;}
+  .intro-col p:last-child{font-size:16px;line-height:1.8;}
+
+  .excerpts{padding:64px var(--tx) 72px;text-align:center;}
+  .ex-head{font-size:13px;letter-spacing:.42em;margin:0 -.42em 36px 0;color:var(--mute);}
   .ex-stage{display:grid;max-width:940px;margin:0 auto;}
   .ex-slide{grid-area:1/1;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease,visibility 0s .5s;}
   .ex-slide.on{opacity:1;visibility:visible;transform:none;transition:opacity .5s ease .15s,transform .5s ease .15s;}
@@ -222,12 +231,10 @@
 
   /* 页脚：左站名、右自我介绍，下面一行两端对齐 */
   .site-foot{padding:44px var(--inset) 36px;}
-  .foot-main .brand,.foot-about{padding:0 28px;}
+  .foot-main .brand{padding:0 28px;}
   .foot-base{padding:0 28px;}
-  .foot-main{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px var(--gap);align-items:start;}
-  .foot-about{grid-column:2 / -1;font-size:18px;font-weight:300;line-height:1.75;color:var(--faint);text-align:justify;text-justify:inter-character;}
-  .foot-about b{font-weight:300;color:var(--ink);}
-  .foot-base{display:flex;justify-content:space-between;gap:8px 24px;flex-wrap:wrap;margin-top:56px;font-size:13px;color:var(--mute);font-variant-numeric:tabular-nums;}
+  .foot-main{display:flex;align-items:center;}
+  .foot-base{display:flex;justify-content:space-between;gap:8px 24px;flex-wrap:wrap;margin-top:28px;font-size:13px;color:var(--mute);font-variant-numeric:tabular-nums;}
 
   /* 栏宽不够时，让两侧竖线离开屏幕边缘 */
   @media(max-width:1224px){.frame{margin:0 20px;}}
@@ -240,10 +247,10 @@
     .feat-cta{padding-top:28px;}
     .sheet{margin:36px 0 0 32px;}
     :root{--tx:32px;}
-    .foot-main .brand,.foot-about,.foot-base{padding-left:12px;padding-right:12px;}
+    .foot-main .brand,.foot-base{padding-left:12px;padding-right:12px;}
     .trio{grid-template-columns:repeat(2,minmax(0,1fr));}
-    .foot-about{grid-column:1 / -1;}
-    .foot-main{row-gap:20px;}
+    .intro-cols{grid-template-columns:repeat(2,minmax(0,1fr));}
+    .intro-col:last-child{grid-column:1 / -1;}
   }
   @media(min-width:601px) and (max-width:960px){
     /* 独占一行的卡片改成左图右文 */
@@ -255,7 +262,7 @@
     :root{--gap:12px;--inset:12px;--tx:20px;}
     .frame{padding:0;border:0;margin:0;}
     .ruled::before,.ruled::after{display:none;}
-    .foot-main .brand,.foot-about,.foot-base{padding-left:8px;padding-right:8px;}
+    .foot-main .brand,.foot-base{padding-left:8px;padding-right:8px;}
     .nav{height:60px;}
     .brand{font-size:16px;}
     .nav-meta{font-size:13px;white-space:nowrap;}
@@ -279,11 +286,16 @@
     .card-text .kick{margin-bottom:18px;}
     .card-text h3{font-size:21px;}
     .trio{grid-template-columns:minmax(0,1fr);}
-    .excerpts{margin-top:36px;padding:48px var(--tx) 64px;}
+    .intro{padding:32px var(--tx) 36px;}
+    .intro-lead{font-size:22px;}
+    .intro-cols{grid-template-columns:minmax(0,1fr);gap:20px;margin-top:28px;}
+    .intro-col:last-child{display:none;}
+    .intro-col p:last-child{font-size:15px;line-height:1.75;}
+    .intro-k{margin-bottom:6px;}
+    .excerpts{padding:44px var(--tx) 56px;}
+    .ex-head{text-align:left;letter-spacing:.3em;margin-bottom:24px;}
     .ex-label{margin-bottom:20px;}
-    .foot-main{grid-template-columns:minmax(0,1fr);}
-    .foot-about{grid-column:1;font-size:16px;}
-    .foot-base{margin-top:36px;}
+    .foot-base{margin-top:20px;}
     .site-foot{padding:28px var(--inset);}
     .ex-text{text-align:left;}
     .ex-slide{align-items:flex-start;text-align:left;}
@@ -519,9 +531,17 @@
       <h1 class="brand"><span class="brand-mark" aria-hidden="true"></span>赵楠精选</h1>
       <p class="nav-meta">藏品 <span id="stat-count-top">0</span> 件</p>
     </header>
-    <main id="feed" class="ruled"></main>
+    <section class="intro ruled" aria-labelledby="intro-lead">
+      <h2 class="intro-lead" id="intro-lead">我是赵楠。<span>这里收着我反复听、反复读过的播客、演讲与访谈，每一件都整理成几分钟就能读完的观点与原话。</span></h2>
+      <div class="intro-cols">
+        <div class="intro-col"><p class="intro-k">我是谁</p><p>中国传媒大学研究生业界导师。做过咖啡师、雅思老师，也在飞书、阿里云做过产品设计——一直在和「怎么把复杂的东西讲清楚」打交道。</p></div>
+        <div class="intro-col"><p class="intro-k">为什么做</p><p>好内容越来越多，也越来越长，一期播客动辄一两个小时。我想把真正值得反复听的那些挑出来，把关键判断理清楚，让没时间听完的人也能拿到要点，也给以后的自己留一份底稿。</p></div>
+        <div class="intro-col"><p class="intro-k">每件藏品里有什么</p><p>一张全景信息图、几条核心观点、可以直接引用的提炼句；有整理版文字稿的，附中英全文。</p></div>
+      </div>
+    </section>
 
     <section class="excerpts ruled" id="excerpts" aria-roledescription="轮播" aria-label="观点摘录">
+      <p class="ex-head">关键洞见</p>
       <div class="ex-stage" id="ex-stage" aria-live="polite"></div>
       <div class="ex-ctrl">
         <button type="button" class="round" id="ex-prev" aria-label="上一段摘录"><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M9.5 3.5 5 8l4.5 4.5"/></svg></button>
@@ -530,10 +550,11 @@
       </div>
     </section>
 
+    <main id="feed" class="ruled"></main>
+
     <footer class="site-foot ruled">
       <div class="foot-main">
         <p class="brand"><span class="brand-mark" aria-hidden="true"></span>赵楠精选</p>
-        <p class="foot-about"><b>我是赵楠，中国传媒大学研究生业界导师，</b>做过咖啡师、雅思老师，也在飞书、阿里云做过产品设计。这里收藏值得重听的播客，整理观点与金句。</p>
       </div>
       <div class="foot-base"><span>藏品 <span id="stat-count">0</span> 件 · 最近更新 <span id="stat-date2"></span></span><span>内容依据节目简介、要点或整理版文字稿，非逐字稿</span></div>
     </footer>
