@@ -1,0 +1,8 @@
+{
+  // 纯静态网站：Cloudflare 只托管 public/ 目录里的文件，不运行任何服务端代码
+  "name": "zhaonan-picks",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    "directory": "./public"
+  }
+}
