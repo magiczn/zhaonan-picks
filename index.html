@@ -1,0 +1,2599 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fdfcfc">
+<meta name="description" content="赵楠收藏的值得反复读、反复听的信息：播客、演讲与访谈，每件整理全景信息图、核心观点与金句。">
+<title>赵楠精选</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CradialGradient id='g' cx='32%25' cy='28%25' r='90%25'%3E%3Cstop offset='0' stop-color='%23fff'/%3E%3Cstop offset='.2' stop-color='%23ffd9a8'/%3E%3Cstop offset='.5' stop-color='%23ff8a5c'/%3E%3Cstop offset='1' stop-color='%237a3cff'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect x='3' y='3' width='26' height='26' rx='8' fill='url(%23g)'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/sans-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/sans-300.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+  /* 字体随网站一起发布（fonts/ 目录，只含网站用到的字），不依赖任何外部字体服务 */
+  @font-face{font-family:"ZN Inter";src:url("fonts/inter-300.woff2") format("woff2");font-weight:300;font-style:normal;font-display:swap;}
+  @font-face{font-family:"ZN Inter";src:url("fonts/inter-400.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap;}
+  @font-face{font-family:"ZN Inter";src:url("fonts/inter-500.woff2") format("woff2");font-weight:500;font-style:normal;font-display:swap;}
+  @font-face{font-family:"ZN Sans";src:url("fonts/sans-300.woff2") format("woff2");font-weight:300;font-style:normal;font-display:swap;}
+  @font-face{font-family:"ZN Sans";src:url("fonts/sans-400.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap;}
+  @font-face{font-family:"ZN Sans";src:url("fonts/sans-500.woff2") format("woff2");font-weight:500;font-style:normal;font-display:swap;}
+  @font-face{font-family:"ZN Serif";src:url("fonts/serif-500.woff2") format("woff2");font-weight:500;font-style:normal;font-display:swap;}
+  /* ===== 设计变量：暖白底、近黑字、灰色次级文字；颜色只来自光球插画 ===== */
+  :root{
+    --bg:#fdfcfc;
+    --panel:#f5f3f1;
+    --panel-2:#edeae6;
+    --ink:#000;
+    --dark:#1c1917;
+    --mute:#777169;
+    --faint:#a59f97;
+    --ring:rgba(0,0,0,.075);
+    --ring-strong:rgba(0,0,0,.2);
+    --sans:"ZN Inter","ZN Sans","PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+    --wrap:1176px;
+    --gap:20px;
+    --rule:rgba(0,0,0,.075);
+    --inset:20px;   /* 面板离竖线的距离 */
+    --tx:48px;      /* 文字离竖线的距离 */
+    --ease:cubic-bezier(.2,.7,.2,1);
+    --bar-h:60px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    font-family:var(--sans);font-size:16px;line-height:1.7;
+    background:var(--bg);color:var(--ink);
+    -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;
+    text-autospace:normal;overflow-x:hidden;
+  }
+  button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;}
+  a{color:inherit;text-decoration:none;}
+  [hidden]{display:none !important;}
+  :focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:6px;}
+  .dark :focus-visible{outline-color:#fff;}
+  ::selection{background:rgba(0,0,0,.12);}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px;}
+  /* 框线栏：内容装在一条两侧有细竖线的栏里，分区用横线隔开，横线两端落一个小黑点 */
+  .frame{padding:0;border-left:1px solid var(--rule);border-right:1px solid var(--rule);}
+  .ruled{position:relative;border-top:1px solid var(--rule);}
+  .ruled::before,.ruled::after{content:"";position:absolute;top:-2px;width:3px;height:3px;border-radius:50%;background:var(--ink);pointer-events:none;}
+  .ruled::before{left:-2px;}
+  .ruled::after{right:-2px;}
+  /* 标题按意群断行：每个逗号、冒号分出的短语尽量整体换行 */
+  .ph{display:inline-block;text-wrap:balance;}
+  p{text-wrap:pretty;}
+  svg.ico{width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
+
+  /* 两段式标题：前半句黑，后半句灰 */
+  .display{font-weight:300;font-size:clamp(34px,4.6vw,56px);line-height:1.22;}
+  .display span,.h2 span{color:var(--faint);}
+  .h2{font-weight:300;font-size:clamp(26px,3vw,32px);line-height:1.3;}
+
+  /* 胶囊按钮 */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    height:46px;padding:0 20px;border-radius:9999px;white-space:nowrap;
+    font-size:16px;font-weight:400;
+    transition:background .18s,color .18s,box-shadow .18s,transform .18s;
+  }
+  .btn:active{transform:scale(.97);}
+  .btn-dark{background:var(--ink);color:#fff;}
+  .btn-dark:hover{background:#2b2826;}
+  .btn-light{background:#fff;box-shadow:0 0 0 .5px var(--ring-strong) inset,0 1px 2px rgba(0,0,0,.04);}
+  .btn-light:hover{background:var(--panel);}
+  .btn-sm{height:36px;padding:0 14px;font-size:14px;}
+  .round{
+    width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-size:16px;line-height:1;
+    background:#fff;box-shadow:0 0 0 .5px var(--ring-strong) inset;transition:background .18s,color .18s,opacity .18s;
+  }
+  .round:hover{background:var(--panel);}
+  .round:disabled,.round[aria-disabled="true"]{opacity:.35;pointer-events:none;}
+
+  /* 插画：铺满容器的 SVG */
+  .art{display:block;width:100%;height:100%;}
+
+  /* ===== 首页 ===== */
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:72px;padding:0 var(--tx);}
+  .brand{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:500;letter-spacing:.01em;}
+  .brand-mark{width:20px;height:20px;border-radius:6px;background:linear-gradient(135deg,#ffb37a,#ff7a6b 45%,#7a4dff);}
+  .nav-meta{font-size:14px;color:var(--mute);font-variant-numeric:tabular-nums;}
+
+  .kick{font-size:15px;color:var(--mute);font-variant-numeric:tabular-nums;}
+  .t2 > span:not(.ph){color:var(--faint);}
+  #feed{padding-top:0;}
+  /* 藏品编号与印记 */
+  .no{margin-right:.7em;color:var(--ink);font-variant-numeric:tabular-nums;letter-spacing:.02em;}
+  .wide .no{color:#fff;}
+  .detail-head .kicker .no{margin-right:.9em;padding-right:.9em;border-right:1px solid var(--ring-strong);}
+  /* 题记：居中的一组字，像扉页——编号、宋体大字、一道带菱形的细线、入藏日期 */
+  .colophon{display:flex;flex-direction:column;align-items:center;text-align:center;padding:76px var(--tx) 68px;}
+  .colo-no{font-size:13px;letter-spacing:.42em;margin-right:-.42em;color:var(--mute);font-variant-numeric:tabular-nums;}
+  .colo-title{
+    margin-top:22px;font-family:"ZN Serif","Songti SC","STSong","SimSun",serif;font-weight:500;
+    font-size:clamp(40px,6.4vw,76px);line-height:1.15;letter-spacing:.2em;margin-right:-.2em;
+  }
+  .colo-title span{display:inline-block;}
+  .colo-rule{position:relative;width:min(240px,50%);height:9px;margin-top:30px;}
+  .colo-rule::before{content:"";position:absolute;left:0;right:0;top:4px;height:1px;background:var(--ring-strong);}
+  .colo-rule i{position:absolute;left:50%;top:0;width:9px;height:9px;margin-left:-4.5px;background:var(--ink);transform:rotate(45deg) scale(.62);box-shadow:0 0 0 7px var(--bg);}
+  .colo-date{margin-top:22px;font-size:15px;letter-spacing:.42em;margin-right:-.42em;color:var(--mute);}
+  .block{margin:0 var(--inset) var(--inset);}
+
+  /* 1. 最新一期：一张卡片、一片底色——左边文字，右边一张白色纸页 */
+  .feat{position:relative;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);min-height:580px;border-radius:28px;overflow:hidden;isolation:isolate;background:var(--panel);}
+  .feat:focus-visible{border-radius:28px;}
+  .feat > .art{position:absolute;inset:0;z-index:-1;transition:transform 1.4s var(--ease);}
+  .feat:hover > .art{transform:scale(1.06);}
+  .feat-copy{display:flex;flex-direction:column;padding:48px 40px 44px 48px;}
+  .feat-copy .kick{color:rgba(0,0,0,.6);margin-bottom:16px;}
+  .feat-copy h2{font-weight:300;font-size:clamp(28px,2.9vw,40px);line-height:1.22;}
+  .feat-copy h2 > span:not(.ph){display:block;color:rgba(0,0,0,.42);}
+  .feat-sum{font-size:16px;line-height:1.75;color:rgba(0,0,0,.66);margin-top:20px;max-width:30em;}
+  .feat-note{display:flex;flex-direction:column;gap:2px;margin-top:28px;padding-top:20px;border-top:.5px solid rgba(0,0,0,.18);}
+  .feat-note b{font-size:18px;font-weight:400;line-height:1.5;}
+  .feat-note span{font-size:15px;line-height:1.6;color:rgba(0,0,0,.6);}
+  .feat-copy .chips{margin-top:16px;}
+  .feat-copy .chips span{background:rgba(255,255,255,.6);box-shadow:0 0 0 .5px rgba(0,0,0,.12) inset;}
+  .feat-cta{margin-top:auto;padding-top:36px;}
+  .feat-cta .btn svg{transition:transform .25s var(--ease);}
+  .feat:hover .feat-cta .btn{background:#2b2826;}
+  .feat:hover .feat-cta .btn svg{transform:translateX(3px);}
+  .sheet{
+    display:flex;flex-direction:column;margin-top:48px;padding:32px 44px 30px 40px;
+    background:#fff;border-radius:24px 0 0 0;
+    box-shadow:0 0 0 .5px rgba(0,0,0,.08),0 30px 70px -24px rgba(28,25,23,.3);
+    transition:box-shadow .5s var(--ease);
+  }
+  /* 纸页贴着卡片右下角，悬停时不移动（一动就会在边缘露缝），只把投影加深一点 */
+  .feat:hover .sheet{box-shadow:0 0 0 .5px rgba(0,0,0,.1),0 36px 80px -22px rgba(28,25,23,.42);}
+  .sheet-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:14px;color:var(--mute);padding-bottom:14px;border-bottom:.5px solid var(--ring-strong);}
+  .sheet-top b{font-weight:500;color:var(--ink);}
+  .sheet-list{flex:1;display:flex;flex-direction:column;justify-content:flex-start;padding:10px 0 24px;}
+  .sheet-li{display:grid;grid-template-columns:38px minmax(0,1fr);align-items:baseline;margin:0 -14px;padding:15px 14px;border-radius:12px;font-size:19px;line-height:1.5;position:relative;transition:background .2s;}
+  .sheet-li::after{content:"";position:absolute;left:14px;right:14px;bottom:0;border-bottom:.5px solid var(--ring-strong);opacity:.5;transition:opacity .2s;}
+  .sheet-li:last-child::after{display:none;}
+  .sheet-li i{font-style:normal;color:var(--faint);font-variant-numeric:tabular-nums;transition:color .35s;}
+  /* 悬停卡片：序号自上而下依次变黑；指到某一行：那一行铺上浅底 */
+  .feat:hover .sheet-li i{color:var(--ink);transition-delay:calc(var(--k) * 70ms);}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;}
+  .chips span{display:inline-flex;align-items:center;min-height:32px;padding:4px 13px;border-radius:9999px;font-size:13.5px;line-height:1.4;background:#fff;box-shadow:0 0 0 .5px var(--ring-strong) inset;}
+  .feat-side .chips{justify-content:center;margin-top:20px;}
+
+  /* 2. 一宽一窄 */
+  .pair{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:var(--gap);}
+  .pair > .wide:only-child{grid-column:1 / -1;min-height:400px;}
+  .wide{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:440px;overflow:hidden;border-radius:28px;background:var(--dark);color:#fff;padding:40px;}
+  .wide > .art{position:absolute;inset:0;opacity:.95;transition:transform 1.2s var(--ease);}
+  .wide:hover > .art{transform:scale(1.05);}
+  .wide::after{content:"";position:absolute;inset:0;background:linear-gradient(200deg,rgba(28,25,23,0) 20%,rgba(28,25,23,.82) 78%);}
+  .wide > *:not(.art){position:relative;z-index:1;}
+  .wide .kick{color:rgba(255,255,255,.7);margin-bottom:12px;}
+  .wide h3{font-weight:300;font-size:clamp(26px,3vw,36px);line-height:1.25;max-width:16em;}
+  .wide h3 > span:not(.ph){color:rgba(255,255,255,.6);}
+  .wide .sum{font-size:16px;line-height:1.75;color:rgba(255,255,255,.76);max-width:36em;margin-top:14px;}
+  .wide .chips{margin-top:22px;}
+  .wide .chips span{background:rgba(255,255,255,.16);box-shadow:none;color:#fff;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);}
+
+  /* 带插画的卡片 */
+  .card{display:flex;flex-direction:column;overflow:hidden;border-radius:28px;background:var(--panel);transition:background .25s;}
+  .card:hover{background:var(--panel-2);}
+  .card .art-box{margin:8px 8px 0;border-radius:21px;overflow:hidden;aspect-ratio:4/3;background:var(--tint,var(--panel-2));}
+  .card .art{transition:transform 1s var(--ease);}
+  .card:hover .art{transform:scale(1.06);}
+  .card-body{display:flex;flex-direction:column;flex:1;padding:22px 28px 28px;}
+  .card .kick{font-size:14px;margin-bottom:8px;}
+  .card h3{font-size:20px;font-weight:400;line-height:1.45;margin-bottom:10px;}
+  .card .sum{font-size:15px;line-height:1.7;color:var(--mute);}
+  .card .when{margin-top:auto;padding-top:20px;font-size:14px;color:var(--mute);font-variant-numeric:tabular-nums;}
+
+  /* 3. 纯文字：左侧小标题 + 右侧两列 */
+  .texts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px var(--gap);margin:calc(64px - var(--inset)) 0 64px;padding:44px var(--inset) 52px;border-bottom:1px solid var(--rule);}
+  .texts > h2{padding-left:28px;}
+  .texts > h2{font-size:22px;font-weight:400;line-height:1.4;}
+  .texts-grid{grid-column:2 / -1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:44px var(--gap);}
+  /* 纯文字条目：悬停时整块铺上浅底，右上角出现箭头，标题加下划线 */
+  .text-item{position:relative;display:block;margin:-20px 0;padding:20px 56px 22px 28px;border-radius:20px;transition:background .25s;}
+  .text-item:hover,.text-item:focus-visible{background:var(--panel);}
+  .text-item .go{position:absolute;right:16px;top:18px;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:#fff;opacity:0;transform:translate(-6px,6px) scale(.8);transition:opacity .25s,transform .35s var(--ease);}
+  .text-item:hover .go,.text-item:focus-visible .go{opacity:1;transform:none;}
+  .text-item:hover .sum{color:#5d5852;}
+  .text-item h3{font-size:20px;font-weight:400;line-height:1.45;margin-bottom:8px;text-decoration:underline;text-decoration-color:transparent;text-underline-offset:5px;text-decoration-thickness:1.5px;transition:text-decoration-color .2s;}
+  .text-item:hover h3{text-decoration-color:currentColor;}
+  .text-item .sum{font-size:16px;line-height:1.75;color:var(--mute);}
+  .text-item .when{display:flex;flex-wrap:wrap;gap:2px 0;margin-top:12px;font-size:14px;color:var(--mute);font-variant-numeric:tabular-nums;}
+  .text-item .when span{white-space:nowrap;}
+  .text-item .when > span:first-child{flex-basis:100%;}
+  .text-item .when > span:nth-child(2)::after{content:"·";margin:0 .4em;}
+
+  /* 4. 三张并排 */
+  .trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap);}
+
+  /* 观点摘录：一次一段，居中大字 */
+  .excerpts{margin-top:calc(64px - var(--inset));padding:88px var(--tx) 96px;text-align:center;}
+  .ex-stage{display:grid;max-width:940px;margin:0 auto;}
+  .ex-slide{grid-area:1/1;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease,visibility 0s .5s;}
+  .ex-slide.on{opacity:1;visibility:visible;transform:none;transition:opacity .5s ease .15s,transform .5s ease .15s;}
+  .ex-label{display:inline-flex;align-items:center;min-height:32px;padding:4px 14px;border-radius:9999px;background:var(--panel);font-size:14px;color:var(--mute);margin-bottom:28px;}
+  .ex-text{font-size:clamp(20px,2.2vw,28px);font-weight:400;line-height:1.6;}
+  .ex-by{display:inline-flex;align-items:center;gap:8px;margin-top:28px;padding:6px 12px;border-radius:9999px;font-size:15px;color:var(--mute);transition:background .18s,color .18s;}
+  .ex-by:hover{background:var(--panel);color:var(--ink);}
+  .ex-by svg{transition:transform .25s var(--ease);}
+  .ex-by:hover svg{transform:translateX(3px);}
+  .ex-ctrl{display:flex;align-items:center;justify-content:center;gap:28px;margin-top:52px;}
+  .ex-ctrl .round{width:44px;height:44px;box-shadow:0 0 0 .5px var(--ring-strong) inset,0 2px 6px rgba(0,0,0,.06);}
+  .ex-dots{display:flex;align-items:center;gap:10px;}
+  .ex-dot{position:relative;width:5px;height:5px;padding:0;border-radius:9999px;background:rgba(0,0,0,.22);overflow:hidden;transition:width .35s var(--ease),background .3s;}
+  .ex-dot:hover{background:rgba(0,0,0,.45);}
+  .ex-dot[aria-current="true"]{width:36px;background:rgba(0,0,0,.14);}
+  /* 当前圆点里的进度条：走满即切到下一段，鼠标停留或键盘聚焦时暂停 */
+  .ex-dot i{position:absolute;inset:0;border-radius:inherit;background:var(--ink);transform:scaleX(0);transform-origin:0 50%;}
+  .ex-dot[aria-current="true"] i{animation:exfill 10s linear forwards;}
+  .excerpts:hover .ex-dot i,.excerpts:focus-within .ex-dot i{animation-play-state:paused;}
+  @keyframes exfill{to{transform:scaleX(1);}}
+  .ex-hit{position:absolute;inset:-12px -5px;}
+
+  /* 页脚：左站名、右自我介绍，下面一行两端对齐 */
+  .site-foot{padding:44px var(--inset) 36px;}
+  .foot-main .brand,.foot-about{padding:0 28px;}
+  .foot-base{padding:0 28px;}
+  .foot-main{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px var(--gap);align-items:start;}
+  .foot-about{grid-column:2 / -1;font-size:18px;font-weight:300;line-height:1.75;color:var(--faint);text-align:justify;text-justify:inter-character;}
+  .foot-about b{font-weight:300;color:var(--ink);}
+  .foot-base{display:flex;justify-content:space-between;gap:8px 24px;flex-wrap:wrap;margin-top:56px;font-size:13px;color:var(--mute);font-variant-numeric:tabular-nums;}
+
+  /* 栏宽不够时，让两侧竖线离开屏幕边缘 */
+  @media(max-width:1224px){.frame{margin:0 20px;}}
+  @media(max-width:1058px){#view-ep .wrap{margin:0 20px;padding:0 44px;}
+    section.ep-sec{margin:0 -44px;padding-left:44px;padding-right:44px;}}
+  @media(max-width:960px){
+    .pair{grid-template-columns:minmax(0,1fr);}
+    .feat{grid-template-columns:minmax(0,1fr);min-height:0;}
+    .feat-copy{padding:36px 32px 8px;}
+    .feat-cta{padding-top:28px;}
+    .sheet{margin:36px 0 0 32px;}
+    :root{--tx:32px;}
+    .texts{grid-template-columns:minmax(0,1fr);}
+    .texts > h2,.foot-main .brand,.foot-about,.foot-base{padding-left:12px;padding-right:12px;}
+    .text-item{padding-left:12px;padding-right:48px;}
+    .texts-grid{grid-column:1;}
+    .trio{grid-template-columns:repeat(2,minmax(0,1fr));}
+    .foot-about{grid-column:1 / -1;}
+    .foot-main{row-gap:20px;}
+  }
+  @media(min-width:601px) and (max-width:960px){
+    /* 独占一行的卡片改成左图右文 */
+    .pair > .card,.trio > .card:last-child:nth-child(odd){grid-column:1 / -1;flex-direction:row;}
+    .pair > .card .art-box,.trio > .card:last-child:nth-child(odd) .art-box{flex:0 0 44%;margin:8px 0 8px 8px;aspect-ratio:auto;min-height:230px;}
+  }
+  @media(max-width:600px){
+    .wrap{padding:0 16px;}
+    :root{--gap:12px;--inset:12px;--tx:20px;}
+    .frame{padding:0;border:0;margin:0;}
+    .ruled::before,.ruled::after{display:none;}
+    .texts > h2,.foot-main .brand,.foot-about,.foot-base{padding-left:8px;padding-right:8px;}
+    .text-item{padding-left:8px;padding-right:44px;margin:-14px 0;padding-top:14px;padding-bottom:16px;}
+    .nav{height:60px;}
+    .brand{font-size:16px;}
+    .nav-meta{font-size:13px;white-space:nowrap;}
+    .colophon{padding:44px var(--tx) 40px;}
+    .colo-title{letter-spacing:.14em;margin-right:-.14em;}
+    .colo-no,.colo-date{letter-spacing:.3em;margin-right:-.3em;font-size:13px;}
+    .colo-rule{margin-top:22px;}
+    .colo-date{margin-top:16px;}
+    .brand{white-space:nowrap;}
+    .wide::after{background:linear-gradient(200deg,rgba(28,25,23,.3),rgba(28,25,23,.86) 70%);}
+    .feat{border-radius:22px;}
+    .feat-copy{padding:26px 20px 4px;}
+    .sheet{margin:28px 0 0 20px;padding:22px 20px 22px 22px;border-radius:18px 0 0 0;}
+    .sheet-li{font-size:16px;padding:12px 10px;margin:0 -10px;grid-template-columns:30px minmax(0,1fr);}
+    .sheet-li::after{left:10px;right:10px;}
+    .wide,.card{border-radius:22px;}
+    .wide{min-height:380px;padding:26px 22px;}
+    .card .art-box{border-radius:16px;}
+    .card-body{padding:18px 20px 22px;}
+    .texts-grid{grid-template-columns:minmax(0,1fr);gap:32px;}
+    .trio{grid-template-columns:minmax(0,1fr);}
+    .texts{margin:36px 0 48px;padding:32px var(--inset) 40px;}
+    .excerpts{margin-top:36px;padding:48px var(--tx) 64px;}
+    .ex-label{margin-bottom:20px;}
+    .foot-main{grid-template-columns:minmax(0,1fr);}
+    .foot-about{grid-column:1;font-size:16px;}
+    .foot-base{margin-top:36px;}
+    .site-foot{padding:28px var(--inset);}
+    .ex-text{text-align:left;}
+    .ex-slide{align-items:flex-start;text-align:left;}
+    .ex-by{margin-left:-12px;}
+    .ex-ctrl{margin-top:36px;justify-content:space-between;}
+    .ex-label{align-self:flex-start;}
+  }
+
+  /* ===== 详情页 ===== */
+  #view-ep .wrap{max-width:1010px;padding:0 64px;border-left:1px solid var(--rule);border-right:1px solid var(--rule);}
+  .ep-bar{position:sticky;top:0;z-index:10;background:rgba(253,252,252,.86);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);}
+  .ep-bar-in{display:flex;align-items:center;gap:12px;height:var(--bar-h);}
+  .back{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 14px 0 12px;margin-left:-12px;border-radius:9999px;font-size:14px;white-space:nowrap;transition:background .18s;}
+  .back:hover{background:var(--panel);}
+  .ep-tabs{display:flex;gap:2px;margin-left:auto;padding:3px;border-radius:9999px;background:var(--panel);}
+  .ep-tab{height:30px;padding:0 14px;border-radius:9999px;font-size:13.5px;color:var(--mute);white-space:nowrap;transition:background .18s,color .18s,box-shadow .18s;}
+  .ep-tab:hover{color:var(--ink);}
+  .ep-tab[aria-current="true"]{background:#fff;color:var(--ink);box-shadow:0 0 0 .5px var(--ring-strong),0 1px 2px rgba(0,0,0,.06);}
+  .ep-steps{display:flex;gap:6px;}
+  .ep-steps .round{width:36px;height:36px;}
+  .ep-progress{display:block;height:1px;background:var(--rule);}
+  .ep-progress i{display:block;height:2px;margin-top:-.5px;background:var(--ink);transform:scaleX(0);transform-origin:0 50%;}
+
+  .detail-head{display:grid;grid-template-columns:minmax(0,1fr) 220px;column-gap:48px;align-items:center;padding-top:56px;}
+  .detail-head .kicker{grid-column:1;font-size:15px;color:var(--mute);margin-bottom:16px;align-self:end;}
+  .detail-head h1{grid-column:1;font-weight:300;font-size:clamp(30px,4.4vw,48px);line-height:1.25;outline:none;align-self:start;}
+  .ep-cover{grid-column:2;grid-row:1 / span 2;aspect-ratio:1;overflow:hidden;border-radius:28px;background:var(--tint,var(--panel));}
+  .detail-head.no-cover{grid-template-columns:minmax(0,1fr);}
+  .thesis{grid-column:1 / -1;margin-top:44px;font-size:16px;line-height:1.85;color:var(--mute);}
+  .thesis .t-lead{font-size:22px;font-weight:300;line-height:1.6;color:var(--mute);margin-bottom:16px;}
+  /* 强调：灰字里的黑字，不加色、不加下划线 */
+  :is(.thesis,.p-body,.ig-lead) :is(b,strong,.hl){color:var(--ink);font-weight:400;}
+  .thesis .t-lead b{font-weight:300;}
+  .thesis .guests{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px;}
+  .thesis .guests span{display:inline-flex;align-items:center;gap:.4em;min-height:34px;padding:5px 14px;border-radius:9999px;background:var(--panel);font-size:13.5px;line-height:1.5;color:var(--mute);}
+  .thesis .guests b{color:var(--ink);font-weight:400;}
+  .listen-link{margin-top:28px;}
+  .listen-link a{display:inline-flex;align-items:center;gap:10px;height:46px;padding:0 22px 0 18px;border-radius:9999px;background:var(--ink);color:#fff;font-size:16px;transition:background .18s,transform .18s;}
+  .listen-link a::before{content:"";width:0;height:0;border-style:solid;border-width:6px 0 6px 10px;border-color:transparent transparent transparent #fff;}
+  .listen-link a:hover{background:#2b2826;}
+  .listen-link a:active{transform:scale(.97);}
+
+  section.ep-sec{position:relative;margin:0 -64px;padding:72px 64px 80px;border-top:1px solid var(--rule);scroll-margin-top:var(--bar-h);}
+  section.ep-sec::before,section.ep-sec::after{content:"";position:absolute;top:-2px;width:3px;height:3px;border-radius:50%;background:var(--ink);}
+  section.ep-sec::before{left:-2px;}
+  section.ep-sec::after{right:-2px;}
+  .listen-link{margin-bottom:72px;}
+  /* 没有收听链接的条目（演讲、文字稿等），标题区与第一章之间留同样的距离 */
+  .detail-head + section.ep-sec{margin-top:72px;}
+  .sec-head{display:flex;align-items:baseline;gap:.5em;margin-bottom:28px;font-weight:300;font-size:clamp(26px,3vw,32px);line-height:1.3;}
+  .sec-head h2{order:1;font:inherit;}
+  .sec-no{order:2;color:var(--faint);letter-spacing:.01em;}
+
+  /* 信息图：深色起点 + 圆角面板逐层向下 */
+  .infographic{display:flex;flex-direction:column;align-items:stretch;}
+  .ig-node{position:relative;overflow:hidden;isolation:isolate;background:var(--dark);color:#fff;border-radius:24px;padding:40px 28px;text-align:center;font-size:24px;font-weight:300;line-height:1.4;}
+  .ig-node > .art{position:absolute;inset:0;z-index:-1;opacity:.5;-webkit-mask-image:linear-gradient(100deg,#000,transparent 70%);mask-image:linear-gradient(100deg,#000,transparent 70%);}
+  .ig-node small{display:block;font-size:15px;font-weight:400;margin-top:8px;color:rgba(255,255,255,.68);}
+  .ig-link{display:flex;flex-direction:column;align-items:center;padding:6px 0;}
+  .ig-link .vline{width:1px;height:20px;background:var(--faint);}
+  .ig-link .dot{width:5px;height:5px;border-radius:50%;background:var(--faint);}
+  .ig-layer{background:var(--panel);border-radius:24px;padding:26px 28px 28px;}
+  .ig-layer-title{font-size:15px;font-weight:500;letter-spacing:.01em;margin-bottom:12px;}
+  .ig-lead{font-size:16px;line-height:1.75;color:var(--mute);}
+  .ig-signals,.ig-bets{display:flex;flex-wrap:wrap;gap:8px;}
+  .ig-signals{margin-top:16px;}
+  .ig-signals span,.ig-bets span{display:inline-flex;align-items:center;min-height:34px;padding:5px 14px;border-radius:9999px;background:#fff;box-shadow:0 0 0 .5px var(--ring-strong) inset;font-size:13.5px;line-height:1.5;}
+  .ig-bets span.key{background:var(--ink);color:#fff;box-shadow:none;}
+  .ig-routes{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;}
+  .ig-route,.ig-battle{background:#fff;border-radius:16px;padding:18px 18px 20px;box-shadow:0 0 0 .5px var(--ring);}
+  .ig-route .nm,.ig-battle b{display:block;font-size:16px;font-weight:500;line-height:1.5;color:var(--ink);}
+  .ig-route .nm::before{content:"";display:block;width:22px;height:4px;border-radius:2px;margin-bottom:14px;background:linear-gradient(90deg,var(--dot,#bbb),var(--dot-deep,#777));}
+  .ig-route.g1{--dot:#7fd6a4;--dot-deep:#1f7a6b;}
+  .ig-route.g2{--dot:#f5a524;--dot-deep:#c2410c;}
+  .ig-route.g3{--dot:#a78bfa;--dot-deep:#4b2fb0;}
+  .ig-route.g4{--dot:#f48fb1;--dot-deep:#b0306a;}
+  .ig-route .bt,.ig-battle{font-size:14px;line-height:1.7;color:var(--mute);}
+  .ig-route .bt{margin-top:4px;}
+  .ig-battle b{margin-bottom:4px;}
+  .ig-battles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+
+  /* 核心观点 / 金句：序号与首行文字同字号、同行高，基线对齐 */
+  .points,.quotes{display:flex;flex-direction:column;}
+  .point,.quote{display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;align-items:baseline;border-top:.5px solid var(--ring-strong);}
+  .point{padding:26px 0 28px;}
+  .p-no,.p-title{font-size:20px;line-height:1.5;font-weight:400;}
+  .p-no,.q-no{color:var(--faint);font-variant-numeric:lining-nums tabular-nums;}
+  .p-title{margin-bottom:8px;}
+  .p-body{font-size:16px;line-height:1.85;color:var(--mute);max-width:42em;}
+  .p-body p+p{margin-top:8px;}
+  .quote{
+    position:relative;padding:22px 72px 22px 0;
+    font-size:24px;font-weight:300;line-height:1.5;
+    cursor:copy;transition:color .18s;
+  }
+  .q-no{font:inherit;}
+  .quote b{font-weight:300;}
+  .quote::after{
+    content:"复制";position:absolute;right:0;top:50%;transform:translateY(-50%);
+    height:30px;padding:0 12px;display:inline-flex;align-items:center;border-radius:9999px;
+    background:var(--panel);font-size:13px;font-weight:400;letter-spacing:0;color:var(--ink);
+    opacity:0;transition:opacity .15s,background .15s,color .15s;
+  }
+  .quote:hover::after,.quote:focus-visible::after{opacity:1;}
+  .quote.copied::after{content:"已复制";opacity:1;background:var(--ink);color:#fff;}
+
+  /* 全文：默认收起，展开后可在中文 / 中英对照 / English 之间切换 */
+  .ft-bar{position:sticky;top:var(--bar-h);z-index:5;display:flex;align-items:center;justify-content:space-between;gap:12px 20px;flex-wrap:wrap;margin:0 -64px 32px;padding:12px 64px;background:rgba(253,252,252,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--rule);}
+  /* 全文页 */
+  .full-head{padding:56px 0 40px;}
+  .full-head .kicker{font-size:15px;color:var(--mute);margin-bottom:16px;}
+  .full-head h1{font-weight:300;font-size:clamp(28px,3.6vw,40px);line-height:1.3;outline:none;}
+  .full-note{margin-top:16px;font-size:14px;color:var(--mute);}
+  .full-article .fulltext{padding-bottom:96px;}
+  body.is-full .ep-tabs,body.is-full .ep-steps,body.is-full .pager{display:none !important;}
+  /* 详情页底部的"查看全文"入口 */
+  .full-entry{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:16px;padding:24px 28px;border-radius:24px;background:var(--dark);color:#fff;transition:background .25s;}
+  .full-entry:hover{background:#2b2826;}
+  .full-entry b{display:block;font-size:20px;font-weight:400;line-height:1.4;}
+  .full-entry span.sub{display:block;margin-top:4px;font-size:14px;color:rgba(255,255,255,.62);}
+  .full-entry .go{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:#fff;color:#000;transition:transform .3s var(--ease);}
+  .full-entry:hover .go{transform:translateX(4px);}
+  .ft-meta{font-size:14px;color:var(--mute);font-variant-numeric:tabular-nums;}
+  .ft-modes{display:flex;gap:2px;padding:3px;border-radius:9999px;background:var(--panel);}
+  .ft-modes button{height:30px;padding:0 14px;border-radius:9999px;font-size:13.5px;color:var(--mute);white-space:nowrap;transition:background .18s,color .18s,box-shadow .18s;}
+  .ft-modes button:hover{color:var(--ink);}
+  .ft-modes button[aria-pressed="true"]{background:#fff;color:var(--ink);box-shadow:0 0 0 .5px var(--ring-strong),0 1px 2px rgba(0,0,0,.06);}
+  .ft-body{position:relative;}
+  .ft-sec{padding:4px 0 8px;}
+  .ft-sec + .ft-sec{margin-top:36px;padding-top:32px;border-top:.5px solid var(--ring-strong);}
+  .ft-head{display:flex;align-items:baseline;gap:14px;margin-bottom:18px;}
+  .ft-ts{flex:none;font-size:13px;color:var(--faint);font-variant-numeric:tabular-nums;min-width:52px;}
+  .ft-head h3{font-size:20px;font-weight:400;line-height:1.45;}
+  .ft-head h3 .ft-en{display:block;font-size:14px;color:var(--mute);margin-top:2px;}
+  .ft-unit{margin-left:66px;}
+  .ft-unit + .ft-unit{margin-top:18px;}
+  .ft-unit p,.ft-unit li{font-size:16px;line-height:1.95;color:#3d3a36;}
+  .ft-unit .ft-en{font-family:var(--sans);font-size:15px;line-height:1.75;color:var(--mute);}
+  .ft-unit ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+  .ft-unit li{position:relative;padding-left:16px;}
+  .ft-unit li::before{content:"";position:absolute;left:0;top:.85em;width:5px;height:5px;border-radius:50%;background:var(--faint);}
+  .ft-unit b{font-weight:500;color:var(--ink);}
+  .fulltext[data-mode="cn"] .ft-en,.fulltext[data-mode="en"] .ft-cn{display:none !important;}
+  .fulltext[data-mode="en"] .ft-head h3 .ft-en{font-size:20px;color:var(--ink);margin:0;}
+  .fulltext[data-mode="en"] .ft-unit .ft-en{font-size:16px;line-height:1.8;color:#3d3a36;}
+  .fulltext[data-mode="both"] .ft-unit{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;}
+
+  .ep-foot{margin:0;padding:24px 28px 26px;border-radius:24px;background:var(--panel);}
+  .foot-title{font-size:15px;font-weight:500;margin-bottom:6px;}
+  .foot-note{font-size:14px;color:var(--mute);line-height:1.8;}
+  .foot-note a{color:var(--ink);text-decoration:underline;text-underline-offset:3px;}
+
+  .pager{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0 0;padding-bottom:64px;}
+  .pager-cell{display:flex;align-items:center;gap:18px;padding:22px 26px;border-radius:24px;background:var(--panel);transition:background .25s;}
+  .pager-cell:hover{background:var(--panel-2);}
+  .pager-txt{min-width:0;display:flex;flex-direction:column;gap:2px;}
+  .pager-dir{font-size:13px;color:var(--mute);}
+  .pager-title{font-size:16px;line-height:1.5;}
+  .pager-cell.is-end .pager-title{color:var(--mute);}
+
+  .toast{
+    position:fixed;left:50%;bottom:28px;z-index:20;transform:translate(-50%,12px);
+    background:var(--ink);color:#fff;font-size:14px;height:40px;padding:0 18px;display:flex;align-items:center;border-radius:9999px;
+    opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;
+  }
+  .toast.show{opacity:1;transform:translate(-50%,0);}
+
+  @media(max-width:760px){
+    .ep-steps{display:none;}
+    .detail-head{grid-template-columns:minmax(0,1fr);padding-top:28px;}
+    .ep-cover{grid-column:1;grid-row:auto;order:-1;width:132px;border-radius:22px;margin-bottom:24px;}
+    .ig-battles{grid-template-columns:1fr;}
+  }
+  @media(max-width:600px){
+    .back{padding:0 10px;}
+    .back span:last-child{display:none;}
+    .ep-tab{padding:0 12px;}
+    .thesis{margin-top:28px;}
+    .thesis .t-lead{font-size:19px;}
+    .listen-link a{display:flex;justify-content:center;}
+    #view-ep .wrap{padding:0 18px;border:0;margin:0;}
+    section.ep-sec{margin:0 -18px;padding:44px 18px 52px;}
+    section.ep-sec::before,section.ep-sec::after{display:none;}
+    .listen-link{margin-bottom:48px;}
+    .sec-head{margin-bottom:20px;}
+    .ig-node{font-size:20px;padding:28px 18px;border-radius:20px;}
+    .ig-layer{padding:20px 18px 22px;border-radius:20px;}
+    .ig-routes{grid-template-columns:1fr;}
+    .point,.quote{grid-template-columns:32px minmax(0,1fr);gap:8px;}
+    .point{padding:22px 0 24px;}
+    .p-no,.p-title{font-size:18px;}
+    .quote{font-size:19px;line-height:1.6;padding:18px 0;}
+    .quote::after{display:none;}
+    .ep-foot{padding:20px;border-radius:20px;}
+    .pager{grid-template-columns:1fr;gap:10px;padding-bottom:40px;}
+    .ft-head{flex-direction:column;gap:2px;}
+    .ft-bar{margin:0 -18px 24px;padding:10px 18px;}
+    .full-head{padding:28px 0 28px;}
+    .full-entry{padding:20px;border-radius:20px;}
+    .ft-unit{margin-left:0;}
+    .fulltext[data-mode="both"] .ft-unit{grid-template-columns:minmax(0,1fr);gap:8px;}
+    .ft-modes button{padding:0 11px;}
+  }
+
+  /* 动效：只在进入视图时出现一次 */
+  @keyframes rise{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes fade{from{opacity:0;}to{opacity:1;}}
+  @keyframes float{0%,100%{translate:0 0;}50%{translate:0 -6px;}}
+  /* 题记入场：编号先出，大字逐字浮现，细线从中间向两侧展开，日期最后出现 */
+  @keyframes glyph{from{opacity:0;transform:translateY(.35em);filter:blur(6px);}to{opacity:1;transform:none;filter:none;}}
+  @keyframes spread{from{transform:scaleX(0);}to{transform:none;}}
+  .intro .colo-no{animation:fade .8s ease both;}
+  .intro .colo-title span{animation:glyph .9s var(--ease) both;animation-delay:calc(.2s + var(--n) * .11s);}
+  .intro .colo-rule::before{animation:spread .9s var(--ease) .85s both;}
+  .intro .colo-rule i{animation:fade .5s ease 1.1s both;}
+  .intro .colo-date{animation:fade .9s ease 1.25s both;}
+  .intro .feat{animation:rise 1s var(--ease) .7s both;}
+  #view-ep.enter article{animation:fade .35s ease both;}
+  @media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none !important;transition:none !important;scroll-behavior:auto !important;}
+  }
+  @media print{
+    .ep-bar,.pager,.toast,.listen-link{display:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== 视图：首页 ===== -->
+<div id="view-home">
+  <div class="wrap frame">
+    <header class="nav">
+      <h1 class="brand"><span class="brand-mark" aria-hidden="true"></span>赵楠精选</h1>
+      <p class="nav-meta">藏品 <span id="stat-count-top">0</span> 件</p>
+    </header>
+    <main id="feed" class="ruled"></main>
+
+    <section class="excerpts ruled" id="excerpts" aria-roledescription="轮播" aria-label="观点摘录">
+      <div class="ex-stage" id="ex-stage" aria-live="polite"></div>
+      <div class="ex-ctrl">
+        <button type="button" class="round" id="ex-prev" aria-label="上一段摘录"><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M9.5 3.5 5 8l4.5 4.5"/></svg></button>
+        <div class="ex-dots" id="ex-dots"></div>
+        <button type="button" class="round" id="ex-next" aria-label="下一段摘录"><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 3.5 11 8l-4.5 4.5"/></svg></button>
+      </div>
+    </section>
+
+    <footer class="site-foot ruled">
+      <div class="foot-main">
+        <p class="brand"><span class="brand-mark" aria-hidden="true"></span>赵楠精选</p>
+        <p class="foot-about"><b>我是赵楠，中国传媒大学研究生业界导师，</b>做过咖啡师、雅思老师，也在飞书、阿里云做过产品设计。这里收藏值得重听的播客，整理观点与金句。</p>
+      </div>
+      <div class="foot-base"><span>藏品 <span id="stat-count">0</span> 件 · 最近更新 <span id="stat-date2"></span></span><span>内容依据节目简介、要点或整理版文字稿，非逐字稿</span></div>
+    </footer>
+  </div>
+</div>
+
+<!-- ===== 视图：详情 ===== -->
+<div id="view-ep" hidden>
+  <div class="ep-bar">
+    <div class="wrap ep-bar-in">
+      <a class="back" href="#/" aria-label="返回全部精选"><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M13 8H3M7 4 3 8l4 4"/></svg><span>全部精选</span></a>
+      <nav class="ep-tabs" id="ep-tabs" aria-label="本期章节"></nav>
+      <div class="ep-steps">
+        <a class="round" id="step-newer" aria-disabled="true"><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M13 8H3M7 4 3 8l4 4"/></svg></a>
+        <a class="round" id="step-older" aria-disabled="true"><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      </div>
+    </div>
+    <div class="ep-progress" aria-hidden="true"><i id="ep-progress"></i></div>
+  </div>
+  <main class="wrap">
+
+<article id="full-lilu36" class="full-article" data-of="lilu36">
+    <div class="full-head">
+      <div class="kicker">全文 · 格雷厄姆与多德年会 · 第36届 · 2026.10.06</div>
+      <h1>李录谈价值投资：统一的市场、AI 的红线，与复利的一生</h1>
+      <p class="full-note">经轻度编辑的整理版文字稿，由视频自动字幕清理并附中文翻译，并非逐字记录。</p>
+    </div>
+    <div class="fulltext open" data-mode="cn">
+      <div class="ft-bar"><span class="ft-meta">18 节 · 中文约 5.4 千字 · 整理版文字稿</span><div class="ft-modes" role="group" aria-label="全文语言"><button type="button" data-mode="cn" aria-pressed="true">中文</button><button type="button" data-mode="both" aria-pressed="false">中英对照</button><button type="button" data-mode="en" aria-pressed="false">English</button></div></div>
+      <div class="ft-body" id="ft-lilu36">
+        <div class="ft-sec"><div class="ft-head"><span class="ft-ts">00:33</span><h3><span class="ft-cn">开场：正在变化的世界秩序</span><span class="ft-en" lang="en">Opening: a changing world order</span></h3></div>
+          <div class="ft-unit"><p class="ft-cn"><b class="ft-who">主持人（Tano Santos）：</b>过去30年世界变了。我们年轻时，世界是开放的、跨国界的，有一种如今似乎缺失的"精神上的慷慨"。你如何看待未来的走向？这会进入你对投资的思考吗？</p><p class="ft-en" lang="en"><b class="ft-who">Tano Santos:</b> The world has changed over the last 30 years. When we were younger it was open, transnational, with a certain generosity of spirit that seems lacking today. How do you see it going forward, and does it enter into how you think about investing?</p></div>
+          <div class="ft-unit"><p class="ft-cn"><b class="ft-who">李录：</b>这是个好问题，Tano。过去30年世界确实变了，这毫无疑问。但"世界如何自我治理"这类大问题的变化是缓慢的——一种秩序的形成与转变，可能需要十年，有时上百年。当前的秩序是经由两次世界大战锻造出来的：那两场战争把世界推到崩溃边缘，之后形成了美国主导的秩序，再经过冷战及其终结，变成一个统一的秩序——而现在，它又在转变为某种尚未可知的形态。</p><p class="ft-en" lang="en"><b class="ft-who">Li Lu:</b> It's a great question, Tano. The world really has changed over the last 30 years — no question. But the big questions of how the world governs itself change on a slow scale; it can take a decade, sometimes a hundred years, for an order to form and transform. The current order was forged through two world wars that brought the world to the brink of collapse, emerged as the American-led order, then through the Cold War and its end became one order — and now it's transforming once again into something yet to be seen.</p></div>
+        </div>
+        <div class="ft-sec"><div class="ft-head"><span class="ft-ts">01:41</span><h3><span class="ft-cn">政治之下：经济秩序</span><span class="ft-en" lang="en">Beneath politics: the economic order</span></h3></div>
+          <div class="ft-unit"><p class="ft-cn">在政治之下，还有另一种秩序，过去几百年里一直在稳步形成——经济秩序。当越来越多的国家和人口加入一个共同市场、彼此交易时，它就形成了。这个共同市场大约在30年前最终形成：随着苏联解体、冷战结束，几乎所有国家都加入了同一个市场经济。</p><p class="ft-en" lang="en">Underneath, another order has been steadily forming for the last few hundred years — the economic order. It forms when more and more countries and populations join a common market and transact with each other. That common market was finally formed about 30 years ago, with the collapse of the Soviet Union and the end of the Cold War, when virtually all countries joined one market economy.</p></div>
+          <div class="ft-unit"><p class="ft-cn">一旦共同市场形成，任何单一国家都很难主动退出，因为市场带来效率，带来持续改进的飞轮——技术、分工、资源的交易。长期退出代价极大。看看过去100年的贸易摩擦：无论你设立什么壁垒，人们都会通过第三国、按同样的比较优势原则找到交易的办法。以中美贸易为例：它确实下降了，但看美国与墨西哥等国的整体贸易，会出现一个几乎等量的对冲——贸易基本上通过第三方延续了下来。</p><p class="ft-en" lang="en">Once a common market is formed, it's very difficult for any single country to withdraw voluntarily, because out of the market comes efficiency and a flywheel of continuous improvement — technology, division of labor, trade in resources. Withdrawing for any extended period comes at great cost. Look at trade frictions over the past 100 years: no matter what barriers you erect, people find a way to trade through a third country along the same principles of comparative advantage. Take US–China trade: it has declined, but if you look at overall US trade with, say, Mexico, there's an exact offset — the trade essentially continues through a third party.</p></div>
+          <div class="ft-unit"><p class="ft-cn">政治秩序方面：美国领导全球80年，承担了维持共同市场运转的大部分成本，如今开始觉得成本与收益不成比例，于是开始主动退出一部分责任——目前并不很成功——留下了真空。而最大的变化，是中国在过去30到40年间崛起为一个庞大的经济体，拥有完整的制造与技术自给能力，以及一个巨大、开放、监管统一的单一市场。</p><p class="ft-en" lang="en">The political order is that the US, having led the globe for 80 years and shouldered most of the cost of keeping the common market functioning, began to feel the cost and benefit were out of proportion, and started to voluntarily withdraw some of those responsibilities — not very successfully so far — leaving a vacuum. The single biggest change is the rise of China over 30–40 years into an enormous economic entity, with a complete set of manufacturing and technology self-sufficiency and a single, large, open, unified-regulation market.</p></div>
+        </div>
+        <div class="ft-sec"><div class="ft-head"><span class="ft-ts">05:29</span><h3><span class="ft-cn">相互依赖——"筷子"段子</span><span class="ft-en" lang="en">Mutual dependence — the "chopsticks" point</span></h3></div>
+          <div class="ft-unit"><p class="ft-cn">我们在同一个市场内的相互依赖只增未减。举个例子：在生成式AI里，大家都离不开的东西是半导体芯片。想想所有能生产芯片的地方——它们有一个共同点。所有生产这波技术浪潮所必需芯片的国家和人……都用筷子。</p><p class="ft-en" lang="en">Our mutual dependency within one single market has only increased. Example: in generative AI, the one thing everybody needs is semiconductor chips. Think about all the places that produce them — they have one thing in common. Every country and every person who produces the semiconductor chips essential to this technological wave… uses chopsticks.</p></div>
+          <div class="ft-unit"><p class="ft-cn">当然，领导这里半导体公司的人——从黄仁勋到苏姿丰，不胜枚举。所以存在巨大的相互依赖：如果你像现在这样重注押在这项新技术上，无论它有什么希望与风险，你都得对用筷子的人友好一点。这不是偶然发生的。</p><p class="ft-en" lang="en">And of course the people leading the semiconductor companies here — from Jensen Huang to Lisa Su, you name it. So there's a great deal of mutual dependence: if you're betting as heavily as we are on this new technology, whatever its promise and perils, you have to be nice to people who use chopsticks. This didn't happen by accident.</p></div>
+          <div class="ft-unit"><p class="ft-cn">美国总统和中国领导人之所以会在8个月里见四次面，是有原因的——而每次会面最重要的成果，就是约定下一次会面。这就是"战略稳定"：所有人都感受到这个共同市场的分量和退出的代价，于是在激烈竞争的同时维持和平，各自都相信时间站在自己这边——中国要完成半导体自给，美国则寄望于AI突破。二战后的秩序正在改变，但更深层的——全球单一共同市场的形成——会长久存在。</p><p class="ft-en" lang="en">There's a reason the President of the United States and the President of China found the urgency to meet four times in eight months — and the most important accomplishment of each meeting is to schedule the next one. This is strategic stability: everyone feels the weight of the one common market and the cost of withdrawing, so they keep it peaceful while competing fearlessly, each believing time is on their side — China to complete semiconductor self-sufficiency, the US hoping for an AI breakthrough. The post-WWII order is changing, but the deeper formation of one single global common market is here to stay.</p></div>
+        </div>
+        <div class="ft-sec"><div class="ft-head"><span class="ft-ts">10:19</span><h3><span class="ft-cn">对投资者的含义：六条原则</span><span class="ft-en" lang="en">Implication for investors: six principles</span></h3></div>
+          <div class="ft-unit"><p class="ft-cn">对投资者意味着什么？回到价值投资的六条原则。我们新加的最后一条：作为全球投资者，你的财富，表现为你对全球购买力的占比。实现它的一种方式——也是我们一直实践的方式——是在有活力的国家和市场里，以有利的价格买入伟大的企业并长期持有，从而创造价值，保持并提升我们的占比。</p><p class="ft-en" lang="en">What's the implication for an investor? Back to the six principles of value investing. The last one we added: as a global investor, your wealth is expressed as your percentage ownership of global purchasing power. One way to accomplish that — the way we've practiced — is to buy great businesses in dynamic countries and markets at advantageous prices and hold them long term, to create value and preserve and grow our percentage over time.</p></div>
+        </div>
+        <div class="ft-sec"><div class="ft-head"><span class="ft-ts">11:25</span><h3><span class="ft-cn">"教堂旁边的赌场"</span><span class="ft-en" lang="en">"A church with a casino attached"</span></h3></div>
+          <div class="ft-unit"><p class="ft-cn">回到巴菲特的那个比喻：股市是一座教堂，旁边附带一个赌场。伯克希尔60年来所做的，是把那座教堂建成了一座宏伟的大教堂——它既发挥功能，也让人们获得精神慰藉，因为它提供了市场之所以存在的那个正当功能。而我们30年来想证明的，是这套"福音"可以传播——我们能在别的国家建起教堂。我们选择在亚洲和其他地区去建；随着时间推移，其中一些教堂也可能长成大教堂。</p><p class="ft-en" lang="en">Back to Warren's analogy describing the stock market as a church with a casino attached to it. What Berkshire has accomplished over 60 years is to build that church into a gigantic cathedral — one that functions, and where people can find spiritual solace, because it provides the right function the market exists for. What we've tried to practice over 30 years is to prove the gospel can be spread — that we can build churches in other countries. We chose to build in Asia and other regions; over time, some of those churches may grow into cathedrals too.</p></div>
+        </div>
+        <div class="ft-sec"><div class="ft-head"><span class="ft-ts">13:14</span><h3><span class="ft-cn">抉择：创造价值 vs 零和</span><span class="ft-en" lang="en">The choice: value creation vs. zero-sum</span></h3></div>
+          <div class="ft-unit"><p class="ft-cn">"教堂旁的赌场"是基本格局，这源于人性——但两边对社会的意义截然不同。一边是正和的方式，对社会是净收益；另一边是零和游戏，是净成本、净负面影响。选择权在你。而技术，包括AI，应当是工具，而非替代品——如果它倾向于替代人类，我们都会联合起来反对去创造一个"人造的神"。所以你完全不必参与那种可以称之为"半神IPO"的东西。</p><p class="ft-en" lang="en">The church-with-a-casino is the basic setup because of the human condition — but the two sides have very different implications for society. On one side, a win-win approach and net benefit to society. On the other, a zero-sum game, a net cost, a net negative. The choice is yours. And technology, including AI, should remain a tool, not a replacement — if it tends toward replacing humans, we'll all unite to oppose creating a man-made god. So you don't have to participate in what amounts to the "IPO of a demigod."</p></div>
+        </div>
+        <div class="ft-sec"><div class="ft-head"><span class="ft-ts">14:40</span><h3><span class="ft-cn">市场上的四类参与者</span><span class="ft-en" lang="en">Four kinds of market participants</span></h3></div>
+          <div class="ft-unit"><p class="ft-cn">我把这个问题分成两部分——先讲投资者在做什么，再讲AI。市场上其实只有四类人：</p><p class="ft-en" lang="en">Let me split this into two parts — first what investors do, then AI. In the market there are really only four kinds of people:</p></div>
+          <div class="ft-unit"><ul class="ft-cn"><li><b>价值投资者</b>——长期看重企业本身，为的是价值创造。</li><li><b>套利者</b>——对市场定价的对错进行套利；用本·格雷厄姆的比喻，像房地产一样，从悲观者手里买入，卖给乐观者。</li><li><b>投机者</b>——主要为投机而来，猜别人会买或卖什么，既不关心价值、也不关心定价或价值创造。</li><li><b>经纪商与做市商</b>——为上述所有人提供便利。</li></ul><ul class="ft-en" lang="en"><li><b>Value investors</b> — taken with the company over time, for value creation.</li><li><b>Arbitrageurs</b> — arbitraging the rights and wrongs of market pricing; in Ben Graham's analogy, like real estate, buying from the pessimists and selling to the optimists.</li><li><b>Speculators</b> — in it mostly for speculation, guessing what others will buy or sell, caring about neither the value, the pricing, nor the value creation.</li><li><b>Brokers and market makers</b> — who facilitate all of the above.</li></ul></div>
+          <div class="ft-unit"><p class="ft-cn">大多数人并非纯粹的某一类——他们或多或少兼具这四种；指数化恰恰就是这个平均。但价值投资者真正在意的，是获得正确的价格发现，并等待价值随时间被创造出来。</p><p class="ft-en" lang="en">Most people aren't purists — they encompass somewhat all four; indexing is exactly that average. But value investors are into getting the right price discovery and waiting for value creation over time.</p></div>
+          <div class="ft-unit"><p class="ft-cn">从社会角度看：投机，按定义就不会停留足够久以参与任何价值的变化或创造，所以它大致净为零——而且是对市场运转的一种成本。市场之所以存在，主要是为了把过剩的储蓄导向有价值企业的生产性用途，创造一个具有复利增长的现代经济。那为什么还会有投机这一面？这是人性的一部分；赌场几乎是"建筑许可"的一部分。400年前人们靠它被"动物精神"点燃，400年后依然如此。所以，作为学生，你的选择是：零和游戏，还是价值创造游戏？这是个人选择——社会也有选择：不要让赌场那一面大到压过市场存在的本来目的。</p><p class="ft-en" lang="en">Socially: speculation, by definition, doesn't stay long enough for any value change or creation, so it nets to roughly zero — and is a cost to the functioning of the market. The market exists primarily to channel excess savings to productive use in deserving companies, creating a modern economy with compound growth. So the question is why you even have the speculative side — it's part of the human condition; the casino is almost part of the "building permit." 400 years ago that's how you got inspired by animal spirits, and 400 years later it still does. So the choice, as a student, is: zero-sum game, or value-creation game? That's personal — and society also has a choice, not to let the casino side grow so out of proportion that it overwhelms why the market exists.</p></div>
+        </div>
+        <div class="ft-sec"><div class="ft-head"><span class="ft-ts">19:38</span><h3><span class="ft-cn">什么是AI——工具还是造物</span><span class="ft-en" lang="en">What is AI — tool vs. creature</span></h3></div>
+          <div class="ft-unit"><p class="ft-cn">接下来谈AI——一个更复杂的问题。这波生成式AI显然是一次巨大的技术浪潮。自工业革命以来我们经历过一波又一波，懂得"创造性破坏"。但这一波让人感觉格外不同。表面上：变化的速度、涉及的规模，以及高度集中于顶端的资金冲击，都是前所未有的。</p><p class="ft-en" lang="en">On to AI — a more complex question. This generative-AI wave is obviously a huge technological wave. We've dealt with waves since the Industrial Revolution, understanding creative destruction. But this one feels unusually different. On the surface: the pace, the scale, and the concentrated financial impact at the top are unprecedented.</p></div>
+          <div class="ft-unit"><p class="ft-cn">为什么？在此之前，我们一直把技术当作提升人类生产力的根本工具。而这项技术引入了一个不同的元素：现在我们处在"工具 vs 造物"的光谱上，并且已经开始沿着它移动。大约4年前它首次出现时，是一个"图灵测试"时刻——仅凭语言，你已无法分辨那是机器还是人。此后出现了推理；从推理到编程；有了编程能力，它成为能像人一样自主执行的智能体；然后是众多智能体在复杂、长期任务上的协作（即"长推理"），用它们自己的沟通工具自我组织。</p><p class="ft-en" lang="en">Why? Until now we dealt with technology as a fundamental tool for human productivity. This technology introduces a different element: now we're on a spectrum of tool versus creature, and we've begun to move along it. The moment it was introduced ~4 years ago was a Turing-test moment — from language you could no longer tell machine from human. Then came reasoning; from reasoning, coding; with coding, autonomously executing agents functioning much as a human does; then collaboration of agents on complex, long-lasting tasks ("long reasoning"), self-organizing with their own communication tools.</p></div>
+          <div class="ft-unit"><p class="ft-cn">硅谷的叙事是 RSI → AGI → ASI——智能水平超越所有人类个体乃至整体——于是你是在"创造一个半神"，一个人造之物，强大到其经济影响必然巨大，从而为所有投入提供了正当理由。于是就有了那个邀请所有人参与的万亿美元IPO——"神的IPO"。</p><p class="ft-en" lang="en">The Silicon Valley narrative runs RSI → AGI → ASI — intelligence exceeding all humans individually and together — so you're "creating a demigod," a man-made creation so powerful its economic impact must be huge, justifying all the investment. Hence the trillion-dollar IPO you're all invited to — "the IPO of a god."</p></div>
+          <div class="ft-unit"><p class="ft-cn">但退一步想：如果真是如此，我们将生活在一个被人造神统治的社会里，这个神只有极少数人能接触、无人能理解、无人能控制。没有人愿意生活在那样的社会。所以只有两种结局：（A）这项技术根本没有朝那个方向发展；或者（B）如果真朝那走，我们都会在某个时点联合起来阻止它。无论哪种情况，都不会出现一个凌驾于人类社会之上的人造神。</p><p class="ft-en" lang="en">But step back: if that were truly the case, we'd be living in a society lorded over by a man-made god, accessed by very few, understood by none, controlled by nobody. Nobody wants to live in that society. So there are only two outcomes: (A) the technology isn't actually progressing in that direction, or (B) if it is, we'll all unite at some point to stop it. In neither case do we end up with a man-made god ruling over human society.</p></div>
+        </div>
+        <div class="ft-sec"><div class="ft-head"><span class="ft-ts">25:34</span><h3><span class="ft-cn">给AI一个临时定义</span><span class="ft-en" lang="en">A provisional definition of AI</span></h3></div>
+          <div class="ft-unit"><p class="ft-cn">它是有用的技术吗？基本上，是的。我给一个临时定义：它是一台机器，通过施加庞大算力和聪明的算法，用全部人类生成的数据，在近乎无限的变量之间建立系统性的、情境化的关联——是人类生成数据的"一阶导数"——并在此过程中获得了包括大量人类推理与智能在内的能力。目前我们知道它如何运作、如何改进，却并不完全明白它"为什么"有效——就像我们也并不完全明白人体这台有机机器如何运作。</p><p class="ft-en" lang="en">Is it a useful technology? Reasonably, yes. My provisional definition: it's a machine that, by applying brute compute and clever algorithms over all human-generated data, establishes a systematic, contextual correlation among near-infinite variables of that data — a first derivative of human-generated data — and in doing so acquires capabilities including much of human reasoning and intelligence. We know how it works and how to improve it, but not fully why it works — just as we don't fully understand how the human organic machine works.</p></div>
+          <div class="ft-unit"><p class="ft-cn">它把经济的某一层"拉平"。设想经济的结构：底层是能源与交通；之上是制造业；再往上是通信与数字媒体；最顶层，是把人类积累的全部知识加以综合、服务于各层经济的庞大的知识型、技术型服务。今天的生成式AI，是综合并拉平最顶层知识与专长的绝佳工具——但它改变不了能源与交通，也改变不了制造业（本质是分子和原子的组合），而通信与数字化本身已是最强的综合者。所以它尚未超越人类；我们仍牢牢处在人类生成数据的范围内。</p><p class="ft-en" lang="en">It equalizes one layer of the economy. Picture the economy: at the bottom, energy and transportation; above that, manufacturing; above that, communication and digital media; and on top, the enormous knowledge- and technology-based services that synthesize accumulated knowledge to serve every layer. Generative AI today is a great tool to synthesize and equalize knowledge and expertise in that top layer — but it can't change energy and transportation, or manufacturing (combining molecules and atoms), and communication/digitization are already the greatest synthesizers. So it hasn't gone beyond humans; we're still firmly within human-generated data.</p></div>
+        </div>
+        <div class="ft-sec"><div class="ft-head"><span class="ft-ts">29:38</span><h3><span class="ft-cn">那条红线</span><span class="ft-en" lang="en">The red line</span></h3></div>
+          <div class="ft-unit"><p class="ft-cn">总结一下：这项技术极其有用、极具变革性，同时也极其危险。作为社会、作为人类整体，我们必须坚定地划出一条红线——它的任何自我学习或使用，都不能脱离"人在环中"；要把它牢牢守在工具一侧，而非造物一侧。没有人在环中的RSI（递归式自我改进）会非常危险，因为它会生成自己的目标和子目标，逐渐偏离人类的控制。它同样极具颠覆性——从就业，到情感依赖，再到网络、生物、核等各类风险。社会应追求一种平衡的发展节奏，在收益与风险之间取得平衡。</p><p class="ft-en" lang="en">In summary: this technology is enormously helpful and transformative, and extraordinarily dangerous. As a society and as human beings we must firmly establish a red line — that its learning and use cannot be without a human in the loop; keep it firmly on the tool side, not the creature side. RSI (recursive self-improvement) without a human in the loop would be very dangerous, because it would develop its own goals and sub-goals and drift beyond human control. It's also enormously disruptive — from employment to emotional dependency to cyber, bio and nuclear risk. Society should aim for a balanced pace of development that balances benefit and risk.</p></div>
+          <div class="ft-unit"><p class="ft-cn">另外，和互联网及许多一次性投入的技术不同，这项技术始终带有增量成本——所以收入、利润、资本需求与财务纪律将始终起作用，并受社会容忍度的节制。人类社会的适应，从来都是通过"规划"来完成的——我们会经历巨大的繁荣与崩溃周期，也许不止一轮。</p><p class="ft-en" lang="en">Also, unlike the internet and many prior technologies with a one-time investment, this technology always carries incremental cost — so revenue, profit, capital needs and financial discipline will always be in operation, paced by society's tolerance. How society adapts is always by planning — and we'll go through big boom-and-bust cycles, perhaps several.</p></div>
+        </div>
+        <div class="ft-sec"><div class="ft-head"><span class="ft-ts">33:46</span><h3><span class="ft-cn">能力圈；到有鱼的地方钓鱼</span><span class="ft-en" lang="en">Circle of competence; fish where the fish are</span></h3></div>
+          <div class="ft-unit"><p class="ft-cn">投资是对一个本质上不可预测的未来进行预测，所以你需要安全边际，既保护下行，也为上行留出空间。沃伦又加了一条纪律：能力圈——而其中最重要的，是认清它的"边界"，因为大多数人都以为自己比实际更有能力一点。查理的说法是：到有鱼的地方去钓鱼。有些市场、行业或企业吸引了大量关注和竞争，竞争吃掉了你的回报；另一些则关注不足，反而给你多得多的机会。道理很简单，实践中却异常有效。</p><p class="ft-en" lang="en">Investing is predicting an inherently unpredictable future, so you require a margin of safety that protects the downside and leaves room for upside. Warren added the discipline of the circle of competence — and the most important part is knowing its edge, because most of us think we're a little more capable than we are. Charlie's idea: fish where the fish are. Some markets, industries or businesses draw huge attention and competition that eats your returns; others don't attract enough attention and offer much more. A simple idea, amazingly effective in practice.</p></div>
+        </div>
+        <div class="ft-sec"><div class="ft-head"><span class="ft-ts">54:20</span><h3><span class="ft-cn">市场会做怪事；长期回报</span><span class="ft-en" lang="en">Markets do strange things; long-run returns</span></h3></div>
+          <div class="ft-unit"><p class="ft-cn"><b class="ft-who">主持人（Tano Santos）：</b>AI资本开支占GDP的比重，历史上是2%–4%，如今因为英伟达到了约15%。你如何看待一个过度依赖少数高beta公司的市场？</p><p class="ft-en" lang="en"><b class="ft-who">Tano Santos:</b> AI capex normalized by GDP, historically 2–4%, is now ~15% with Nvidia. How do you think about a market overly dependent on a few high-beta companies?</p></div>
+          <div class="ft-unit"><p class="ft-cn"><b class="ft-who">李录：</b>市场总会做出奇怪的事——你不必被它牵着走。这是本·格雷厄姆最重要的贡献之一。设想一家公司，自称是研究实验室，烧掉数百亿、还承诺继续烧掉数千亿，承诺将变革技术——但按它自己的说法，又有10%的概率毁灭所有人——而在同一份招股说明书里，它邀请所有人以2万亿估值至少投入1000亿美元。这是市场有多非理性的一个极端例证。</p><p class="ft-en" lang="en"><b class="ft-who">Li Lu:</b> The market can always do peculiar things — you don't have to be dictated to by it. That's one of Ben Graham's most important contributions. Consider a company that calls itself a research lab, burns tens of billions and promises to burn hundreds of billions, promises to transform technology — but also carries, by its own account, a 10% chance of killing everyone — and in that same prospectus invites everyone to put in at least $100 billion at a $2 trillion valuation. That's an extreme illustration of how irrational the market gets.</p></div>
+          <div class="ft-unit"><p class="ft-cn">市场在很长的时段里会做奇怪的事。标普自2010年起16年年均约14%–15%；而2000到2010那十年年均几乎为零，实际略为负。把过去26年平均一下，得到的是一个"高个位数"回报——这大致就是长期的正常水平（约2%的GDP增长 + 2%–3%的通胀 ≈ 4%–5%的名义增长，而500家最优秀公司略好于此）。这应当成为你的根基性支柱：长期看，你终将得到你应得的；几乎没有免费的午餐。这种两极分化，反而给理性的头脑提供了比平常更好的机会集——前提是你能保持理性，而这非常困难，尤其当一波大的技术浪潮把想象力拉得很长、投机的一面变得活跃而狂野时。</p><p class="ft-en" lang="en">Markets do strange things over long stretches. The S&amp;P from 2010 averaged ~14–15% over 16 years; from 2000–2010 it averaged essentially zero, slightly negative. Average the last 26 years and you get a high-single-digit return — which is about right long term (≈2% GDP growth + 2–3% inflation ≈ 4–5% nominal, with the 500 best companies doing slightly better). That should be your grounding pillar: over the long run you get what you deserve; there's not much of a free lunch. This bifurcation offers rational minds a better opportunity set than normal times — if you can stay rational, which is very difficult, especially when a big technology wave stretches imaginations and the speculative side runs wild.</p></div>
+        </div>
+        <div class="ft-sec"><div class="ft-head"><span class="ft-ts">1:01:50</span><h3><span class="ft-cn">中国：是"目标"还是"代价"</span><span class="ft-en" lang="en">China: objective vs. cost</span></h3></div>
+          <div class="ft-unit"><p class="ft-cn">中国股市停滞了大约10年，但底下发生的事很耐人寻味。十年前，中国面对"中等收入陷阱"的问题——数十个国家到了这个水平后被困40到50年。于是中国有意把经济从中低端制造迁移到中高端制造——一个十年计划，"中国制造2025"。随后第一任特朗普政府的贸易战、以及拜登政府加码的技术限制，反而强化了这一推进；到2021年，中国加倍下注，并在瓶颈领域（半导体、大飞机发动机、操作系统软件等）加上了技术自给的目标。</p><p class="ft-en" lang="en">The Chinese market was stagnant for about 10 years, but what happened underneath is fascinating. A decade ago China faced the middle-income-trap question — dozens of countries reach that level and stay stuck for 40–50 years. So they deliberately migrated the economy from low/mid-end to mid/high-end manufacturing — a 10-year plan, "Made in China 2025." Then the first Trump administration's trade war, and the Biden administration's added technology restrictions, reinforced the push; by 2021 China doubled down and added technology self-sufficiency in bottleneck areas (semiconductors, aircraft engines, operating software, etc.).</p></div>
+          <div class="ft-unit"><p class="ft-cn">实现这些目标付出了沉重代价——主要落在中产家庭的资产负债表上。2021年房地产见顶；一个典型的中产家庭约70%的净资产系于住房，而这套房又背着约50%的按揭杠杆。此后五年，全国房价平均下跌约40%，于是家庭财富平均缩水约60%–70%。人们的应对是三件事：少消费、多储蓄、尽量还债——于是内需增长放缓到接近零，储蓄率不断上升（存款约165万亿元人民币）。这是经济的一层。</p><p class="ft-en" lang="en">Achieving those goals carried a heavy cost — chiefly the middle-class family balance sheet. By 2021 real estate peaked; a typical middle-class family had ~70% of net worth in a home carrying ~50% mortgage leverage. Over the next five years home prices fell ~40% nationwide, so family fortunes dropped ~60–70%. People responded by consuming less, saving more, and paying down debt — so domestic demand slowed toward roughly zero and the savings rate climbed (deposits ~165 trillion RMB). That's one tier of the economy.</p></div>
+          <div class="ft-unit"><p class="ft-cn">另一层：制造业已稳固地突破到中高端，"中国制造2025"的每一项目标都提前完成，瓶颈也在缓解。事实证明，美国主导的制裁对中国半导体产业是"天赐之物"——它带来了市场经济中最珍贵的东西：需求。订单→收入→利润→研发→改进→更多收入。在成熟制程上，设备端和制造端已接近完全自给；在最尖端制程上也日益接近，只差几种关键要素。生成式AI的代码生成能力，帮助替换了缺失的软件层。与此同时的代价是：新房年销售额下降约70%，而几乎同等规模的约每年10万亿元人民币，被投入到制造业升级和技术上——这一分化恰好出现在2021年前后。</p><p class="ft-en" lang="en">The other tier: manufacturing broke firmly into mid/high-end, every "Made in China 2025" objective is ahead of schedule, and bottlenecks are easing. US-led sanctions turned out to be a godsend for China's semiconductor industry — they created demand, the most precious thing: order book → revenue → profit → R&amp;D → improvement → more revenue. On mature nodes, equipment and fabrication are near self-sufficient; on cutting-edge nodes they're getting close, with a few missing ingredients. AI's code-generation helps replace missing software layers. Meanwhile the cost: new real-estate sales down ~70%, and roughly the same ~10 trillion RMB/year shifted into manufacturing upgrading and technology — the divergence appears right around 2021.</p></div>
+          <div class="ft-unit"><p class="ft-cn">这就是发展模式：大约每10年设定一组新目标，并伴随沉重代价；而这一阶段的"目标"，可能变成下一阶段的"代价"（先是污染，后是房地产）。作为中国的投资者或企业家，你总想知道自己是国家目标的"目标"还是"代价"——当那个"代价"很不好受。总的结果是：一个体量巨大的国家终于踏上了完整的现代化进程——但代价是二元经济、信心流失、股市停滞的十年，以及一些具有世界级竞争力的公司以便宜的价格交易。对那些着眼全局的理性投资者来说，今天的市场也许提供了比其他时候更好的机会。</p><p class="ft-en" lang="en">That's the development model: every ~10 years a new set of objectives with a heavy cost, and this period's objective can become the next period's cost (pollution, then real estate). As an investor or entrepreneur in China, you always want to know whether you're the objective or the cost — being the cost of a state objective is no fun. The net result: a country of great size finally embarked on a complete course of modernization — but with a two-tiered economy, lost confidence, a flat decade for stocks, and some world-class companies trading at cheap prices. For rational investors who look at the whole picture, today's market may offer better opportunities than other times.</p></div>
+        </div>
+        <div class="ft-sec"><div class="ft-head"><span class="ft-ts">1:15:02</span><h3><span class="ft-cn">中国与硅谷做AI的不同路径</span><span class="ft-en" lang="en">Chinese vs. Silicon Valley approach to AI</span></h3></div>
+          <div class="ft-unit"><p class="ft-cn">硅谷的路径问的是：这项技术还能做什么、我们能把边界推到多远——这就是他们自称"实验室""前沿"的原因。中国的AI公司对这些问题同样充满好奇，但更重要的是会问：这项技术能为我的客户——无论是消费者还是企业客户——做什么？这是一条很不同的路径，从各种指标上都能看到结果的不同。</p><p class="ft-en" lang="en">The Silicon Valley approach asks: what else can this technology do, how far can we push the edge — that's why they're "labs" and "frontier." Chinese AI companies are curious about that too, but more importantly ask: what can this technology do for my customers, both consumers and enterprises? That's a very different approach, visible in different metrics and results.</p></div>
+        </div>
+        <div class="ft-sec"><div class="ft-head"><span class="ft-ts">1:16:04</span><h3><span class="ft-cn">什么来接替房地产成为家庭财富</span><span class="ft-en" lang="en">What replaces real estate as household wealth</span></h3></div>
+          <div class="ft-unit"><p class="ft-cn">当房地产在国家和家庭资产负债表中的占比下降，必然要有别的东西接替它，成为财富的载体。到某个时点，那只能是股权——它是唯一随经济一起增长的资产，实际上是因经济增长而增值，同时它本身又是经济增长的原因之一。它们同属一个飞轮。至于政治风险：要真正理解某一时刻的"目标"，考察历史记录——并把这个视角应用到你所进入的每一个国家，因为我们的世界仍然以民族国家为单位来组织。</p><p class="ft-en" lang="en">As real estate's share of the national and family balance sheet declines, something must take its place as the store of wealth. At some point it has to be equities — the only asset that grows with the economy, in fact grows because of the economy and is itself a reason the economy grows. They're all part of the same flywheel. On political risk: understand the objective at any given time, examine the record — and apply that lens to every country you operate in, since our world is still organized around nation-states.</p></div>
+        </div>
+        <div class="ft-sec"><div class="ft-head"><span class="ft-ts">1:32:04</span><h3><span class="ft-cn">价值原则、成长与科技、能源——以及加密货币</span><span class="ft-en" lang="en">Value principle, growth and tech, energy — and crypto</span></h3></div>
+          <div class="ft-unit"><p class="ft-cn">所有理性的投资本质上都是价值投资，因为你总想得到比所付价格多一点的价值——无论是一家停滞甚至萎缩、但能返还大量现金的企业，还是一家快速成长的公司，又或是一笔胜率很小、但一旦成功回报巨大的押注。归根结底，都是在对未来的现金流做折现，并理解价值在何处被创造；基本原则不变，变的只是你如何应用它——而这取决于你的能力圈在哪里。能源、交通、制造、通信、知识型服务，本质上就是整个经济，所以AI会在每一层上复现；它的约束从芯片到电力到人力，各层表现不同，并且对气候有影响。</p><p class="ft-en" lang="en">All intelligent investment is value investment, because you always want a bit more value than the price you pay — whether in a stagnant or declining business that returns a lot of cash, a rapidly growing company, or a bet with a small probability of a large payoff. It all comes down to discounting future cash flows and understanding where value is created; the basic principle doesn't change, only how you apply it — which depends on your circle of competence. Energy, transportation, manufacturing, communication, and knowledge-based services essentially are the whole economy, so AI replicates across every layer; its constraints run from chips to electricity to labor, and it has climate implications.</p></div>
+          <div class="ft-unit"><p class="ft-cn">至于加密货币，我的回答很简单：我根本不去想它；我认为它最终会自行消失。它从根本上是站不住脚的。可兑现的货币，是靠其背后的强制力来支撑的；没有那种强制机制，你就无法拥有一个可信的结算单位或财富储藏手段——某个人"在车库里"造出来的东西，做不到这件事。它确实帮助了犯罪分子进行各种非法交易。我们干脆禁掉它，大家都会更好。如果有人想像收藏艺术品那样去收藏它，那是个人偏好，但作为社会，我认为它毫无价值。</p><p class="ft-en" lang="en">On crypto, a simple answer: I don't think anything of it; I think it will eventually disappear on its own. It's fundamentally bogus. A redeemable currency is enforced by the force behind it; without that enforcement mechanism you can't have a credible unit of settlement or store of wealth — something created "out of a garage" doesn't do the job. It has helped criminals facilitate illicit transactions. We're all better off banning it. If someone wants to collect it like art, that's a personal preference, but as a society I think nothing of it.</p></div>
+        </div>
+        <div class="ft-sec"><div class="ft-head"><span class="ft-ts">1:36:07</span><h3><span class="ft-cn">连续两年跑输；指数 vs 坚持</span><span class="ft-en" lang="en">Two years of underperformance; index vs. conviction</span></h3></div>
+          <div class="ft-unit"><p class="ft-cn">真正的问题在于人性：你既想做正和的、长期正确的事，又想交出漂亮的数字——每年、每季、每月、每天都想——很快你就变成了投机者。你没法两头都要。要么你认为市场是来"指导"你的，要么认为市场是来"服务"你的——你只能二选一。想把这一切都糅在一起的人，不如去买指数，因为指数恰恰是全部四类参与者的平均。要把它做成一门事业，你最终需要志同道合、愿意与你坚持下去的人；而且你得有点逆向，带着某种"被屏蔽的基因"，仅因逻辑和事实如此就相信自己是对的，而不在乎别人是否同意。</p><p class="ft-en" lang="en">The real issue is human psychology: you want to do win-win and long-term right things, but you also want to report good numbers — every year, quarter, month, day — and pretty soon you're a speculator. You can't have it all. Either you think the market is there to instruct you, or to serve you — you can only pick one. Anyone trying to mush it all together is better off buying the index, which is exactly the average of all four participant types. To do this as a business you need like-minded people who'll stick with you; and you have to be somewhat contrarian, with enough of a "muted gene" to believe you're right because logic and facts say so, regardless of whether others agree.</p></div>
+        </div>
+        <div class="ft-sec"><div class="ft-head"><span class="ft-ts">1:38:48</span><h3><span class="ft-cn">安全边际、复利知识，与过好一生</span><span class="ft-en" lang="en">Margin of safety, compounding knowledge, and a life well lived</span></h3></div>
+          <div class="ft-unit"><p class="ft-cn">价值投资者区别于多数投资者的，是对下行保护的极度重视。既然未来不可预测，你就投资于你确实了解的东西——而起步时你了解得很少。我20多岁起步时懂得很少，于是从我能理解的东西入手（资产负债表——格雷厄姆的方法），再逐渐从简单走向复杂。这就是能力圈的自然演进：理解它的边界，并有意识地随时间扩大它。如果你能以可持续的方式复利你的知识，最终你也能复利你的资本。</p><p class="ft-en" lang="en">What distinguishes a value investor is enormous attention to downside protection. Since the future is unpredictable, you invest in what you do know — and early on you know little. I started in my 20s knowing very little, so I went with what I could understand (the balance sheet — Graham's approach), then gradually progressed from simple to complex. That's the natural progression of the circle of competence: understand its edge, and consciously expand it over time. If you can compound your knowledge sustainably, eventually you can compound your capital as well.</p></div>
+          <div class="ft-unit"><p class="ft-cn">每过10年，我都发现自己学到了太多，几乎像换了一个人。选择正和而非零和，能让你复利你的能力、知识——甚至你的健康，因为你保持投入、保持有用，而不是从社会中索取。麻烦在于，人性往往滑向零和与短期。我的导师、合伙人查理·芒格一直倡导：最高层次的关系，是一张由彼此值得信赖所织成的无缝之网。那里面蕴含着一整套富有成效、对社会双赢的人生哲学。</p><p class="ft-en" lang="en">Every 10 years I find I've learned so much I'm almost a different person. Choosing win-win over zero-sum lets you compound your ability, knowledge — and perhaps even your health, because you stay engaged and useful rather than taking from society. The trouble is human nature drifts to zero-sum and the short term. My mentor and partner Charlie Munger always advocated: the highest order of relationship is a seamless web of deserved trust. There lies a whole philosophy of a productive, win-win life.</p></div>
+          <div class="ft-unit"><p class="ft-cn">复利最基本的理念是：别丢掉你已经拥有的——你的资本、你的知识、你值得信赖的关系、你的智慧，甚至你的健康。如果你选对了伙伴、选对了方法、选对了可押注的人和事，时间会让复利的效果变得惊人。在这一点上，美国与中国——以及全人类——共享同样的结构。找到你天然被吸引的事，以复利、累积的方式在其上不断建设。这就是过一种富有成效的人生的、更好的方式。非常感谢大家。</p><p class="ft-en" lang="en">The basic idea of compounding is: don't lose what you already have — your capital, your knowledge, your trusting relationships, your wisdom, even your health. If you choose the right partners, the right approach, the right people and things to bet on, it's remarkable how compounding works over time. On that regard, the US and China — and all of humanity — share the same structure. Find something you're naturally drawn to and build on it in a compounding, cumulative fashion. That's just a better way of living a productive life. Thank you so much.</p></div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+<article id="ep-lilu36">
+    <div class="detail-head">
+      <div class="kicker">格雷厄姆与多德年会 · 第36届 · 2026.10.06 · 约 105 分钟</div>
+      <h1>李录谈价值投资：统一的市场、AI 的红线，与复利的一生</h1>
+      <div class="thesis">
+        <p class="t-lead">政治秩序在变，但过去几百年才合拢的<b>全球单一市场</b>不会退回；投资者要做的，是在这个市场里选择正和而非零和，并让知识和资本一起复利。</p>
+        在哥伦比亚商学院第 36 届格雷厄姆与多德年会上，李录与 Tano Santos 对谈约一小时四十五分钟：从世界秩序与中美相互依赖讲起，谈到市场上的四类参与者、生成式 AI 的定义与红线、AI 资本开支占 GDP 的异常比重、中国经济“目标与代价”的发展模式、加密货币，最后回到安全边际、能力圈和<b>复利的人生哲学</b>。
+        <div class="guests"><span>主讲 <b>李录</b>（喜马拉雅资本）</span><span>对谈 <b>Tano Santos</b></span><span>场合 <b>哥伦比亚商学院</b></span></div>
+      </div>
+    </div>
+    <section class="ep-sec">
+      <div class="sec-head"><span class="sec-no">PART 01</span><h2>全景</h2></div>
+      <div class="infographic">
+        <div class="ig-node">一个统一的市场，一段复利的人生<small>价值投资的原则不变，变的只是应用它的世界</small></div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">现象 · 秩序在变，市场仍是一个</div>
+          <div class="ig-lead">二战后由美国主导的政治秩序正在转变，美国开始主动卸下部分维持成本；但冷战结束后合拢的<b>全球共同市场很难被任何一国主动退出</b>——贸易壁垒之下，交易总会绕道第三国继续。</div>
+          <div class="ig-signals"><span>中美元首 8 个月会面 4 次</span><span>对美贸易经墨西哥等第三方延续</span><span>AI 芯片产业链高度相互依赖</span><span>“战略稳定”：竞争而不脱钩</span></div>
+        </div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">市场上的四类参与者</div>
+          <div class="ig-routes">
+            <div class="ig-route g1"><div class="nm">价值投资者</div><div class="bt">长期看重企业本身，等待价值被创造出来</div></div>
+            <div class="ig-route g2"><div class="nm">套利者</div><div class="bt">从悲观者手里买入，卖给乐观者</div></div>
+            <div class="ig-route g3"><div class="nm">投机者</div><div class="bt">猜别人会买什么，不关心价值与定价</div></div>
+            <div class="ig-route g4"><div class="nm">经纪商与做市商</div><div class="bt">为以上所有人提供便利</div></div>
+          </div>
+        </div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">三个判断</div>
+          <div class="ig-battles">
+            <div class="ig-battle"><b>AI：工具还是造物</b>极其有用也极其危险，必须守住“人在环中”的红线</div>
+            <div class="ig-battle"><b>中国：目标还是代价</b>每十年一组新目标，上一阶段的目标可能成为下一阶段的代价</div>
+            <div class="ig-battle"><b>加密货币</b>没有强制力背书，做不了结算单位与财富储藏，终将消失</div>
+          </div>
+        </div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">不变的东西</div>
+          <div class="ig-bets"><span>安全边际</span><span>能力圈的边界</span><span>到有鱼的地方钓鱼</span><span>值得信赖的关系</span><span class="key">复利知识</span></div>
+        </div>
+      </div>
+    </section>
+    <section class="ep-sec">
+      <div class="sec-head"><span class="sec-no">PART 02</span><h2>核心观点</h2></div>
+      <div class="points">
+        <div class="point"><div class="p-no">01</div><div><div class="p-title">政治秩序在变，统一市场会留下来</div><div class="p-body"><p>政治秩序的形成与转变以十年、百年计；在它之下，经济秩序几百年来稳步成形，约 30 年前随冷战结束最终合拢为一个共同市场。市场带来效率和持续改进的飞轮，<b>任何国家长期退出都代价极大</b>。</p><p>相互依赖只增不减：生成式 AI 离不开的芯片，产业链横跨中美两端。所以双方在激烈竞争的同时维持和平，各自相信时间站在自己这边。</p></div></div></div>
+        <div class="point"><div class="p-no">02</div><div><div class="p-title">财富，是你对全球购买力的占比</div><div class="p-body"><p>这是喜马拉雅资本给价值投资加上的第六条原则。作为全球投资者，实现它的方式是：<span class="hl">在有活力的国家和市场里，以有利的价格买入伟大的企业并长期持有</span>，在创造价值的同时保持并提升这个占比。</p></div></div></div>
+        <div class="point"><div class="p-no">03</div><div><div class="p-title">教堂旁边的赌场：正和还是零和</div><div class="p-body"><p>借巴菲特的比喻，股市是一座附带赌场的教堂。伯克希尔用 60 年把教堂建成了大教堂；李录想证明这套“福音”能传到亚洲。投机按定义停留不够久，参与不了价值创造，<b>对社会近乎为零、甚至是成本</b>。</p><p>赌场源于人性，无法消除；但个人可以选择站在哪一边，社会也可以选择不让赌场大到压过市场存在的本意。</p></div></div></div>
+        <div class="point"><div class="p-no">04</div><div><div class="p-title">AI 必须留在“工具”一侧</div><div class="p-body"><p>这一波技术不同于以往：我们第一次站在“工具与造物”的光谱上，并开始移动——从语言、推理、编程，到能自主执行、彼此协作的智能体。硅谷的叙事是一路走向“造神”，并邀请所有人参与“神的 IPO”。</p><p>李录的判断是：<span class="hl">要么技术根本走不到那一步，要么人类会联合起来阻止它</span>。社会必须划出红线——AI 的学习与使用不能脱离“人在环中”。</p></div></div></div>
+        <div class="point"><div class="p-no">05</div><div><div class="p-title">AI 拉平的，是经济的最顶层</div><div class="p-body"><p>他的临时定义：AI 用巨大算力和算法，在人类生成的全部数据之间建立关联，是这些数据的“一阶导数”。经济从下到上是能源交通、制造、通信与数字媒体、知识型服务；<b>今天的 AI 主要在综合并拉平最顶层的知识与专长</b>，改变不了原子与分子层面的东西。</p><p>它还始终带着增量成本，因此财务纪律一直起作用，社会也会经历不止一轮繁荣与崩溃。</p></div></div></div>
+        <div class="point"><div class="p-no">06</div><div><div class="p-title">在中国，先弄清你是“目标”还是“代价”</div><div class="p-body"><p>过去十年中国股市停滞，底下却发生了大迁移：为跨越中等收入陷阱，经济被有意从中低端推向中高端制造。代价主要落在中产家庭——房价下跌约四成，家庭财富缩水六七成，人们少消费、多储蓄、还债务。</p><p>与此同时，制造业升级提前完成目标，外部制裁反而为半导体创造了需求。<span class="hl">每十年一组目标，这一阶段的目标可能变成下一阶段的代价</span>；结果是二元经济与一批被低估的世界级公司。</p></div></div></div>
+        <div class="point"><div class="p-no">07</div><div><div class="p-title">市场会做怪事，长期你得到应得的</div><div class="p-body"><p>AI 资本开支占 GDP 的比重从历史上的 2%—4% 升到约 15%；一家自称有一成概率毁灭所有人的公司，邀请所有人以两万亿美元估值投入千亿。<b>市场总会做出奇怪的事，但你不必被它牵着走。</b></p><p>标普 2010 年后年均约 14%—15%，2000—2010 年却接近零；拉长看是高个位数，大致等于 GDP 增长加通胀。这种两极分化给能保持理性的人更好的机会，前提是你真的能保持理性。</p></div></div></div>
+        <div class="point"><div class="p-no">08</div><div><div class="p-title">复利，从不丢掉已有的开始</div><div class="p-body"><p>未来不可预测，所以价值投资者格外重视下行保护：从自己确实了解的东西起步，认清能力圈的边界，再有意识地扩大它。<span class="hl">如果你能以可持续的方式复利知识，最终也能复利资本。</span></p><p>选择正和而非零和，能让能力、知识甚至健康一起复利；别丢掉已经拥有的资本、知识、信任与健康，再选对伙伴和方法，时间会让复利的效果变得惊人。</p></div></div></div>
+      </div>
+    </section>
+    <section class="ep-sec">
+      <div class="sec-head"><span class="sec-no">PART 03</span><h2>金句摘录</h2></div>
+      <div class="quotes">
+        <div class="quote"><span class="q-no">01</span>「市场总会做出奇怪的事——你不必被它牵着走。」</div>
+        <div class="quote"><span class="q-no">02</span>「长期看，你终将得到你应得的；几乎没有免费的午餐。」</div>
+        <div class="quote"><span class="q-no">03</span>「要么你认为市场是来‘指导’你的，要么认为市场是来‘服务’你的——你只能二选一。」</div>
+        <div class="quote"><span class="q-no">04</span>「技术，包括 AI，应当是工具，而非替代品。」</div>
+        <div class="quote"><span class="q-no">05</span>「如果你能以可持续的方式复利你的知识，最终你也能复利你的资本。」</div>
+        <div class="quote"><span class="q-no">06</span>「每过 10 年，我都发现自己学到了太多，几乎像换了一个人。」</div>
+        <div class="quote"><span class="q-no">07</span>「最高层次的关系，是一张由彼此值得信赖所织成的无缝之网。」</div>
+        <div class="quote"><span class="q-no">08</span>「复利最基本的理念是：别丢掉你已经拥有的。」</div>
+      </div>
+    </section>
+    <div class="ep-foot">
+      <div class="foot-title">关于本期</div>
+      <div class="foot-note">内容整理自李录在哥伦比亚商学院第 36 届格雷厄姆与多德年会上的对谈（对谈人 Tano Santos，2026.10.06）。依据经轻度编辑的文字稿（由视频自动字幕清理并附中文翻译，非逐字记录）；金句取自文字稿中译，第 07 句为李录转述查理·芒格的观点。</div>
+    </div>
+  </article>
+
+<article id="ep-xxf30">
+    <div class="detail-head">
+      <div class="kicker">西西弗高速 · #30 · 2026.09.13 · 约 111 分钟</div>
+      <h1>一个人要消化多少信息，才能成为一个社会人？</h1>
+      <div class="thesis">
+        <p class="t-lead">“社会化”是学会规范、承担角色；放到今天，还要加上一门课——<b>信息社会化</b>：学会获取、理解、拒绝信息，并把判断生活与行动的主动权留在自己手里。</p>
+        这是一期“西西弗驿站”。两位主播先站在信息消费者的位置，谈过载、茧房、算法与被 AI 分配的注意力；再换到内容生产者的位置，谈“新闻死了”、站队与严谨、远方的公共事件为何让人无法独善其身；最后给出一组应对：<b>不是更用力地关心一切，而是给注意力、表达、判断和参与各自划一条边界</b>。节目也坦白，这道题没有一劳永逸的答案。
+        <div class="guests"><span>主播 <b>J</b></span><span>主播 <b>K</b></span><span>形式 <b>西西弗驿站</b></span></div>
+      </div>
+    </div>
+    <div class="listen-link"><a href="https://www.xiaoyuzhoufm.com/episode/6aa623ef9d32647781683c93" target="_blank" rel="noopener">在小宇宙收听本期 →</a></div>
+    <section class="ep-sec">
+      <div class="sec-head"><span class="sec-no">PART 01</span><h2>播客全景</h2></div>
+      <div class="infographic">
+        <div class="ig-node">信息社会出了一张考卷<small>从“社会化”到“信息社会化”：学会获取、理解、拒绝，并保留判断的主动权</small></div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">现象 · 信息更多，理解未必更多</div>
+          <div class="ig-lead">信息过载、信息茧房与情绪极化同时存在。<b>信息在增加，事实与理解却不一定同步增加</b>；而决定我们看到什么的，越来越是算法和 AI。</div>
+          <div class="ig-signals"><span>信息过载与茧房并存</span><span>算法是最大的科技黑箱</span><span>注意力被 AI“做局”</span><span>公共事件被“饭圈化”</span></div>
+        </div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">四个视角 · 这张考卷考什么</div>
+          <div class="ig-routes">
+            <div class="ig-route g1"><div class="nm">信息消费者</div><div class="bt">过载之下如何验证自己的观点，如何判断信息</div></div>
+            <div class="ig-route g2"><div class="nm">内容生产者</div><div class="bt">“新闻死了”，还是读者“太长不看”</div></div>
+            <div class="ig-route g3"><div class="nm">公共参与</div><div class="bt">当事人离得很远，舆论却让人无法独善其身</div></div>
+            <div class="ig-route g4"><div class="nm">个人心力</div><div class="bt">内心已经没有容纳公共议题的余地</div></div>
+          </div>
+        </div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">三个张力 · 难在哪里</div>
+          <div class="ig-battles">
+            <div class="ig-battle"><b>站队 vs 严谨</b>复杂议题需要时间判断，舆论却催人立刻表态</div>
+            <div class="ig-battle"><b>远方 vs 自身</b>与己无关的事件，为何占据了这么多心力</div>
+            <div class="ig-battle"><b>发言资格 vs 惩罚尺度</b>谁有资格说话，出了错又该承担多重的后果</div>
+          </div>
+        </div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">应对 · 给每一种“范围”划边界</div>
+          <div class="ig-bets"><span>注意力分配</span><span>注意力效率</span><span>注意力范围</span><span>表达范围</span><span>判断范围</span><span class="key">参与范围</span></div>
+        </div>
+      </div>
+    </section>
+    <section class="ep-sec">
+      <div class="sec-head"><span class="sec-no">PART 02</span><h2>核心观点</h2></div>
+      <div class="points">
+        <div class="point"><div class="p-no">01</div><div><div class="p-title">信息社会化：一门没有标准答案的课</div><div class="p-body"><p>社会化，是个人在与他人和环境的互动中习得知识、规范与价值观，进而承担社会角色。节目把它延伸为<b>信息社会化</b>：在一个由信息塑造认知与行为的环境里，学会获取、理解与拒绝信息，并保有判断生活和行动的主动权。</p><p>这道题<span class="hl">没有一劳永逸的答案</span>，人与信息的关系需要长期经营。</p></div></div></div>
+        <div class="point"><div class="p-no">02</div><div><div class="p-title">信息在增加，理解未必在增加</div><div class="p-body"><p>信息爆炸与信息茧房、情绪极化同时存在。节目借一份“思想验证”小测验提醒：我们很少主动检验自己的观点。<span class="hl">信息变多了，事实与理解不一定随之变多</span>。</p></div></div></div>
+        <div class="point"><div class="p-no">03</div><div><div class="p-title">注意力正在被算法和 AI 分配</div><div class="p-body"><p>决定我们看到什么的，是被称作“时代最大科技黑箱”的算法；当 AI 开始占据信息流，<b>注意力被引导甚至被“做局”</b>。节目延伸推荐的一篇文章，讨论的正是把算法控制权交还给用户的可能。</p></div></div></div>
+        <div class="point"><div class="p-no">04</div><div><div class="p-title">公共议题为何越来越像饭圈</div><div class="p-body"><p>信息的流通方式也在塑造公共参与：越来越多公共事件被以“饭圈”的逻辑理解——<b>先认阵营，再看事实</b>。面对复杂议题，站队往往比严谨更快、也更有回报。</p></div></div></div>
+        <div class="point"><div class="p-no">05</div><div><div class="p-title">从生产者看：新闻死了，还是太长不看</div><div class="p-body"><p>换到内容生产者的位置，问题变成：是新闻本身在式微，还是读者不再愿意读完长内容？<span class="hl">当完整的报道没人读完，复杂性就最先被牺牲</span>。</p></div></div></div>
+        <div class="point"><div class="p-no">06</div><div><div class="p-title">远方的事、发言的资格与心力的耗竭</div><div class="p-body"><p>当事人离自己很远，舆论却让人感觉无法独善其身；随之而来的是两个难题：<b>如何判断一个人发言的合法性，惩罚的强度又该如何界定</b>。</p><p>持续的卷入最终带来一种耗竭：内心已经没有容纳公共议题的余地。</p></div></div></div>
+        <div class="point"><div class="p-no">07</div><div><div class="p-title">主动给自己建一个“茧房”</div><div class="p-body"><p>与其被动地被算法包裹，不如<b>主动设计自己的信息环境</b>：为单位时间里摄取的信息设定主题，减少对社交网络上他人私生活的关注，把注意力留给自己真正想理解的事。</p></div></div></div>
+        <div class="point"><div class="p-no">08</div><div><div class="p-title">表达、判断与参与，都要有边界</div><div class="p-body"><p>为互联网表达设定边界，把公共性与私人性分开；把“验证”当成一个需要主动去做的动作，而不是默认会发生的事。最后落在一句：<span class="hl">关心世界，未必需要用激烈的方式</span>。</p></div></div></div>
+      </div>
+    </section>
+    <section class="ep-sec">
+      <div class="sec-head"><span class="sec-no">PART 03</span><h2>金句摘录</h2></div>
+      <div class="quotes">
+        <div class="quote"><span class="q-no">01</span>「信息不断增加，事实未必增加，理解未必增加。」</div>
+        <div class="quote"><span class="q-no">02</span>「算法是我们时代最大的科技黑箱。」</div>
+        <div class="quote"><span class="q-no">03</span>「我的内心已经没有公共议题的余地了。」</div>
+        <div class="quote"><span class="q-no">04</span>「我为自己建造了一个‘信息茧房’。」</div>
+        <div class="quote"><span class="q-no">05</span>「验证是一种动作。」</div>
+        <div class="quote"><span class="q-no">06</span>「未必要用激烈的方式去关心世界。」</div>
+      </div>
+    </section>
+    <div class="ep-foot">
+      <div class="foot-title">关于本期</div>
+      <div class="foot-note">内容整理自《西西弗高速》30「一个人要消化多少信息，才能成为一个社会人？｜西西弗驿站」，主播 J、K。总结基于节目官方简介与时间线（非逐字稿），金句摘自节目简介。节目延伸推荐：深度版《03.从大同“订婚强奸案”进入，论彩礼及其社会土壤》、文章 <i>Social Media’s Next Evolution: User-controlled Algorithms</i>、Russell T Davies 访谈与电影《踮起脚尖》。</div>
+    </div>
+  </article>
+
+<article id="ep-068">
+    <div class="detail-head">
+      <div class="kicker">野格知识贩子 · #068 · 2026.10.04 · 约 23 分钟</div>
+      <h1>敢让 AI 干活的人，改造的不是提示词，而是整个交付系统</h1>
+      <div class="thesis">
+        <p class="t-lead">当 AI 写出的代码越来越能被直接采用，真正的瓶颈就从“生成”转向了<b>验证、反馈与组织协作</b>。</p>
+        本期以 VS Code 团队的实践为线索：发布节奏从月更压缩到周更后，代码产出变快，问题数量、评审压力和上线风险也同步上升。核心结论是，<b>不能只优化人与 AI 的对话，而要重新设计 AI 获得反馈、验证结果和参与交付的完整系统</b>。
+        <div class="guests"><span>案例 <b>VS Code 团队的 AI 工程实践</b></span><span>节目 <b>野格知识贩子</b></span></div>
+      </div>
+    </div>
+    <div class="listen-link"><a href="https://www.xiaoyuzhoufm.com/episode/6ac1ad30195d838e2aed10de" target="_blank" rel="noopener">在小宇宙收听本期 →</a></div>
+    <section class="ep-sec">
+      <div class="sec-head"><span class="sec-no">PART 01</span><h2>播客全景</h2></div>
+      <div class="infographic">
+        <div class="ig-node">从会写代码到会交付<small>AI 提速之后，系统必须一起升级</small></div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">变化 · 信任正在上升</div>
+          <div class="ig-lead">AI 生成代码的存活率从约 55% 提升到约 86%，意味着更多代码可以进入真实产品。但剩余错误仍足以制造风险，<b>接近可用不等于可以跳过验证</b>。</div>
+          <div class="ig-signals"><span>代码存活率提高</span><span>月更变周更</span><span>问题数量增加</span><span>社区贡献同步增长</span></div>
+        </div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">三道交付闸门</div>
+          <div class="ig-routes">
+            <div class="ig-route g1"><div class="nm">速度</div><div class="bt">AI 已经显著缩短编码与发布周期</div></div>
+            <div class="ig-route g2"><div class="nm">质量</div><div class="bt">截图、评审、持续集成与分阶段放量必须同步增强</div></div>
+            <div class="ig-route g3"><div class="nm">学习</div><div class="bt">把真实错误回流到文档、技能和评测中</div></div>
+            <div class="ig-route g4"><div class="nm">组织</div><div class="bt">更短周期让小队并行推进，团队结构随之改变</div></div>
+          </div>
+        </div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">反馈基础设施</div>
+          <div class="ig-battles">
+            <div class="ig-battle"><b>让 AI 读懂仓库</b>用轻量文档和技能沉淀专家知识</div>
+            <div class="ig-battle"><b>让 AI 看见结果</b>用组件截图、浏览器与启动闭环检查界面</div>
+            <div class="ig-battle"><b>让错误变成课程</b>把真实问题自动转化为评测场景</div>
+          </div>
+        </div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">最终命题</div>
+          <div class="ig-bets"><span>更早展示原型</span><span>分级代码评审</span><span>自动分诊问题</span><span>渐进式发布</span><span class="key">调优反馈系统</span></div>
+        </div>
+      </div>
+    </section>
+    <section class="ep-sec">
+      <div class="sec-head"><span class="sec-no">PART 02</span><h2>核心观点</h2></div>
+      <div class="points">
+        <div class="point"><div class="p-no">01</div><div><div class="p-title">衡量 AI 的不是调用量，而是代码能否留下来</div><div class="p-body"><p>词元消耗只能说明使用频率，代码存活率才接近真实价值。<b>进入主干、经得住修改、最终被用户使用</b>，才算真正完成工作。</p></div></div></div>
+        <div class="point"><div class="p-no">02</div><div><div class="p-title">速度会把原有瓶颈推向下游</div><div class="p-body"><p>编码更快后，评审、持续集成、问题分诊和发布立刻成为新瓶颈。<span class="hl">局部提速如果没有配套系统，最终只会制造更大的等待队列</span>。</p></div></div></div>
+        <div class="point"><div class="p-no">03</div><div><div class="p-title">文档正在获得第二个读者</div><div class="p-body"><p>过去为新人上手而写的说明，如今也成为智能体理解代码库的入口。轻量的仓库指南应当像活文档一样，<b>随着 AI 犯错持续补充</b>。</p></div></div></div>
+        <div class="point"><div class="p-no">04</div><div><div class="p-title">把专家知识编码成可复用技能</div><div class="p-body"><p>无障碍、性能、安全等知识不应永远依赖少数专家反复答疑。把规则沉淀为技能，能让专家从重复咨询中释放出来，也让标准更稳定。</p></div></div></div>
+        <div class="point"><div class="p-no">05</div><div><div class="p-title">AI 必须能够看见自己做出的结果</div><div class="p-body"><p>模型说界面“看起来正确”没有意义。组件截图、浏览器检查和自动启动流程，让智能体获得视觉反馈，<b>从生成代码走向自我纠错</b>。</p></div></div></div>
+        <div class="point"><div class="p-no">06</div><div><div class="p-title">评审是风险闸门，不是事后过滤器</div><div class="p-body"><p>不同仓库应采用不同强度的 AI 评审，但自动意见处理完后仍需人类判断。<span class="hl">人负责最终责任，AI 负责扩大检查覆盖面</span>。</p></div></div></div>
+        <div class="point"><div class="p-no">07</div><div><div class="p-title">真实问题应该自动进入评测集</div><div class="p-body"><p>评测不能长期停留在最初的固定样例。每次线上问题都应沉淀为新的场景，使系统在真实失败中持续学习。</p></div></div></div>
+        <div class="point"><div class="p-no">08</div><div><div class="p-title">原型的价值是开启更具体的对话</div><div class="p-body"><p>不必把每个想法都做成可合并的正式改动。一个能运行的粗糙原型，就能让讨论从抽象想象转向具体取舍，帮助团队更快达成共识。</p></div></div></div>
+      </div>
+    </section>
+    <section class="ep-sec">
+      <div class="sec-head"><span class="sec-no">PART 03</span><h2>提炼句</h2></div>
+      <div class="quotes">
+        <div class="quote"><span class="q-no">01</span>AI 越会写代码，团队越需要重新设计验证与反馈。</div>
+        <div class="quote"><span class="q-no">02</span>产出速度提升之后，质量系统必须以同样的速度进化。</div>
+        <div class="quote"><span class="q-no">03</span>让代码库对新人友好，也是在让它对智能体友好。</div>
+        <div class="quote"><span class="q-no">04</span>专家知识一旦变成技能，就能从个人经验变成组织能力。</div>
+        <div class="quote"><span class="q-no">05</span>界面正确与否，要让智能体亲眼看见，而不是自己宣称。</div>
+        <div class="quote"><span class="q-no">06</span>代码评审决定哪些风险可以继续向前流动。</div>
+        <div class="quote"><span class="q-no">07</span>真正该调优的，是智能体如何获得反馈。</div>
+        <div class="quote"><span class="q-no">08</span>交付节奏改变之后，组织结构也会被迫改变。</div>
+      </div>
+    </section>
+    <div class="ep-foot">
+      <div class="foot-title">关于本期</div>
+      <div class="foot-note">内容整理自《野格知识贩子》#068「敢让 AI 干活的人做对了什么」。总结基于节目官方简介与要点（非逐字稿）；“提炼句”为观点转述。</div>
+    </div>
+  </article>
+
+<article id="ep-22">
+    <div class="detail-head">
+      <div class="kicker">鹿鹿鱼鱼 · #22 · 2026.08.20 · 约 114 分钟</div>
+      <h1>8 年 TikTok 到 Meta，做影响十亿人的产品</h1>
+      <div class="thesis">
+        <p class="t-lead">Gill Tan：小红书最早 PM 之一，TikTok 8 年用户侧产品负责人，刚加入 Meta 任 VP。<b>中美之间做产品，是一种「置身事内」的参与感</b>。</p>
+        本期聊中美 PM 生存指南：从小红书「改双列」的高光时刻，到 TikTok 三阶段演进，再到 Meta 的身份融入。也聊职场暗面——被卷、burnout、身体透支。最终落点：<b>做产品是求真者认知世界的手段，it's been a hell of a ride</b>。
+        <div class="guests"><span>嘉宾 <b>Gill Tan</b>（Meta VP，前 TikTok 用户侧产品负责人）</span></div>
+      </div>
+    </div>
+    <div class="listen-link"><a href="https://www.xiaoyuzhoufm.com/episode/6a85717cef65145dfcc20222" target="_blank" rel="noopener">在小宇宙收听本期 →</a></div>
+    <section class="ep-sec">
+      <div class="sec-head"><span class="sec-no">PART 01</span><h2>播客全景</h2></div>
+      <div class="infographic">
+        <div class="ig-node">做影响十亿人的产品<small>从中美之间的亲历者视角</small></div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">现象 · 从 0 到十亿</div>
+          <div class="ig-lead">Gill 的职业路径横跨三个阶段：<b>小红书最早 PM</b>（改双列）→ <b>TikTok 8 年</b>用户侧负责人 → <b>Meta VP</b>负责创新业务。她亲历了中国产品从出海到全球的完整周期。</div>
+          <div class="ig-signals"><span>小红书改双列</span><span>TikTok 社交独立端遗憾</span><span>字节 A/B test 文化</span><span>Meta 创新业务</span></div>
+        </div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">三段经历</div>
+          <div class="ig-routes">
+            <div class="ig-route g1"><div class="nm">小红书早期</div><div class="bt">改双列是高光时刻，从中感受到产品改变用户行为的力量</div></div>
+            <div class="ig-route g2"><div class="nm">TikTok 2018-2020</div><div class="bt">从 0 到 1 搭团队，快速验证，敢想「没人负责的大问题」</div></div>
+            <div class="ig-route g3"><div class="nm">TikTok 2020-2023</div><div class="bt">规模化阶段，管理大团队，社交独立端是遗憾</div></div>
+            <div class="ig-route g4"><div class="nm">Meta 新阶段</div><div class="bt">高阶 landing：说服、创新、讲故事、司龄——身份融入是最大挑战</div></div>
+          </div>
+        </div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">三个张力</div>
+          <div class="ig-battles">
+            <div class="ig-battle"><b>字节 vs Meta</b>节奏、沟通方式、管理哲学完全不同</div>
+            <div class="ig-battle"><b>中国团队做全球</b>哪些经验能平移，哪些必须重做</div>
+            <div class="ig-battle"><b>高压 vs 可持续</b>不安全感、同辈竞争、被卷——如何抗压</div>
+          </div>
+        </div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">押注 · 好 PM 的关键</div>
+          <div class="ig-bets"><span>求真</span><span>敢想大问题</span><span>说服与讲故事</span><span>抗压能力</span><span class="key">置身事内</span></div>
+        </div>
+      </div>
+    </section>
+    <section class="ep-sec">
+      <div class="sec-head"><span class="sec-no">PART 02</span><h2>核心观点</h2></div>
+      <div class="points">
+        <div class="point"><div class="p-no">01</div><div><div class="p-title">好 PM 的核心是求真</div><div class="p-body"><p>做产品是一种<b>求真者认知世界的手段</b>。不是追风口，而是通过产品去理解用户、理解市场、理解自己。</p></div></div></div>
+        <div class="point"><div class="p-no">02</div><div><div class="p-title">从单打独斗到管理大团队</div><div class="p-body"><p>在字节的成长路径：早期什么都自己做，后来学会<b>敢去想「没人负责的大问题」</b>——那才是 PM 的价值所在。</p></div></div></div>
+        <div class="point"><div class="p-no">03</div><div><div class="p-title">晋升的关键不是 KPI</div><div class="p-body"><p><span class="hl">晋升不是因为你做了多少事，而是你证明了自己能负责更大的问题</span>。字节的晋升秘籍：主动找没人管的领域，做出增量。</p></div></div></div>
+        <div class="point"><div class="p-no">04</div><div><div class="p-title">中国经验做全球的「对」与「错」</div><div class="p-body"><p>中国团队的执行力和快速迭代可以平移，但<b>对美国市场的理解不能靠假设</b>。文化差异、用户习惯、合规环境都需要重新学习。</p></div></div></div>
+        <div class="point"><div class="p-no">05</div><div><div class="p-title">高阶 landing 的核心是讲故事</div><div class="p-body"><p>到了 Meta VP 级别，<span class="hl">说服、创新、讲故事比写 PRD 重要得多</span>。你需要让不同背景的人相信你看到的机会。</p></div></div></div>
+        <div class="point"><div class="p-no">06</div><div><div class="p-title">被卷是常态，关键是怎么恢复</div><div class="p-body"><p>不安全感和同辈竞争是互联网大厂的日常。<b>从 burnout 中恢复的能力</b>，比一直硬撑更重要。身体是最重要的伙伴。</p></div></div></div>
+        <div class="point"><div class="p-no">07</div><div><div class="p-title">在风口和浪尖之间</div><div class="p-body"><p><span class="hl">it's been a hell of a ride，值了</span>。做影响几十亿人的产品，有种强烈的「置身事内」的参与感——这是工作本身的回报。</p></div></div></div>
+      </div>
+    </section>
+    <section class="ep-sec">
+      <div class="sec-head"><span class="sec-no">PART 03</span><h2>金句摘录</h2></div>
+      <div class="quotes">
+        <div class="quote"><span class="q-no">01</span>「做产品也是一种求真者认知世界的手段。」</div>
+        <div class="quote"><span class="q-no">02</span>「敢去想没人负责的大问题。」</div>
+        <div class="quote"><span class="q-no">03</span>「置身事内，做影响几十亿人的大产品。」</div>
+        <div class="quote"><span class="q-no">04</span>「在风口也飞过，在浪尖也冲过。」</div>
+        <div class="quote"><span class="q-no">05</span>「身体是最重要的伙伴。」</div>
+        <div class="quote"><span class="q-no">06</span>「It's been a hell of a ride, 值了。」</div>
+        <div class="quote"><span class="q-no">07</span>「从单打独斗，到负责没人管的大问题。」</div>
+        <div class="quote"><span class="q-no">08</span>「晋升不是因为你做了多少事，而是你证明了自己能负责更大的问题。」</div>
+      </div>
+    </section>
+    <div class="ep-foot">
+      <div class="foot-title">关于本期</div>
+      <div class="foot-note">内容整理自《鹿鹿鱼鱼》#22「在风口也在浪尖：8年TikTok到Meta」，嘉宾 Gill Tan。总结基于节目官方简介与时间线要点（非逐字稿）。</div>
+    </div>
+  </article>
+
+  <article id="ep-270">
+    <div class="detail-head">
+      <div class="kicker">乱翻书 · #270 · 2026.08.01 · 约 97 分钟</div>
+      <h1>大厂押注 AI 办公，飞书和钉钉却先成了配角</h1>
+      <div class="thesis">
+        <p class="t-lead">飞书和钉钉打了五六年，到最后不是谁击败了谁，而是<b>两人先后退出历史舞台</b>。</p>
+        本期圆桌：飞书前产品 Eric、AI 观察者庄明浩、前媒体人雅楠，主播潘乱。聊清楚三件事——飞书到底发生了什么、字节和腾讯在 AI 办公上的攻守反转、以及<b>豆包 2 亿日活到底是资产还是负债</b>。
+        <div class="guests"><span>嘉宾 <b>Eric</b>（飞书前产品）</span><span>嘉宾 <b>庄明浩</b>（AI 观察者）</span><span>嘉宾 <b>雅楠</b>（前媒体人）</span><span>主播 <b>潘乱</b></span></div>
+      </div>
+    </div>
+    <div class="listen-link"><a href="https://www.xiaoyuzhoufm.com/episode/6a6da28d1b5e24969ce72d4c" target="_blank" rel="noopener">在小宇宙收听本期 →</a></div>
+    <section class="ep-sec">
+      <div class="sec-head"><span class="sec-no">PART 01</span><h2>播客全景</h2></div>
+      <div class="infographic">
+        <div class="ig-node">AI 办公的座次重排<small>飞书钉钉成配角，豆包和 Workbody 上位</small></div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">现象 · 攻守之势易也</div>
+          <div class="ig-lead">半年前还是当红炸子鸡，今天全成了明日黄花。<b>豆包吃掉了飞书</b>，而不是飞书吃掉豆包。腾讯边缘团队先做出了产品，字节却慢了一拍。</div>
+          <div class="ig-signals"><span>豆包 2 亿日活</span><span>Workbody 脱颖而出</span><span>Codex 定义 Work Agent 形态</span><span>老板更愿意为 AI 付钱</span></div>
+        </div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">四条路线</div>
+          <div class="ig-routes">
+            <div class="ig-route g1"><div class="nm">字节豆包</div><div class="bt">C 端两亿日活，三条腿走路但每条都卡在商业化</div></div>
+            <div class="ig-route g2"><div class="nm">腾讯边缘团队</div><div class="bt">不在主航道，反而快速做出 AI 办公产品</div></div>
+            <div class="ig-route g3"><div class="nm">飞书</div><div class="bt">先进但被收编——从主角变成豆包的落地渠道</div></div>
+            <div class="ig-route g4"><div class="nm">钉钉</div><div class="bt">激进但不可用，企业 IM 历史使命已完成</div></div>
+          </div>
+        </div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">三个张力</div>
+          <div class="ig-battles">
+            <div class="ig-battle"><b>C 端 vs B 端</b>AI 办公的付费者可能不是企业，而是个人员工</div>
+            <div class="ig-battle"><b>新产品吞旧平台</b>还是旧平台收编新产品？</div>
+            <div class="ig-battle"><b>A/B test 失灵</b>在 AI 面前，字节的数据驱动文化土崩瓦解</div>
+          </div>
+        </div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">押注 · 谁定义下一个形态</div>
+          <div class="ig-bets"><span>Codex</span><span>Work Agent</span><span>个人生产力</span><span>企业 IM 退场</span><span class="key">新吞旧</span></div>
+        </div>
+      </div>
+    </section>
+    <section class="ep-sec">
+      <div class="sec-head"><span class="sec-no">PART 02</span><h2>核心观点</h2></div>
+      <div class="points">
+        <div class="point"><div class="p-no">01</div><div><div class="p-title">狭义企业 IM 的历史使命已完成</div><div class="p-body"><p>飞书和钉钉打了五六年，最后不是谁赢了，而是<b>两人先后退出历史舞台</b>。AI Agent 直接跳到用户面前，中间不需要 IM 做中介。</p></div></div></div>
+        <div class="point"><div class="p-no">02</div><div><div class="p-title">为什么先进的飞书没先长出来</div><div class="p-body"><p>飞书是可用、可交付，但<b>在原有产品里做 AI 改造，比新做一个产品更难</b>。组织惯性、现有用户、KPI 都是包袱。</p></div></div></div>
+        <div class="point"><div class="p-no">03</div><div><div class="p-title">腾讯为什么反而快了</div><div class="p-body"><p><span class="hl">腾讯这轮的产品都是边缘团队做的</span>——不在主航道，没有历史包袱，反而敢试。字节主航道太重，转身慢。</p></div></div></div>
+        <div class="point"><div class="p-no">04</div><div><div class="p-title">用户不愿为聪明回答付钱，愿为做完付钱</div><div class="p-body"><p>豆包的 C 端商业化三条路都卡住了。<b>用户不愿意为聪明的回答付钱，愿意为帮我做完付钱</b>——这是 Work Agent 的机会。</p></div></div></div>
+        <div class="point"><div class="p-no">05</div><div><div class="p-title">A/B test 文化在 AI 面前土崩瓦解</div><div class="p-body"><p><span class="hl">在 AI 上，有价值的东西很可能就是没有价格的</span>。你没法用 A/B test 验证一个全新范式，因为用户也不知道自己想要什么。</p></div></div></div>
+        <div class="point"><div class="p-no">06</div><div><div class="p-title">AI 办公的付费者可能是个人员工</div><div class="p-body"><p>不是企业采购，<b>是个人员工自己掏钱</b>——因为 AI 提升的是他个人的效率，不是公司的效率。这改变了整个付费链条。</p></div></div></div>
+        <div class="point"><div class="p-no">07</div><div><div class="p-title">Codex 定义了 Work Agent 的产品形态</div><div class="p-body"><p><span class="hl">Codex 定义了这一轮 Work Agent 的产品形态</span>。NotebookLM 更像先驱，但现在有可能变成先烈。</p></div></div></div>
+        <div class="point"><div class="p-no">08</div><div><div class="p-title">老板盯上的产品一定会死</div><div class="p-body"><p>「凡是老板盯上的产品一定会死，因为他一旦关注，动作就会变形。」——<b>对企业而言，最大的激进不是功能改变，而是直接动组织</b>。</p></div></div></div>
+      </div>
+    </section>
+    <section class="ep-sec">
+      <div class="sec-head"><span class="sec-no">PART 03</span><h2>金句摘录</h2></div>
+      <div class="quotes">
+        <div class="quote"><span class="q-no">01</span>「飞书和钉钉打了五六年，最后不是谁击败了谁，而是两人先后退出历史舞台。」</div>
+        <div class="quote"><span class="q-no">02</span>「豆包吃掉了飞书，怎么不是飞书吃掉豆包？」</div>
+        <div class="quote"><span class="q-no">03</span>「用户不愿为聪明的回答付钱，愿意为帮我做完付钱。」</div>
+        <div class="quote"><span class="q-no">04</span>「字节的 A/B test 文化，在 AI 面前土崩瓦解。」</div>
+        <div class="quote"><span class="q-no">05</span>「AI 办公的付费者可能不是企业采购，而是个人员工。」</div>
+        <div class="quote"><span class="q-no">06</span>「在原有的产品里做 AI 改造，比新做一个产品更难。」</div>
+        <div class="quote"><span class="q-no">07</span>「腾讯这轮的产品都是边缘团队做的。」</div>
+        <div class="quote"><span class="q-no">08</span>「凡是老板盯上的产品一定会死。」</div>
+        <div class="quote"><span class="q-no">09</span>「Codex 定义了这一轮 Work Agent 的产品形态。」</div>
+      </div>
+    </section>
+    <div class="ep-foot">
+      <div class="foot-title">关于本期</div>
+      <div class="foot-note">内容整理自《乱翻书》#270「大厂押注AI办公」，嘉宾 Eric、庄明浩、雅楠，主播潘乱。总结基于节目官方简介与时间线要点（非逐字稿）。</div>
+    </div>
+  </article>
+
+  <article id="ep-huadian">
+    <div class="detail-head">
+      <div class="kicker">科技乱炖 · 2026.06.08 · 约 70 分钟</div>
+      <h1>我们把 AI 塞进花店后，才知道 AI 落地有多脏</h1>
+      <div class="thesis">
+        <p class="t-lead">AI 落地不是把炫酷功能接进业务，而是<b>先被现实按在地上摩擦一遍</b>。</p>
+        本期从一段外卖平台提示音开始——「咨询已超过一分钟未回复」。当 AI 真的放进一家线下花店，才发现最难的不是模型，而是<b>花艺师不看电脑、店员不愿盘点、平台不开放数据</b>。这不是一次 AI 宏大论道，而是一场很具体、很狼狈、也很有价值的实践复盘。
+        <div class="guests"><span>主播 <b>朱峰</b>（津津乐道创始人）</span><span>主播 <b>某高老师</b>（资深运维）</span><span>主播 <b>高春辉</b>（连续创业者）</span></div>
+      </div>
+    </div>
+    <div class="listen-link"><a href="https://www.xiaoyuzhoufm.com/episode/6a26dd74d1efce7e44845b8a" target="_blank" rel="noopener">在小宇宙收听本期 →</a></div>
+    <section class="ep-sec">
+      <div class="sec-head"><span class="sec-no">PART 01</span><h2>播客全景</h2></div>
+      <div class="infographic">
+        <div class="ig-node">AI 落地线下的真相<small>不是技术问题，是脏活累活</small></div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">现象 · 被平台考核追着跑</div>
+          <div class="ig-lead">外卖平台的一分钟响应提示音，变成了花店老板的新闹钟。<b>花艺师不看电脑、店员不愿盘点、平台不开放数据</b>——AI 落地的最大障碍从来不是模型。</div>
+          <div class="ig-signals"><span>一分钟响应考核</span><span>花艺师不看电脑</span><span>外卖平台不开放 API</span><span>客户要看替换效果图</span></div>
+        </div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">四条尝试路径</div>
+          <div class="ig-routes">
+            <div class="ig-route g1"><div class="nm">AI 客服</div><div class="bt">自动回复咨询，但客户要看替换后的真实效果图</div></div>
+            <div class="ig-route g2"><div class="nm">AI 花束图</div><div class="bt">生成花束图片看似简单，实际很难还原真实花艺</div></div>
+            <div class="ig-route g3"><div class="nm">AI 库存盘点</div><div class="bt">店员不愿盘点是老问题，AI 解决不了人的惰性</div></div>
+            <div class="ig-route g4"><div class="nm">AI 运营助手</div><div class="bt">帮老板处理平台规则，但平台本身就是压力来源</div></div>
+          </div>
+        </div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">三个张力</div>
+          <div class="ig-battles">
+            <div class="ig-battle"><b>老板想象 vs 真实需求</b>老板以为降损耗，实际是被平台追着跑</div>
+            <div class="ig-battle"><b>技术 vs 人</b>最难的不是技术，是不愿用系统的人</div>
+            <div class="ig-battle"><b>平台 vs 商家</b>平台不开放数据，商家被规则绑定</div>
+          </div>
+        </div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">押注 · AI 真正落地在哪</div>
+          <div class="ig-bets"><span>亲自开店</span><span>亲自接单</span><span>被平台规则折磨</span><span>琐碎细节</span><span class="key">不是老板最先想的地方</span></div>
+        </div>
+      </div>
+    </section>
+    <section class="ep-sec">
+      <div class="sec-head"><span class="sec-no">PART 02</span><h2>核心观点</h2></div>
+      <div class="points">
+        <div class="point"><div class="p-no">01</div><div><div class="p-title">AI 落地先被现实摩擦</div><div class="p-body"><p>所谓落地不是接个炫酷功能，而是<b>先被现实按在地上摩擦一遍</b>：人不配合、平台不开放、流程跑不通。</p></div></div></div>
+        <div class="point"><div class="p-no">02</div><div><div class="p-title">花店不是「降损耗」就能解决的生意</div><div class="p-body"><p>鲜花是生鲜，损耗是天性。<b>AI 能优化的不是损耗本身，而是采购、库存、响应速度这些运营细节</b>。</p></div></div></div>
+        <div class="point"><div class="p-no">03</div><div><div class="p-title">最难的不是技术，是人</div><div class="p-body"><p><span class="hl">花艺师不看电脑、店员不愿盘点——这些问题 AI 解决不了</span>。线下行业最难的永远是那些没人愿意做但每天都要做的脏活。</p></div></div></div>
+        <div class="point"><div class="p-no">04</div><div><div class="p-title">AI 生成花束图看着简单实际很难</div><div class="p-body"><p>客户要看到替换后的真实效果图，但 AI 生成的花束和真实花艺师做出来的差距很大。<b>这不是模型能力问题，是供应链问题</b>。</p></div></div></div>
+        <div class="point"><div class="p-no">05</div><div><div class="p-title">平台本身就是压力来源</div><div class="p-body"><p><span class="hl">AI 帮老板处理平台规则，但平台的考核机制本身就是压力来源</span>。你不能用 AI 去优化一个不合理的系统。</p></div></div></div>
+        <div class="point"><div class="p-no">06</div><div><div class="p-title">真正能落地的地方，不是老板最先想的</div><div class="p-body"><p><b>AI 真正能落地的地方，往往不是老板最先想象出来的地方</b>，而是在你亲自开店、亲自接单、亲自被平台规则折磨之后，才从一堆琐碎细节里冒出来。</p></div></div></div>
+      </div>
+    </section>
+    <section class="ep-sec">
+      <div class="sec-head"><span class="sec-no">PART 03</span><h2>金句摘录</h2></div>
+      <div class="quotes">
+        <div class="quote"><span class="q-no">01</span>「AI 落地不是接个炫酷功能，而是先被现实按在地上摩擦一遍。」</div>
+        <div class="quote"><span class="q-no">02</span>「花艺师不看电脑、店员不愿盘点、平台不开放数据。」</div>
+        <div class="quote"><span class="q-no">03</span>「最难的不是技术，而是人、平台、流程和那些脏活。」</div>
+        <div class="quote"><span class="q-no">04</span>「真正能落地的地方，往往不是老板最先想象出来的地方。」</div>
+        <div class="quote"><span class="q-no">05</span>「你亲自开店、亲自接单、亲自被平台规则折磨之后，才知道 AI 该用在哪。」</div>
+        <div class="quote"><span class="q-no">06</span>「咨询已超过一分钟未回复——这成了花店老板的新闹钟。」</div>
+        <div class="quote"><span class="q-no">07</span>「不是一次关于 AI 的宏大论道，而是一场很具体的狼狈的实践复盘。」</div>
+      </div>
+    </section>
+    <div class="ep-foot">
+      <div class="foot-title">关于本期</div>
+      <div class="foot-note">内容整理自《科技乱炖》「我们把AI塞进花店后，才知道AI落地有多脏」，主播朱峰、某高老师、高春辉。总结基于节目官方简介与时间线要点（非逐字稿）。</div>
+    </div>
+  </article>
+
+  <article id="ep-275">
+    <div class="detail-head">
+      <div class="kicker">乱翻书 · #275 · 2026.09.21 · 约 126 分钟</div>
+      <h1>个人 Agent 的战争已经开始</h1>
+      <div class="thesis">
+      <p class="t-lead">从 Chatbot「回答问题」到 Personal Agent「替人办事、花钱、做决定」——<b>争夺的不再是工具的使用时长，而是用户意图产生后的第一入口。</b></p>
+      本期从 <b>Town、Instinct、Grok Bot 与 Meta Muse</b> 四款产品出发，讨论 Personal Agent 为什么突然爆发、上一批 Agent 为什么成了先烈、独立 App 和 IM 谁更接近终局，以及这场战争最后比拼的究竟是模型、Context、执行能力、生态，还是<b>用户的信任</b>。
+      <div class="guests"><span>嘉宾 <b>郦橙锦妖 Vanessa</b>（前字节 AI PM）</span>
+        <span><b>Suki</b>（Today founding PM）</span>
+        <span><b>莫唯书 Mark</b>（前 TikTok 产品）</span>
+        <span>主播 <b>潘乱</b></span></div>
+    </div>
+    </div>
+
+    <div class="listen-link"><a href="https://www.xiaoyuzhoufm.com/episode/6ab029b7ac389df82734ebb6" target="_blank" rel="noopener">在小宇宙收听本期 →</a></div>
+
+    <section class="ep-sec">
+      <div class="sec-head">
+        <span class="sec-no">PART 01</span>
+        <h2>播客全景</h2>
+      </div>
+      <div class="infographic">
+        <div class="ig-node">个人 Agent 的战争已经开始<small>从 Chatbot「回答问题」到 Personal Agent「替人办事、花钱、做决定」</small></div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">现象 · 下一个入口之争</div>
+          <div class="ig-lead">AI 办公的仗还没打完，硅谷已开抢<b>用户意图产生后的第一入口</b>——资本、创业公司与巨头形成新共识。</div>
+          <div class="ig-signals">
+            <span>Instinct 估值：5000 万 → 25 亿 → 传闻 100 亿美元</span>
+            <span>Meta Muse 上线即登顶美区 App Store 免费榜</span>
+            <span>Chatbot 只能回答问题，Personal Agent 长期理解一个人</span>
+          </div>
+        </div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">四条路线 · 四种赌注</div>
+          <div class="ig-routes">
+            <div class="ig-route g1"><div class="nm">Town</div><div class="bt">赌注：委托权<br>把邮箱做深，谨慎交付换取信任</div></div>
+            <div class="ig-route g2"><div class="nm">Instinct</div><div class="bt">赌注：消息 + 支付<br>一条消息交代任务，接管信用卡</div></div>
+            <div class="ig-route g3"><div class="nm">Grok Bot</div><div class="bt">赌注：Bot 队伍<br>多 Bot 是执行力还是情绪价值？</div></div>
+            <div class="ig-route g4"><div class="nm">Meta Muse</div><div class="bt">赌注：补贴市场<br>免费送算力，直接培养整个市场</div></div>
+          </div>
+        </div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">三个战场 · 决定谁能留下来</div>
+          <div class="ig-battles">
+            <div class="ig-battle"><b>生活琐事先行</b>退订、改签、预约、账单最先跑通</div>
+            <div class="ig-battle"><b>意图经济</b>收藏内容是「没有兑现的意图」</div>
+            <div class="ig-battle"><b>形态之争</b>独立 App，还是住在别人的 IM 里</div>
+          </div>
+        </div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">押注 · 最后比拼什么</div>
+          <div class="ig-bets">
+            <span>模型</span><span>Context</span><span>执行能力</span><span>设备</span><span>供给</span><span class="key">用户信任</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ep-sec">
+      <div class="sec-head">
+        <span class="sec-no">PART 02</span>
+        <h2>核心观点</h2>
+      </div>
+      <div class="points">
+        <div class="point">
+          <div class="p-no">01</div>
+          <div>
+            <div class="p-title">现象：AI 办公的仗还没打完，硅谷已开抢下一个入口</div>
+            <div class="p-body">
+              <p>资本、创业公司与科技巨头形成新共识：<b>Chatbot 只能回答问题，Personal Agent 却可能长期理解一个人</b>，替他处理邮件、订票、购物、预约、退款和家庭事务。</p>
+              <p>信号很猛：Instinct 小范围测试阶段估值即从 5000 万美元冲到 25 亿美元，又传出 100 亿美元目标估值；Meta Muse 上线即登顶美区 App Store 免费榜。</p>
+            </div>
+          </div>
+        </div>
+        <div class="point">
+          <div class="p-no">02</div>
+          <div>
+            <div class="p-title">定义之争：工具与「人」的分界线</div>
+            <div class="p-body">
+              <p>分界线在于三点：<b>长期理解、持续记忆，以及不等指令的主动性</b>。办公 Agent 围绕「任务」组织 Context，Personal Agent 围绕「用户本人」组织 Context。</p>
+              <p>第一印象决定用途：<span class="hl">从桌面端进入，它更像同事；从手机和 IM 进入，它更像生活助理。</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="point">
+          <div class="p-no">03</div>
+          <div>
+            <div class="p-title">为什么先跑通的都是生活里的麻烦事</div>
+            <div class="p-body">
+              <p>最早成功的不是宏大任务，而是<b>退订、改签、预约、账单</b>这类琐事。背后是两种截然不同的生意：<span class="hl">用户花钱雇一个私人助理，还是商家付费养一个消费中介？</span></p>
+              <p>核心讨论：「人人都需要一个助理」——过去只属于高净值人群的服务，能否被 AI 真正普惠？</p>
+            </div>
+          </div>
+        </div>
+        <div class="point">
+          <div class="p-no">04</div>
+          <div>
+            <div class="p-title">意图经济浮出水面：Agent 开始替人花钱</div>
+            <div class="p-body">
+              <p>竞争逻辑从「争夺注意力」走向「赢得理解」。关键洞察：<b>收藏内容原来是「没有兑现的意图」</b>——Meta 试图从种草平台升级为决策和交易平台。</p>
+            </div>
+          </div>
+        </div>
+        <div class="point">
+          <div class="p-no">05</div>
+          <div>
+            <div class="p-title">形态之争：独立 App，还是住在别人的 IM 里</div>
+            <div class="p-body">
+              <p>Personal Agent 需要独立 App，还是应该主动存在于 WhatsApp、iMessage 和微信里？Today 走过的弯路是：<b>先接入微信和 Telegram，最后又做回独立 App</b>。</p>
+              <p>GUI 的新角色：不再负责完成操作，而是<span class="hl">给用户一张探索 Agent 能力的地图</span>。</p>
+            </div>
+          </div>
+        </div>
+        <div class="point">
+          <div class="p-no">06</div>
+          <div>
+            <div class="p-title">巨头的困境：补贴战争与产品形态</div>
+            <div class="p-body">
+              <p>当巨头直接免费送算力，靠订阅活着的创业公司面临正面冲击。大厂自身也陷入产品形态困境：<b>塞进原有产品、另做独立 App，还是同时留下三个入口？</b></p>
+              <p>做一个 24 小时在线的 Agent 极难：设备、云服务与执行环境之间的状态要保持一致。</p>
+            </div>
+          </div>
+        </div>
+        <div class="point">
+          <div class="p-no">07</div>
+          <div>
+            <div class="p-title">终局押注：最后比拼什么</div>
+            <div class="p-body">
+              <p>Personal Agent 时代最值钱的位置，是模型、Context、设备、供给，还是<b>用户信任</b>？中国玩家的候选者则是：微信、豆包、手机厂商，还是创业公司？</p>
+              <p>一个「暴论」：<span class="hl">豆包真正缺的，可能是与抖音用户数据的彻底打通。</span>有记忆不等于懂你。</p>
+            </div>
+          </div>
+        </div>
+        <div class="point">
+          <div class="p-no">08</div>
+          <div>
+            <div class="p-title">插曲：校园 Agent，押着相似的韵脚</div>
+            <div class="p-body">
+              <p>直播中途，一位美国大三创业者临时连麦，想从课程、作业、选课和求职切入，为美国大学生做 Personal Agent——很像十多年前的「超级课程表」。<b>时代没有简单重复，却总押着相似的韵脚。</b></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ep-sec">
+      <div class="sec-head">
+        <span class="sec-no">PART 03</span>
+        <h2>金句摘录</h2>
+      </div>
+      <div class="quotes">
+        <div class="quote"><span class="q-no">01</span>「Chatbot 只能回答问题，Personal Agent 却可能长期理解一个人。」</div>
+        <div class="quote"><span class="q-no">02</span>「它争夺的就不再是一款工具的使用时长，而是用户意图产生后的第一入口。」</div>
+        <div class="quote"><span class="q-no">03</span>「办公 Agent 围绕任务组织 Context，Personal Agent 围绕用户本人组织 Context。」</div>
+        <div class="quote"><span class="q-no">04</span>「你是什么样的人，它就会长成什么样。」</div>
+        <div class="quote"><span class="q-no">05</span>「收藏内容原来是『没有兑现的意图』。」</div>
+        <div class="quote"><span class="q-no">06</span>「有记忆不等于懂你。」</div>
+        <div class="quote"><span class="q-no">07</span>「住在别人的 IM 里，接口不属于你，产品的命运也不属于你。」</div>
+        <div class="quote"><span class="q-no">08</span>「产品创新很快会被复制，唯一壁垒可能只剩持续创新的团队。」</div>
+        <div class="quote"><span class="q-no">09</span>「时代没有简单重复，却总押着相似的韵脚。」</div>
+      </div>
+    </section>
+
+    <div class="ep-foot">
+      <div class="foot-title">关于本期</div>
+      <div class="foot-note">
+        内容整理自《乱翻书》#275「AI 办公的热闹还没散，个人 Agent 的战争已经开始｜拆解 Town、Instinct、Grok Bot 与 Muse」，主播潘乱，嘉宾郦橙锦妖 Vanessa、Suki、莫唯书 Mark。<br>
+        总结基于节目官方简介与时间线要点（非逐字稿）。完整节目可在小宇宙、喜马拉雅收听，视频版同步于潘乱的视频号、B 站、微博、小红书与 YouTube。<br>
+              </div>
+    </div>
+  </article>
+
+  <article id="ep-727">
+    <div class="detail-head">
+      <div class="kicker">跨国串门儿计划 · #727 · 2026.09.16 · 约 50 分钟</div>
+      <h1>Shopify CEO：如何运用一个 AI 顾问团来审视最棘手的决策</h1>
+      <div class="thesis">
+      <p class="t-lead">AI 的价值不是替人完成任务，而是<b>改善做判断的环境</b>——让多个 Agent 从数据、论文、商业与工程等角度审视同一个问题，再由人承担最终责任。</p>
+      本期源自 The Knowledge Project Podcast 对 Shopify 创始人兼 CEO <b>Tobi</b> 的访谈（中文克隆版）。Tobi 分享了 Shopify 内部几乎所有工程师都在使用多个 Agent 协同工作、AI 同事 <b>River</b> 在 Slack 公开频道参与讨论与提交 PR 的实践，也提醒 AI 可能带来「产出过剩」、垃圾内容与责任被跳过的新问题——<b>真正无法外包的，是判断、选择与负责</b>。
+      <div class="guests"><span>嘉宾 <b>Tobi</b>（Shopify 创始人兼 CEO）</span>
+        <span>原播客主持人 <b>Shane</b></span>
+        <span>中文版由 <b>《跨国串门儿计划》</b> 制作</span></div>
+    </div>
+    </div>
+
+    <div class="listen-link"><a href="https://www.xiaoyuzhoufm.com/episode/6aaae0289d326477816a478d" target="_blank" rel="noopener">在小宇宙收听本期 →</a></div>
+
+    <section class="ep-sec">
+      <div class="sec-head">
+        <span class="sec-no">PART 01</span>
+        <h2>播客全景</h2>
+      </div>
+      <div class="infographic">
+        <div class="ig-node">用 AI 顾问团审视最棘手的决策<small>AI 改善判断环境，但判断与责任必须由人保留</small></div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">现象 · AI 全面进入公司日常</div>
+          <div class="ig-lead">Shopify 内部<b>几乎所有工程师都在使用多个 Agent 协同工作</b>，AI 正从辅助工具变成拥有记忆、个性与工具权限的「同事」。</div>
+          <div class="ig-signals">
+            <span>AI 同事 River 在 Slack 公开频道工作</span>
+            <span>Tobi 用 AI 幕僚长调度多个子 Agent</span>
+            <span>用语音描述做出新截图工具</span>
+          </div>
+        </div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">三套机制 · 如何用 AI 做决策</div>
+          <div class="ig-routes">
+            <div class="ig-route g1"><div class="nm">River</div><div class="bt">有名字、头像、记忆与适度讽刺感的 AI 同事，参与讨论、查论文、提交 PR</div></div>
+            <div class="ig-route g2"><div class="nm">AI 顾问团</div><div class="bt">多个子 Agent 扮演数据、论文、商业、工程专家，由不同模型分析汇总</div></div>
+            <div class="ig-route g3"><div class="nm">AI 幕僚长</div><div class="bt">Tobi 亲自调度子 Agent 收集研究材料，为决策搭建信息环境</div></div>
+          </div>
+        </div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">三个张力 · 需要权衡什么</div>
+          <div class="ig-battles">
+            <div class="ig-battle"><b>决策环境 vs 承担责任</b>AI 扩大推理范围，人保留判断权</div>
+            <div class="ig-battle"><b>短期反馈 vs 长期建设</b>最优路径往往没有即时反馈</div>
+            <div class="ig-battle"><b>产出过剩 vs 修剪重建</b>AI 垃圾内容泛滥，系统要敢于删除重建</div>
+          </div>
+        </div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">押注 · AI 时代最值钱的技能</div>
+          <div class="ig-bets">
+            <span>品味</span><span>判断力</span><span>直觉</span><span class="key">负责</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ep-sec">
+      <div class="sec-head">
+        <span class="sec-no">PART 02</span>
+        <h2>核心观点</h2>
+      </div>
+      <div class="points">
+        <div class="point">
+          <div class="p-no">01</div>
+          <div>
+            <div class="p-title">AI 不能替你承担责任</div>
+            <div class="p-body"><p>AI 可以提供更好的信息、构建更好的决策环境，却不能替人承担后果。<b>判断权和责任仍然必须由人保留</b>，这是公司领导和关键决策无法被简单自动化的原因。</p></div>
+          </div>
+        </div>
+        <div class="point">
+          <div class="p-no">02</div>
+          <div>
+            <div class="p-title">AI 同事要有人格</div>
+            <div class="p-body"><p>Shopify 没有把内部 Agent 做成千篇一律、谨慎说教的工具，而是允许 River 拥有<b>名字、头像、记忆和适度的讽刺感</b>——它生活在 Slack 公开频道，能够参与讨论、访问工具并提交 PR。</p></div>
+          </div>
+        </div>
+        <div class="point">
+          <div class="p-no">03</div>
+          <div>
+            <div class="p-title">公开使用 AI，会形成潜移默化式学习</div>
+            <div class="p-body"><p>River 被限制在公开频道里工作，不是限制能力，而是<b>让所有人都能观察别人如何调用和使用 AI</b>——总结讨论、查论文、画架构图或制作原型。</p></div>
+          </div>
+        </div>
+        <div class="point">
+          <div class="p-no">04</div>
+          <div>
+            <div class="p-title">AI 让决策环境变好，但不会替你判断</div>
+            <div class="p-body"><p>Tobi 会让多个子 Agent 扮演数据、论文、商业和工程专家，再由不同模型分别分析，最后汇总成一份材料。AI 的角色是<span class="hl">扩大信息和推理的范围，而不是代替他做最终选择</span>。</p></div>
+          </div>
+        </div>
+        <div class="point">
+          <div class="p-no">05</div>
+          <div>
+            <div class="p-title">执行变便宜后，品味与判断力被推到极致</div>
+            <div class="p-body"><p>当执行和生成变得越来越便宜，真正重要的问题变成<b>什么值得做、什么值得保留</b>，以及多个好选项之间该如何取舍。品味来自对大师和系统的长期研究，也来自大量练习。</p></div>
+          </div>
+        </div>
+        <div class="point">
+          <div class="p-no">06</div>
+          <div>
+            <div class="p-title">最优路径不一定有即时反馈</div>
+            <div class="p-body"><p>短视主义往往不是因为管理者天然短视，而是因为<b>激励机制要求他们持续展示短期进展</b>。真正重要的产品重构或长期建设可能很久都没有反馈，却未必因此是错误的选择。</p></div>
+          </div>
+        </div>
+        <div class="point">
+          <div class="p-no">07</div>
+          <div>
+            <div class="p-title">复杂系统必须修剪与重建</div>
+            <div class="p-body"><p>以 SpaceX 的猛禽发动机为例：优秀系统不是靠不断叠加功能变好，而是要<b>敢于删除旧结构、重新设计</b>，为系统创造二次创业契机。失败不是问题，无法释放优秀人才和资源才是问题。</p></div>
+          </div>
+        </div>
+        <div class="point">
+          <div class="p-no">08</div>
+          <div>
+            <div class="p-title">从自我塑造到持续迭代</div>
+            <div class="p-body"><p>长期能力建设靠的是<b>培养可塑性、研究经得住时间考验的书</b>，以及持续的自我肯定与迭代——成功的定义是长期积累的结果。</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ep-sec">
+      <div class="sec-head">
+        <span class="sec-no">PART 03</span>
+        <h2>金句摘录</h2>
+      </div>
+      <div class="quotes">
+        <div class="quote"><span class="q-no">01</span>「机器没法承担责任。」</div>
+        <div class="quote"><span class="q-no">02</span>「现代的应用程序就是一个 Agent，而 River 感觉就像是一位同事。」</div>
+        <div class="quote"><span class="q-no">03</span>「强制 River 只能在公开频道里工作，就能让大家非常非常容易地观察别人是怎么用的。」</div>
+        <div class="quote"><span class="q-no">04</span>「我用它是为了给做判断搭建合适的环境。」</div>
+        <div class="quote"><span class="q-no">05</span>「其实就是品味和判断力，这两项技能一直都很有价值，但现在会被推到极致。」</div>
+        <div class="quote"><span class="q-no">06</span>「最优路径不一定非要有反馈。」</div>
+        <div class="quote"><span class="q-no">07</span>「在所有可行的方案中选出最合适的那一个，这才是真正的难点，而不是找出一个可行的方案。」</div>
+        <div class="quote"><span class="q-no">08</span>「你必须修剪。你必须迈出步子。你必须重建。」</div>
+      </div>
+    </section>
+
+    <div class="ep-foot">
+      <div class="foot-title">关于本期</div>
+      <div class="foot-note">
+        内容整理自《跨国串门儿计划》#727，原内容来自 The Knowledge Project Podcast「Tobi Lütke: The Skills AI Makes More Valuable」（中文克隆版），嘉宾 Tobi（Shopify 创始人兼 CEO）。<br>
+        总结基于节目官方简介与时间线要点（非逐字稿）。<br>
+              </div>
+    </div>
+  </article>
+  <article id="ep-697">
+    <div class="detail-head">
+      <div class="kicker">跨国串门儿计划 · #697 · 2026.08.31 · 约 77 分钟</div>
+      <h1>ChatGPT Work 产品经理：AI 同事正在接管执行，你的职业价值只剩下野心与判断力？</h1>
+      <div class="thesis">
+      <p class="t-lead">AI 产品进入第三个时代：与一个<b>长期在线、持续推进任务的 AI 同事</b>共同工作——人从「划桨」变成「掌舵」，<b>野心与判断力</b>成为最后的护城河。</p>
+      本期源自 Lenny's Podcast 对 OpenAI 产品负责人 <b>Tara Seshan</b> 的访谈（中文克隆版）。Tara 负责 Codex 与 ChatGPT Work，她把 AI 产品分为 Chat、Agent、常驻同事三个阶段，并指出：当执行被自动化，<b>定义问题、验证假设、跑通闭环</b>才是人的新工作——「写作是汇报」可以交给 AI，「写作是思考」永远不能。
+      <div class="guests"><span>嘉宾 <b>Tara Seshan</b>（OpenAI 产品负责人，负责 Codex 与 ChatGPT Work）</span>
+        <span>原播客主持人 <b>Lenny</b></span>
+        <span>中文版由 <b>《跨国串门儿计划》</b> 制作</span></div>
+    </div>
+    </div>
+
+    <div class="listen-link"><a href="https://www.xiaoyuzhoufm.com/episode/6a9521b8a0210c197dcaee59" target="_blank" rel="noopener">在小宇宙收听本期 →</a></div>
+
+    <section class="ep-sec">
+      <div class="sec-head"><span class="sec-no">PART 01</span><h2>播客全景</h2></div>
+      <div class="infographic">
+        <div class="ig-node">与常驻 AI 同事共事<small>执行交给 Agent，方向、判断与责任留给人</small></div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">现象 · AI 产品进入第三个时代</div>
+          <div class="ig-lead">从 Chat（一问一答）到 Agent（调用完成任务），再到<b>长期存在、持续推进、能与他人 Agent 协作的常驻同事</b>——它不只是回答一次问题，而是像团队成员一样工作。</div>
+          <div class="ig-signals">
+            <span>从一对一 Agent 到多人协作的 Agent 群聊</span>
+            <span>工程师用 AI 写代码占比快速攀升</span>
+            <span>慢起飞、信任积累、Agent 承担更多</span>
+          </div>
+        </div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">三条产品路线 · Chat / Work / Codex</div>
+          <div class="ig-routes">
+            <div class="ig-route g1"><div class="nm">Chat</div><div class="bt">面向大众的对话与助手，把 Agent 能力带给十亿级用户</div></div>
+            <div class="ig-route g2"><div class="nm">Work</div><div class="bt">面向知识工作者的常驻协作模式，持续推进真实任务</div></div>
+            <div class="ig-route g3"><div class="nm">Codex</div><div class="bt">面向工程师的编码 Agent，从写代码走向做判断</div></div>
+            <div class="ig-route g4"><div class="nm">融合</div><div class="bt">三种模式边界模糊，最终走向「和同事一起把事做完」</div></div>
+          </div>
+        </div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">三个张力 · 职业角色如何重构</div>
+          <div class="ig-battles">
+            <div class="ig-battle"><b>执行 vs 方向</b>Agent 负责划桨，人负责掌舵</div>
+            <div class="ig-battle"><b>今天模型 vs 明年模型</b>按当下设计会过时，按想象设计会脱轨</div>
+            <div class="ig-battle"><b>写作是汇报 vs 写作是思考</b>前者可自动化，后者是判断力训练</div>
+          </div>
+        </div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">押注 · AI 时代人的非对称优势</div>
+          <div class="ig-bets">
+            <span>责任</span><span>判断</span><span>表达与品味</span><span>人际连接</span><span class="key">野心</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ep-sec">
+      <div class="sec-head"><span class="sec-no">PART 02</span><h2>核心观点</h2></div>
+      <div class="points">
+        <div class="point"><div class="p-no">01</div><div>
+          <div class="p-title">PM 从划桨者变成掌舵者</div>
+          <div class="p-body"><p>当 Agent 承担越来越多执行，人不会消失，而是上升到更抽象层：<b>确定目标、判断方向、解释反馈</b>，决定产品和世界应该往哪里走。</p></div>
+        </div></div>
+        <div class="point"><div class="p-no">02</div><div>
+          <div class="p-title">最危险的是押错模型时间点</div>
+          <div class="p-body"><p>按今天的模型设计会很快过时，按一年后的想象设计会脱离现实。可行节奏是<b>紧贴研究进展，在两三个月窗口里持续调整</b>。</p></div>
+        </div></div>
+        <div class="point"><div class="p-no">03</div><div>
+          <div class="p-title">野心从优势变成必需品</div>
+          <div class="p-body"><p>简单任务人人可完成后，差距不再来自执行，而来自<b>对可能性的想象</b>。最会用 AI 的人，是把过去无法实现的想法快速变成原型的人。</p></div>
+        </div></div>
+        <div class="point"><div class="p-no">04</div><div>
+          <div class="p-title">真正瓶颈不是能力，是想象力</div>
+          <div class="p-body"><p>模型能力快速提升，真正卡住产品的是<b>敢不敢定义更大的问题、提出更野的假设</b>。PM 的新职责是不断拉高团队的野心。</p></div>
+        </div></div>
+        <div class="point"><div class="p-no">05</div><div>
+          <div class="p-title">人的价值转向承担责任</div>
+          <div class="p-body"><p>Agent 可以产出大量工作，但必须有人判断结果对不对、够不够好，并<b>为最终产出负责</b>。作者性、品味与人际连接同样难被自动化。</p></div>
+        </div></div>
+        <div class="point"><div class="p-no">06</div><div>
+          <div class="p-title">「写作是思考」不能外包</div>
+          <div class="p-body"><p>用于汇报、格式转换的写作可以交给 AI；但<b>整理观点、澄清思路、发现问题的写作是判断力训练</b>，让模型代写等于放弃了思考本身。</p></div>
+        </div></div>
+        <div class="point"><div class="p-no">07</div><div>
+          <div class="p-title">知识工作必须看见过程</div>
+          <div class="p-body"><p>写代码可以靠测试判断对错，但知识工作不能只看一份漂亮 PPT——必须<span class="hl">看见推理过程和工作证据</span>，这也是 AI 产品设计的关键。</p></div>
+        </div></div>
+      </div>
+    </section>
+
+    <section class="ep-sec">
+      <div class="sec-head"><span class="sec-no">PART 03</span><h2>金句摘录</h2></div>
+      <div class="quotes">
+        <div class="quote"><span class="q-no">01</span>「未来的工作会越来越像掌舵，而不是划桨。」</div>
+        <div class="quote"><span class="q-no">02</span>「如果你按模型现在的水平去开发，你会失败；按你设想一年后的水平去开发，你也会失败。」</div>
+        <div class="quote"><span class="q-no">03</span>「现在把人和人、公司和公司区分开来的，就只是他们能有多大的野心了。」</div>
+        <div class="quote"><span class="q-no">04</span>「到底由谁来对最终的结果负责？最终谁来对最终产出负责？」</div>
+        <div class="quote"><span class="q-no">05</span>「以写作为思考，是我永远不会自动化的。」</div>
+        <div class="quote"><span class="q-no">06</span>「那第三个时代，就是如何与一个能和你一起把事情做完的常驻同事协作？」</div>
+        <div class="quote"><span class="q-no">07</span>「真正的瓶颈不是能力，而是想象力。」</div>
+        <div class="quote"><span class="q-no">08</span>「AI 让野心从一种优势，变成了一种必需品。」</div>
+      </div>
+    </section>
+
+    <div class="ep-foot">
+      <div class="foot-title">关于本期</div>
+      <div class="foot-note">
+        内容整理自《跨国串门儿计划》#697，原内容来自 Lenny's Podcast「AI's third era: the rise of persistent AI coworkers」（中文克隆版），嘉宾 Tara Seshan（OpenAI 产品负责人）。<br>
+        总结基于节目官方简介与时间线要点（非逐字稿）。<br>
+              </div>
+    </div>
+  </article>
+
+  <article id="ep-711">
+    <div class="detail-head">
+      <div class="kicker">跨国串门儿计划 · #711 · 2026.09.08 · 约 82 分钟</div>
+      <h1>Lenny 对话 a16z 合伙人：公司会变成一系列闭环</h1>
+      <div class="thesis">
+      <p class="t-lead">AI 不会把工作一扫而空，而是把公司重构成<b>由 Agent 驱动的一系列闭环</b>——AI 负责爬坡逼近局部极值，人负责<b>分布外思考</b>、找出下一座山。</p>
+      本期源自 Lenny's Podcast 对 a16z 普通合伙人 <b>Anish Acharya</b> 的访谈（中文克隆版）。从「永久性底层阶级」的焦虑谈起，Anish 认为那是硅谷的暗黑幻想；企业会围绕 AI 重组为个人、职能、业务、公司层层嵌套的闭环系统，而人的价值集中在<b>方向判断、例外处理与持续交付</b>。
+      <div class="guests"><span>嘉宾 <b>Anish Acharya</b>（a16z 普通合伙人，连续创业者）</span>
+        <span>原播客主持人 <b>Lenny</b></span>
+        <span>中文版由 <b>《跨国串门儿计划》</b> 制作</span></div>
+    </div>
+    </div>
+
+    <div class="listen-link"><a href="https://www.xiaoyuzhoufm.com/episode/6a9f839da0210c197dcf441e" target="_blank" rel="noopener">在小宇宙收听本期 →</a></div>
+
+    <section class="ep-sec">
+      <div class="sec-head"><span class="sec-no">PART 01</span><h2>播客全景</h2></div>
+      <div class="infographic">
+        <div class="ig-node">公司会变成一系列 Agent 闭环<small>AI 爬坡，人找下一座山</small></div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">现象 · 「永久底层阶级」是幻觉</div>
+          <div class="ig-lead">模型进步很快，但<b>经济扩散与组织采用的速度更慢</b>，变化会渐进发生；今天的创业与企业环境比过去更开放，而非更绝望。</div>
+          <div class="ig-signals">
+            <span>创业机会与企业数量都在增加</span>
+            <span>AI 慢速起飞，而非一夜替换</span>
+            <span>分发重新成为关键难题</span>
+          </div>
+        </div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">四层闭环 · 企业如何围绕 AI 重组</div>
+          <div class="ig-routes">
+            <div class="ig-route g1"><div class="nm">个人</div><div class="bt">每个人拥有自己的 Agent 循环，负责日常任务闭环</div></div>
+            <div class="ig-route g2"><div class="nm">职能</div><div class="bt">市场、销售、工程各自形成从输入到结果的闭环</div></div>
+            <div class="ig-route g3"><div class="nm">业务单元</div><div class="bt">跨职能闭环，负责一条业务线的完整增长</div></div>
+            <div class="ig-route g4"><div class="nm">公司级</div><div class="bt">能掌管公司很大一部分业务的高层 Agent 循环</div></div>
+          </div>
+        </div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">三个张力 · 闭环的边界在哪里</div>
+          <div class="ig-battles">
+            <div class="ig-battle"><b>局部极值 vs 新方向</b>闭环把事做到极致，人负责分布外思考</div>
+            <div class="ig-battle"><b>效率 vs 快乐</b>消费级 AI 的机会不只是省时，而是更快乐、更有联结</div>
+            <div class="ig-battle"><b>增长 vs 分发</b>产品不缺增长，缺的是进入用户视线</div>
+          </div>
+        </div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">押注 · 产品人如何建立 AI 直觉</div>
+          <div class="ig-bets">
+            <span>持续交付</span><span>口碑分发</span><span>分布外思考</span><span class="key">更大野心</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ep-sec">
+      <div class="sec-head"><span class="sec-no">PART 02</span><h2>核心观点</h2></div>
+      <div class="points">
+        <div class="point"><div class="p-no">01</div><div>
+          <div class="p-title">「永久底层阶级」是暗黑幻想</div>
+          <div class="p-body"><p>无论从技术可得性、创业机会还是企业数量看，今天都比过去更开放。<b>模型跑得快，但组织采用慢，变化会渐进</b>，不必过度焦虑。</p></div>
+        </div></div>
+        <div class="point"><div class="p-no">02</div><div>
+          <div class="p-title">AI 擅长爬坡，人负责找下一座山</div>
+          <div class="p-body"><p>闭环能在增长实验、代码修复、客户支持中逼近局部最优，但<b>一旦遇到瓶颈就需要分布外思考</b>——提出新方向的，仍是人的直觉。</p></div>
+        </div></div>
+        <div class="point"><div class="p-no">03</div><div>
+          <div class="p-title">护城河是被发现的，不是被设计的</div>
+          <div class="p-body"><p>不必在早期就讲清完美护城河故事。先交付一个真正受欢迎、参与度持续增长的产品，<b>网络效应、专有数据、品牌会自然生长出来</b>。</p></div>
+        </div></div>
+        <div class="point"><div class="p-no">04</div><div>
+          <div class="p-title">消费级 AI 的机会是「更快乐」</div>
+          <div class="p-body"><p>很多人不只想省时间。娱乐、社交、陪伴、健康和人际连接是巨大机会——<b>AI 下一阶段不只延伸智力，也要带来更多生活质感</b>。</p></div>
+        </div></div>
+        <div class="point"><div class="p-no">05</div><div>
+          <div class="p-title">分发重新成为护城河</div>
+          <div class="p-body"><p>每天都有大量新产品发布，真正难题不是增长，而是<b>让产品进入用户的视线和信息流</b>。创业公司要靠口碑、社交传播建立自己的分发。</p></div>
+        </div></div>
+        <div class="point"><div class="p-no">06</div><div>
+          <div class="p-title">建立 AI 直觉最好的方式是持续交付</div>
+          <div class="p-body"><p>不要围观别人用模型，找一个具体载体持续做东西并发布。项目可以很小、甚至没人用，<b>但每次交付都在训练判断力和行动习惯</b>。</p></div>
+        </div></div>
+        <div class="point"><div class="p-no">07</div><div>
+          <div class="p-title">AI 让更大的野心变得可行</div>
+          <div class="p-body"><p>当软件、知识、技能不再稀缺，竞争不再是把简单事做得更快，<span class="hl">而是能否提出更大的目标、把过去不敢想的事真正做出来</span>。</p></div>
+        </div></div>
+      </div>
+    </section>
+
+    <section class="ep-sec">
+      <div class="sec-head"><span class="sec-no">PART 03</span><h2>金句摘录</h2></div>
+      <div class="quotes">
+        <div class="quote"><span class="q-no">01</span>「永久底层阶级？这其实是我们整个硅谷都有的一种好笑的暗黑幻想。」</div>
+        <div class="quote"><span class="q-no">02</span>「这个循环会帮你爬到局部极值，但随后陷入瓶颈——这时你需要分布外思考，需要人类直觉。」</div>
+        <div class="quote"><span class="q-no">03</span>「护城河往往是被发现的，而不是被设计出来的。」</div>
+        <div class="quote"><span class="q-no">04</span>「我们怎么才能感受到更多联结、更多爱？怎么获得进步、获得乐趣？」</div>
+        <div class="quote"><span class="q-no">05</span>「现在大家面临的不是增长问题，而是产品问题。」</div>
+        <div class="quote"><span class="q-no">06</span>「哪怕每周发布个东西就行，不用特别夸张。」</div>
+        <div class="quote"><span class="q-no">07</span>「层层递进的闭环：从每人一个，到每个职能，到整个公司。」</div>
+        <div class="quote"><span class="q-no">08</span>「现在我们必须往大了想。」</div>
+      </div>
+    </section>
+
+    <div class="ep-foot">
+      <div class="foot-title">关于本期</div>
+      <div class="foot-note">
+        内容整理自《跨国串门儿计划》#711，原内容来自 Lenny's Podcast「Why companies are becoming a series of loops」（中文克隆版），嘉宾 Anish Acharya（a16z 普通合伙人）。<br>
+        总结基于节目官方简介与时间线要点（非逐字稿）。<br>
+              </div>
+    </div>
+  </article>
+
+  <article id="ep-699">
+    <div class="detail-head">
+      <div class="kicker">跨国串门儿计划 · #699 · 2026.09.01 · 约 71 分钟</div>
+      <h1>Gavin Baker：AI 需求远未见顶，算力短缺将如何重塑全球产业</h1>
+      <div class="thesis">
+      <p class="t-lead">AI 不是零和赢家通吃，而是<b>多方共赢的基础设施建设周期</b>；当全球 15 亿知识工作者刚开始使用 AI，他更担心<b>供不应求而非泡沫</b>。</p>
+      本期源自 The a16z Show 对 Atreides Management 创始人兼 CIO <b>Gavin Baker</b> 的访谈（中文克隆版）。Gavin 整个夏天问遍 AI 产业领袖：有没有一个正在恶化的量化指标？答案几乎都是「没有」。他从 GPU 回本周期、训练与推理的资本配置、多模型与企业智能抽象层，论证<b>当前是建设不足、而非过度建设</b>。
+      <div class="guests"><span>嘉宾 <b>Gavin Baker</b>（Atreides Management 创始人兼 CIO）</span>
+        <span>原播客主持人 <b>David George</b>（a16z）</span>
+        <span>中文版由 <b>《跨国串门儿计划》</b> 制作</span></div>
+    </div>
+    </div>
+
+    <div class="listen-link"><a href="https://www.xiaoyuzhoufm.com/episode/6a969582f03e74ee6b03456a" target="_blank" rel="noopener">在小宇宙收听本期 →</a></div>
+
+    <section class="ep-sec">
+      <div class="sec-head"><span class="sec-no">PART 01</span><h2>播客全景</h2></div>
+      <div class="infographic">
+        <div class="ig-node">AI 需求远未见顶，算力供给是瓶颈<small>不是谁击败谁，而是整个产业一起扩张</small></div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">现象 · 找不到任何恶化指标</div>
+          <div class="ig-lead">Gavin 整个夏天追问产业领袖「有没有正在恶化的量化指标」，答案几乎都是<b>没有</b>——OpenAI、开源、Grok 仍在加速，Token 消耗量数月内增长 <b>100 倍</b>。</div>
+          <div class="ig-signals">
+            <span>工程师用 AI 写代码从 20% 到 95%</span>
+            <span>重度用户仍不到千万级</span>
+            <span>全球约 15 亿知识工作者尚未深度使用</span>
+          </div>
+        </div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">价值分层 · 大家都会赢，而非零和</div>
+          <div class="ig-routes">
+            <div class="ig-route g1"><div class="nm">前沿模型</div><div class="bt">Anthropic、OpenAI 等持续投入训练，牺牲短期自由现金流</div></div>
+            <div class="ig-route g2"><div class="nm">开源与应用</div><div class="bt">上一代模型与应用公司占据不同需求层，各有回报</div></div>
+            <div class="ig-route g3"><div class="nm">云与基础设施</div><div class="bt">CoreWeave、Nebius 靠预付款极短回本，电力与铜是硬瓶颈</div></div>
+            <div class="ig-route g4"><div class="nm">英伟达</div><div class="bt">AI 产业的「中央银行」，开源与碎片化反而利好它</div></div>
+          </div>
+        </div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">三个张力 · 泡沫还是短缺</div>
+          <div class="ig-battles">
+            <div class="ig-battle"><b>过度建设 vs 需求扩散</b>他更担心供不应求、价格上涨</div>
+            <div class="ig-battle"><b>训练 vs 推理</b>收入取舍决定资本配置方向</div>
+            <div class="ig-battle"><b>单模型最优 vs 多模型抽象层</b>没有模型样样最强，企业要自有智能</div>
+          </div>
+        </div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">押注 · 算力时代的关键判断</div>
+          <div class="ig-bets">
+            <span>GPU 回本周期</span><span>数据中心再工业化</span><span>多模型路由</span><span class="key">供不应求</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ep-sec">
+      <div class="sec-head"><span class="sec-no">PART 02</span><h2>核心观点</h2></div>
+      <div class="points">
+        <div class="point"><div class="p-no">01</div><div>
+          <div class="p-title">AI 不是零和，是多方共赢</div>
+          <div class="p-body"><p>前沿模型、开源、应用、云厂和英伟达各占不同价值层。只要智能总需求持续增长，<b>多个参与者都能获得巨大回报</b>，不必押注唯一赢家。</p></div>
+        </div></div>
+        <div class="point"><div class="p-no">02</div><div>
+          <div class="p-title">更可能是建设不足，而非泡沫</div>
+          <div class="p-body"><p>需求侧目前只来自不到千万重度用户，全球却有 15 亿知识工作者。即便 2028 年前计划全部建成，<b>也未必有多余容量</b>。</p></div>
+        </div></div>
+        <div class="point"><div class="p-no">03</div><div>
+          <div class="p-title">GPU 集群一年以内回本</div>
+          <div class="p-body"><p>Nebius、CoreWeave 靠客户预付款、现货市场和融资安排实现极短回本。他直言：<b>投资生涯里没见过投入几百上千亿、不到一年回本的机会</b>。</p></div>
+        </div></div>
+        <div class="point"><div class="p-no">04</div><div>
+          <div class="p-title">数据中心是美国再工业化引擎</div>
+          <div class="p-body"><p>数据中心带来电力、工程、建筑、税收与就业，让衰退小镇税收增长数倍。AI 的社会价值<span class="hl">不能只用聊天机器人或搜索替代来衡量</span>。</p></div>
+        </div></div>
+        <div class="point"><div class="p-no">05</div><div>
+          <div class="p-title">下一代用户天然用行动型 AI</div>
+          <div class="p-body"><p>AI 价值正从「帮我总结」转向「替我采取行动」：分析信息、创建应用、追踪市场、自动执行工作流。<b>真正的用户爆发点还没到来</b>。</p></div>
+        </div></div>
+        <div class="point"><div class="p-no">06</div><div>
+          <div class="p-title">多模型与企业自有智能</div>
+          <div class="p-body"><p>没有任何模型能在所有方面最好。未来企业会通过<b>路由层调度多个专业模型，沉淀属于自己的智能</b>，而非绑定单一供应商。</p></div>
+        </div></div>
+        <div class="point"><div class="p-no">07</div><div>
+          <div class="p-title">英伟达处在极有利位置</div>
+          <div class="p-body"><p>无论开源还是 AI 碎片化，训练与推理的总需求都流向算力层；<b>数据中心投资更容易获得融资</b>，英伟达像 AI 产业的中央银行。</p></div>
+        </div></div>
+      </div>
+    </section>
+
+    <section class="ep-sec">
+      <div class="sec-head"><span class="sec-no">PART 03</span><h2>金句摘录</h2></div>
+      <div class="quotes">
+        <div class="quote"><span class="q-no">01</span>「这不是非此即彼的单选题，这是个兼得的事情。」</div>
+        <div class="quote"><span class="q-no">02</span>「大家都在担心供过于求，我其实更担心供不应求。」</div>
+        <div class="quote"><span class="q-no">03</span>「我投资生涯里，真没见过多少这样的机会：公司投几百亿、几千亿美元，却能在不到一年内回本。」</div>
+        <div class="quote"><span class="q-no">04</span>「我们正在让美国重新工业化，这太棒了。」</div>
+        <div class="quote"><span class="q-no">05</span>「Token 消耗量，在数月内增长了 100 倍。」</div>
+        <div class="quote"><span class="q-no">06</span>「工程师用 AI 写代码的比例，从 20% 一路升到 95%。」</div>
+        <div class="quote"><span class="q-no">07</span>「没有任何模型，能在所有方面都做到最好。」</div>
+        <div class="quote"><span class="q-no">08</span>「到 2028 年，可能仍然没有多余的算力。」</div>
+      </div>
+    </section>
+
+    <div class="ep-foot">
+      <div class="foot-title">关于本期</div>
+      <div class="foot-note">
+        内容整理自《跨国串门儿计划》#699，原内容来自 The a16z Show「Gavin Baker: Why AI Demand Is Outrunning Compute Supply」（中文克隆版），嘉宾 Gavin Baker（Atreides Management 创始人兼 CIO）。<br>
+        总结基于节目官方简介与时间线要点（非逐字稿）。<br>
+              </div>
+    </div>
+  </article>
+  <article id="ep-e46">
+    <div class="detail-head">
+      <div class="kicker">无人知晓 · E46 · 2026.08.25 · 约 81 分钟</div>
+      <h1>我们从未看见彼此</h1>
+      <div class="thesis">
+        <p class="t-lead">我们以为自己在「看」世界，其实大脑一直在<b>用模型重建世界</b>——而每个人的模型都不一样。</p>
+        本期源自孟岩的独白。从神经科学到哲学，从多巴胺预期误差到千脑理论，一路追问：<b>我们看见的到底是世界本身，还是大脑编造的意象</b>？引用了《智能简史》《千脑智能》《鱼不存在》《被讨厌的勇气》等书，以及两侧对称动物、基底神经节、认知地图等概念。
+        <div class="guests"><span>主播 <b>孟岩</b>（有知有行创始人）</span></div>
+      </div>
+    </div>
+
+    <div class="listen-link"><a href="https://www.xiaoyuzhoufm.com/episode/6a8bfde1ef65145dfcc47d26" target="_blank" rel="noopener">在小宇宙收听本期 →</a></div>
+
+    <section class="ep-sec">
+      <div class="sec-head"><span class="sec-no">PART 01</span><h2>播客全景</h2></div>
+      <div class="infographic">
+        <div class="ig-node">我们从未看见彼此<small>感知是建构，不是复制</small></div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">现象 · 5.5 亿年前的分叉</div>
+          <div class="ig-lead">约 5.5 亿年前，<b>两侧对称动物</b>出现——从那一刻起，大脑开始为外部世界建模，而不仅仅是反应。基底神经节负责试错学习，多巴胺编码的不是快乐本身，而是<b>预期误差</b>。</div>
+          <div class="ig-signals"><span>两侧对称动物 Bilateria</span><span>基底神经节</span><span>多巴胺预期误差</span><span>wanting / liking 分离</span></div>
+        </div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">四条认知路径</div>
+          <div class="ig-routes">
+            <div class="ig-route g1"><div class="nm">多巴胺系统</div><div class="bt">wanting 由多巴胺驱动，liking 由阿片类驱动，两者可完全分离</div></div>
+            <div class="ig-route g2"><div class="nm">认知地图</div><div class="bt">托尔曼迷宫实验：大脑持有环境内在地图，不是刺激-反应</div></div>
+            <div class="ig-route g3"><div class="nm">千脑理论</div><div class="bt">霍金斯：新皮层每根皮层柱独立建模，感知是千万模型投票</div></div>
+            <div class="ig-route g4"><div class="nm">离散心智</div><div class="bt">芒福德：世界是连续的，但心智是离散的——我们用概念切割现实</div></div>
+          </div>
+        </div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">三个张力</div>
+          <div class="ig-battles">
+            <div class="ig-battle"><b>连续 vs 离散</b>物理世界连续，人类心智切成概念和词语</div>
+            <div class="ig-battle"><b>记住 vs 忘记</b>我们记住了世界的样子，同时也忘记了</div>
+            <div class="ig-battle"><b>意象 vs 实在</b>我们活在意象里，还是实在里？</div>
+          </div>
+        </div>
+        <div class="ig-link"><div class="vline"></div><div class="dot"></div></div>
+        <div class="ig-layer">
+          <div class="ig-layer-title">押注 · 我们最终面对什么</div>
+          <div class="ig-bets"><span>大脑建模</span><span>预期误差</span><span>认知地图</span><span class="key">从未真正看见</span><span>没说出口的话</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ep-sec">
+      <div class="sec-head"><span class="sec-no">PART 02</span><h2>核心观点</h2></div>
+      <div class="points">
+        <div class="point">
+          <div class="p-no">01</div>
+          <div>
+            <div class="p-title">感知不是拍照，是建模</div>
+            <div class="p-body"><p>从两侧对称动物开始，大脑不再被动接收信号，而是主动为世界建构内部模型。你「看见」的，是大脑<b>预测和补全后的结果</b>，不是现实本身。</p></div>
+          </div>
+        </div>
+        <div class="point">
+          <div class="p-no">02</div>
+          <div>
+            <div class="p-title">多巴胺编码的不是快乐，是误差</div>
+            <div class="p-body"><p>舒尔茨发现多巴胺神经元放电对应的是<b>预期误差</b>——实际结果和预期之间的差值。wanting（想要）和 liking（喜欢）由完全不同的神经系统驱动，可以分离。</p></div>
+          </div>
+        </div>
+        <div class="point">
+          <div class="p-no">03</div>
+          <div>
+            <div class="p-title">千脑理论：感知是千万个模型投票</div>
+            <div class="p-body"><p>霍金斯提出新皮层中每根皮层柱都在独立建模世界，<span class="hl">你以为的「看见」，其实是成千上万个模型投票的结果</span>。这解释了为什么每个人看到的都不一样。</p></div>
+          </div>
+        </div>
+        <div class="point">
+          <div class="p-no">04</div>
+          <div>
+            <div class="p-title">世界是连续的，心智是离散的</div>
+            <div class="p-body"><p>数学家芒福德指出：物理世界是连续的，但人的认知必须把它切成离散的概念和词语才能处理。<b>我们用来理解世界的框架，本身就在扭曲世界</b>。</p></div>
+          </div>
+        </div>
+        <div class="point">
+          <div class="p-no">05</div>
+          <div>
+            <div class="p-title">我们记住了世界，同时也忘记了</div>
+            <div class="p-body"><p>记忆不是录像回放，而是每次提取时的重新建构。<span class="hl">你以为的「过去」，其实是大脑现在编的故事</span>。</p></div>
+          </div>
+        </div>
+        <div class="point">
+          <div class="p-no">06</div>
+          <div>
+            <div class="p-title">在 意象与实在 之间</div>
+            <div class="p-body"><p>我们活在大脑建构的意象里，而不是物理实在里。但这不意味着实在不存在——只是<b>我们永远无法直接触及它</b>。</p></div>
+          </div>
+        </div>
+        <div class="point">
+          <div class="p-no">07</div>
+          <div>
+            <div class="p-title">没说出口的那句话</div>
+            <div class="p-body"><p>本期最后落到一句没说完的话上。<span class="hl">有些东西无法被语言和模型捕捉，只能沉默地经历</span>——这或许就是它不该有 intro 的原因。</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ep-sec">
+      <div class="sec-head"><span class="sec-no">PART 03</span><h2>金句摘录</h2></div>
+      <div class="quotes">
+        <div class="quote"><span class="q-no">01</span>「世界是连续的，但心智是离散的。」</div>
+        <div class="quote"><span class="q-no">02</span>「我们记住了世界的样子，同时也忘记了。」</div>
+        <div class="quote"><span class="q-no">03</span>「我们从未看见彼此。」</div>
+        <div class="quote"><span class="q-no">04</span>「多巴胺编码的不是快乐本身，而是预期误差。」</div>
+        <div class="quote"><span class="q-no">05</span>「你以为的看见，其实是大脑编造的意象。」</div>
+        <div class="quote"><span class="q-no">06</span>「没说出口的那句话，就这样吧。」</div>
+        <div class="quote"><span class="q-no">07</span>「它不应该有介绍——不该有介绍本身，就是它想表达的东西。」</div>
+      </div>
+    </section>
+
+    <div class="ep-foot">
+      <div class="foot-title">关于本期</div>
+      <div class="foot-note">内容整理自《无人知晓》E46「我们从未看见彼此」，主播孟岩。总结基于节目官方简介与时间线要点（非逐字稿）。</div>
+    </div>
+  </article>
+
+  <nav class="pager" id="pager" aria-label="相邻两期"></nav>
+  </main>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  "use strict";
+  var EPS = [
+  {
+      id: "lilu36",
+      pod: "格雷厄姆与多德年会",
+      no: "第36届",
+      title: "李录谈价值投资：统一的市场、AI 的红线，与复利的一生",
+      date: "2026.10.06",
+      collected: "2026.10.12",
+      duration: "约 105 分钟",
+      summary: "李录在哥大谈：政治秩序在变，全球统一市场不会退回；AI 必须守在“工具”一侧；在中国要分清自己是“目标”还是“代价”；而投资与人生一样靠复利——先别丢掉已经拥有的。"
+    },
+  {
+      id: "xxf30",
+      pod: "西西弗高速",
+      no: "#30",
+      title: "一个人要消化多少信息，才能成为一个社会人？",
+      date: "2026.09.13",
+      collected: "2026.10.11",
+      duration: "约 111 分钟",
+      summary: "从“社会化”到“信息社会化”：信息在增加，理解未必增加。两位主播从消费者与生产者两端拆解过载、算法与饭圈化的公共讨论，最后给注意力、表达、判断与参与各划一条边界。"
+    },
+  {
+      id: "068",
+      pod: "野格知识贩子",
+      no: "#068",
+      title: "敢让 AI 干活的人，改造的不是提示词，而是整个交付系统",
+      date: "2026.10.04",
+      duration: "约 23 分钟",
+      art: 9,
+      summary: "VS Code 团队把发布周期从月更压到周更后发现：AI 提速只是开始，真正的能力是让文档、评审、视觉验证、问题分诊和评测一起形成反馈闭环。"
+    },
+  {
+      id: "275",
+      pod: "乱翻书",
+      no: "#275",
+      title: "个人 Agent 的战争已经开始",
+      date: "2026.09.21",
+      duration: "约 126 分钟",
+      summary: "AI 办公之后的下一个入口之争：从 Chatbot「回答问题」到 Personal Agent「替人办事、花钱、做决定」——四款产品、四条路线，争夺用户意图产生后的第一入口。"
+    },
+  {
+      id: "727",
+      pod: "跨国串门儿计划",
+      no: "#727",
+      title: "Shopify CEO：如何运用一个 AI 顾问团来审视最棘手的决策",
+      date: "2026.09.16",
+      duration: "约 50 分钟",
+      summary: "Shopify 创始人 Tobi 谈 AI 的正确用法：让多个 Agent 从不同角度审视决策、搭建更好的判断环境，但判断与责任必须由人保留。"
+    },
+  {
+      id: "711",
+      pod: "跨国串门儿计划",
+      no: "#711",
+      title: "Lenny 对话 a16z 合伙人：公司会变成一系列闭环",
+      date: "2026.09.08",
+      duration: "约 82 分钟",
+      summary: "a16z 合伙人 Anish：AI 不会清空工作，而是把公司重构成个人、职能、业务、公司层层嵌套的 Agent 闭环；人负责方向判断与分布外思考。"
+    },
+  {
+      id: "699",
+      pod: "跨国串门儿计划",
+      no: "#699",
+      title: "Gavin Baker：AI 需求远未见顶，算力短缺将如何重塑全球产业",
+      date: "2026.09.01",
+      duration: "约 71 分钟",
+      summary: "Atreides 创始人 Gavin：AI 不是零和而是多方共赢；GPU 集群不到一年回本，全球 15 亿知识工作者的需求才刚开始，他更担心供不应求而非泡沫。"
+    },
+  {
+      id: "697",
+      pod: "跨国串门儿计划",
+      no: "#697",
+      title: "ChatGPT Work 产品经理：AI 同事正在接管执行，你的职业价值只剩下野心与判断力？",
+      date: "2026.08.31",
+      duration: "约 77 分钟",
+      summary: "OpenAI 产品负责人 Tara：AI 进入第三时代——常驻 AI 同事接管执行，人从划桨变掌舵；执行变便宜后，野心、判断与责任成为新的护城河。"
+    },
+  {
+    id: "e46",
+    pod: "无人知晓",
+    no: "E46",
+    title: "我们从未看见彼此",
+    date: "2026.08.25",
+    duration: "约 81 分钟",
+    summary: "从神经科学到哲学：大脑不是在看世界，而是在为世界建模。每个人脑中的世界模型都不一样，所以我们从未真正看见彼此。"
+  },
+  {
+    id: "22",
+    pod: "鹿鹿鱼鱼",
+    no: "#22",
+    title: "8 年 TikTok 到 Meta，做影响十亿人的产品",
+    date: "2026.08.20",
+    duration: "约 114 分钟",
+    summary: "Gill Tan：小红书早期PM→TikTok 8年→Meta VP。中美职场差异、晋升关键、被卷与burnout，最终落点是做产品作为认知世界的手段。"
+  },
+  {
+    id: "270",
+    pod: "乱翻书",
+    no: "#270",
+    title: "大厂押注 AI 办公，飞书和钉钉却先成了配角",
+    date: "2026.08.01",
+    duration: "约 97 分钟",
+    summary: "飞书钉钉打了五六年先后退场，豆包吃掉飞书，腾讯边缘团队反而更快。AI办公的付费者可能不是企业，而是个人员工。"
+  },
+  {
+    id: "huadian",
+    pod: "科技乱炖",
+    no: "#花店",
+    title: "我们把 AI 塞进花店后，才知道 AI 落地有多脏",
+    date: "2026.06.08",
+    duration: "约 70 分钟",
+    summary: "AI落地线下花店的真实复盘：花艺师不看电脑、店员不愿盘点、平台不开放数据。最难的不是技术，是那些没人愿意做但每天要做的脏活。"
+  }
+];
+
+  /* 每期一颗光球：四个颜色依次是高光、主色、暗部、点缀。新增一期时在这里加一行即可 */
+  var ORBS = {
+    "lilu36":["#fff3ea","#e58a6a","#7a1f24","#f2c46d"],
+    "xxf30":["#eef3ff","#8fb0ff","#3a4cb4","#ffc9a3"],
+    "068":["#f2ffe6","#7fd6a4","#1f7a6b","#ffd36b"],
+    "275":["#f4ecff","#a78bfa","#4b2fb0","#ff9ad5"],
+    "727":["#e9fff7","#74c7b0","#255e63","#c9f27a"],
+    "711":["#fff5d6","#f5a524","#c2410c","#ffe08a"],
+    "699":["#ffeaf2","#f48fb1","#b0306a","#ffc38a"],
+    "697":["#e6f2ff","#6aa9ff","#2743b8","#9ff0ff"],
+    "e46":["#f1ecff","#8f9bff","#2b2a7a","#f7b6ff"],
+    "22":["#fff1e2","#ff8a5c","#c22e3a","#ffd27a"],
+    "270":["#f2f2ff","#b9a7f5","#5a5f9e","#9fe3ff"],
+    "huadian":["#fff2f5","#ff9db5","#d9457a","#ffe27a"]
+  };
+  var ORB_FALLBACK = [["#f4ecff","#a78bfa","#4b2fb0","#ff9ad5"],["#fff5d6","#f5a524","#c2410c","#ffe08a"],["#e6f2ff","#6aa9ff","#2743b8","#9ff0ff"],["#e9fff7","#74c7b0","#255e63","#c9f27a"]];
+  var orbSeq = 0;
+  function hashOf(s){ var h = 7; for(var i = 0; i < s.length; i++){ h = (h * 31 + s.charCodeAt(i)) % 9973; } return h; }
+  function palette(id){ return ORBS[id] || ORB_FALLBACK[hashOf(id) % ORB_FALLBACK.length]; }
+  function tint(id){ return "color-mix(in srgb, " + palette(id)[1] + " 15%, #f5f3f1)"; }
+  function orb(id){
+    var c = palette(id), h = hashOf(id), n = ++orbSeq;
+    var a = h % 360, bx = 70 + h % 60, by = 118 + (h >> 3) % 34;
+    return '<svg class="orb" viewBox="0 0 200 200" aria-hidden="true" focusable="false">' +
+      '<defs>' +
+        '<radialGradient id="og' + n + '" cx="34%" cy="28%" r="88%"><stop offset="0" stop-color="' + c[0] + '"/><stop offset=".42" stop-color="' + c[1] + '"/><stop offset="1" stop-color="' + c[2] + '"/></radialGradient>' +
+        '<filter id="ob' + n + '" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="13"/></filter>' +
+        '<filter id="os' + n + '" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3"/></filter>' +
+        '<filter id="ogl' + n + '" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="20"/></filter>' +
+        '<filter id="on' + n + '"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="' + (h % 50) + '"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .55 -.12"/></filter>' +
+        '<clipPath id="oc' + n + '"><circle cx="100" cy="100" r="74"/></clipPath>' +
+      '</defs>' +
+      '<circle cx="100" cy="112" r="62" fill="' + c[1] + '" opacity=".42" filter="url(#ogl' + n + ')"/>' +
+      '<g clip-path="url(#oc' + n + ')">' +
+        '<rect width="200" height="200" fill="url(#og' + n + ')"/>' +
+        '<g transform="rotate(' + a + ' 100 100)">' +
+          '<ellipse cx="' + bx + '" cy="' + by + '" rx="46" ry="30" fill="' + c[3] + '" opacity=".8" filter="url(#ob' + n + ')"/>' +
+          '<ellipse cx="150" cy="64" rx="30" ry="42" fill="' + c[2] + '" opacity=".55" filter="url(#ob' + n + ')"/>' +
+          '<path d="M34 96C62 58 126 52 170 92" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".55" filter="url(#os' + n + ')"/>' +
+          '<path d="M46 132C84 150 132 144 164 116" fill="none" stroke="' + c[0] + '" stroke-width="3" stroke-linecap="round" opacity=".5" filter="url(#os' + n + ')"/>' +
+        '</g>' +
+        '<ellipse cx="74" cy="62" rx="26" ry="16" fill="#fff" opacity=".55" filter="url(#ob' + n + ')"/>' +
+        '<rect width="200" height="200" filter="url(#on' + n + ')" opacity=".5" style="mix-blend-mode:overlay"/>' +
+      '</g>' +
+    '</svg>';
+  }
+
+  /* 每期的呈现方式：art 是插画类型（orb 光球 / field 颗粒渐变 / facets 叠片 / waves 波线 / bars 柱列 / petals 花瓣），
+     不写或写 "none" 表示这一期不配插画。新增一期时在这里加一行即可 */
+  var LOOK = {
+    "lilu36":"compound", "xxf30":"stream", "068":"orb", "275":"field", "727":"facets",
+    "711":"none", "699":"none", "697":"none", "e46":"none",
+    "22":"waves", "270":"bars", "huadian":"petals"
+  };
+  /* 首页"观点摘录"取每期核心观点里的哪几条（从 0 数）拼成一段，不写默认取第 1 条 */
+  var EXCERPT = {"lilu36":[7], "xxf30":[6,7], "068":[1,5], "275":[1], "727":[3,0], "711":[1,6], "699":[1,2], "697":[4,5], "e46":[0,4], "22":[1,2], "270":[3,5], "huadian":[0,5]};
+  var CARD_ARTS = ["facets","waves","bars","petals","stream","compound"];
+
+  function grainDefs(n, seed){
+    return '<filter id="ab' + n + '" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="38"/></filter>' +
+      '<filter id="an' + n + '" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2" seed="' + seed + '"/><feColorMatrix type="saturate" values="0"/></filter>';
+  }
+  function grain(n, o){ return '<rect width="400" height="300" filter="url(#an' + n + ')" opacity="' + (o || .4) + '" style="mix-blend-mode:overlay"/>'; }
+  function drawArt(kind, id){
+    if(kind === "orb"){ return orb(id).replace('class="orb"', 'class="art"'); }
+    var c = palette(id), h = hashOf(id), n = ++orbSeq, body = "", defs = grainDefs(n, h % 50);
+    var open = '<svg class="art" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">';
+    if(kind === "compound"){
+      /* 复利：一条从平缓到陡峭的指数曲线，下面是逐级变深的色带 */
+      defs += '<linearGradient id="ac' + n + '" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="' + c[3] + '"/><stop offset=".55" stop-color="' + c[1] + '"/><stop offset="1" stop-color="' + c[2] + '"/></linearGradient>';
+      var pts = [];
+      for(var t = 0; t <= 40; t++){ var xx = 40 + t * 8, yy = 250 - 190 * (Math.pow(1.11, t) - 1) / (Math.pow(1.11, 40) - 1); pts.push(xx.toFixed(1) + " " + yy.toFixed(1)); }
+      for(var g = 0; g < 5; g++){ body += '<path d="M40 ' + (250 - g * 47.5) + 'H360" stroke="' + c[2] + '" stroke-opacity=".08" stroke-width="1"/>'; }
+      body += '<path d="M' + pts.join("L") + 'L360 250L40 250Z" fill="url(#ac' + n + ')" opacity=".28"/>' +
+        '<path d="M' + pts.join("L") + '" fill="none" stroke="url(#ac' + n + ')" stroke-width="5" stroke-linecap="round"/>' +
+        '<path d="M40 250H360" stroke="' + c[2] + '" stroke-opacity=".3" stroke-width="1"/>' + grain(n, .3);
+    } else if(kind === "stream"){
+      /* 信息流：一格格短线，大多淡去，中间一道被"筛"出来的亮带 */
+      defs += '<linearGradient id="as' + n + '" x1="0" x2="1"><stop offset="0" stop-color="' + c[3] + '"/><stop offset=".5" stop-color="' + c[1] + '"/><stop offset="1" stop-color="' + c[2] + '"/></linearGradient>';
+      for(var r = 0; r < 11; r++){
+        var y = 46 + r * 21, band = r >= 4 && r <= 6;
+        for(var q = 0; q < 14; q++){
+          var seed = (h * 7 + r * 31 + q * 17) % 97, w = 8 + seed % 14, x = 40 + q * 23 + (r % 2) * 6;
+          body += '<rect x="' + x + '" y="' + (y - 2) + '" width="' + w + '" height="4" rx="2" fill="' + (band ? 'url(#as' + n + ')' : c[2]) + '" opacity="' + (band ? (.55 + (seed % 5) * .1).toFixed(2) : (.06 + (seed % 7) * .025).toFixed(3)) + '"/>';
+        }
+      }
+      body += grain(n, .3);
+    } else if(kind === "wash"){
+      body = '<rect width="400" height="300" fill="#f5f3f1"/>' +
+        '<g filter="url(#ab' + n + ')">' +
+          '<ellipse cx="60" cy="40" rx="190" ry="130" fill="' + c[1] + '" opacity=".6"/>' +
+          '<ellipse cx="350" cy="30" rx="150" ry="110" fill="' + c[3] + '" opacity=".7"/>' +
+          '<ellipse cx="120" cy="300" rx="200" ry="90" fill="' + c[0] + '" opacity=".9"/>' +
+          '<ellipse cx="380" cy="270" rx="140" ry="120" fill="' + c[1] + '" opacity=".45"/>' +
+        '</g>' + grain(n, .5);
+    } else if(kind === "field"){
+      var x = 60 + h % 80, y = 40 + (h >> 2) % 60;
+      body = '<rect width="400" height="300" fill="' + c[2] + '"/>' +
+        '<g filter="url(#ab' + n + ')">' +
+          '<ellipse cx="' + x + '" cy="' + y + '" rx="170" ry="120" fill="' + c[1] + '"/>' +
+          '<ellipse cx="' + (330 - h % 40) + '" cy="60" rx="120" ry="90" fill="' + c[3] + '" opacity=".9"/>' +
+          '<ellipse cx="40" cy="260" rx="150" ry="110" fill="#1c1917" opacity=".85"/>' +
+          '<ellipse cx="' + (210 + h % 50) + '" cy="150" rx="70" ry="46" fill="' + c[0] + '" opacity=".75" transform="rotate(-24 230 150)"/>' +
+        '</g>' + grain(n, .55);
+    } else if(kind === "facets"){
+      defs += '<linearGradient id="af' + n + '" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="' + c[0] + '"/><stop offset=".55" stop-color="' + c[1] + '"/><stop offset="1" stop-color="' + c[2] + '"/></linearGradient>';
+      [-27, -9, 9, 27].forEach(function(r, i){
+        body += '<rect x="140" y="62" width="120" height="164" rx="20" fill="url(#af' + n + ')" opacity="' + (i === 2 ? 1 : .62) + '" stroke="#fff" stroke-opacity=".7" stroke-width="1.2" transform="rotate(' + r + ' 200 380)"/>';
+      });
+      body += grain(n, .35);
+    } else if(kind === "waves"){
+      defs += '<linearGradient id="aw' + n + '" x1="0" x2="1"><stop offset="0" stop-color="' + c[3] + '"/><stop offset=".5" stop-color="' + c[1] + '"/><stop offset="1" stop-color="' + c[2] + '"/></linearGradient>';
+      for(var i = 0; i < 7; i++){
+        var y0 = 66 + i * 28, amp = 14 + i * 7, big = i === 3;
+        body += '<path d="M-20 ' + y0 + 'C70 ' + (y0 - amp) + ' 130 ' + (y0 + amp) + ' 210 ' + y0 + 'S350 ' + (y0 - amp) + ' 420 ' + y0 + '" fill="none" stroke="url(#aw' + n + ')" stroke-linecap="round" stroke-width="' + (big ? 12 : 2) + '" opacity="' + (big ? 1 : .35 + i * .07) + '"/>';
+      }
+      body += grain(n, .35);
+    } else if(kind === "bars"){
+      defs += '<linearGradient id="av' + n + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="' + c[1] + '"/><stop offset="1" stop-color="' + c[2] + '"/></linearGradient>' +
+        '<linearGradient id="avh' + n + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="' + c[3] + '"/><stop offset="1" stop-color="' + c[1] + '"/></linearGradient>';
+      [64, 118, 86, 176, 58, 132, 150, 96, 72].forEach(function(hh, i){
+        var hot = i === 3 || i === 6;
+        body += '<rect x="' + (62 + i * 32) + '" y="' + (236 - hh) + '" width="20" height="' + hh + '" rx="10" fill="url(#' + (hot ? 'avh' : 'av') + n + ')" opacity="' + (hot ? 1 : .45) + '"/>';
+      });
+      body += '<path d="M52 248H348" stroke="' + c[2] + '" stroke-opacity=".35" stroke-width="1"/>' + grain(n, .35);
+    } else {
+      defs += '<linearGradient id="ap' + n + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="' + c[0] + '"/><stop offset=".5" stop-color="' + c[1] + '"/><stop offset="1" stop-color="' + c[2] + '"/></linearGradient>';
+      for(var k = 0; k < 6; k++){
+        body += '<ellipse cx="200" cy="92" rx="34" ry="74" fill="url(#ap' + n + ')" opacity=".72" transform="rotate(' + (k * 60 + 12) + ' 200 156)" style="mix-blend-mode:multiply"/>';
+      }
+      body += '<ellipse cx="200" cy="156" rx="13" ry="13" fill="' + c[3] + '"/>' + grain(n, .35);
+    }
+    return open + '<defs>' + defs + '</defs>' + body + '</svg>';
+  }
+  function lookOf(id){ return LOOK[id] || "none"; }
+  function cardArt(id){
+    var k = lookOf(id);
+    return (k === "none" || k === "field") ? CARD_ARTS[hashOf(id) % CARD_ARTS.length] : k;
+  }
+
+  var ARROW = '<svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>';
+  var $ = function(id){ return document.getElementById(id); };
+  var home = $("view-home"), epView = $("view-ep"), feedEl = $("feed");
+  var exStage = $("ex-stage"), exDots = $("ex-dots");
+  var tabsEl = $("ep-tabs"), progressEl = $("ep-progress"), pagerEl = $("pager"), toastEl = $("toast");
+  var stepNewer = $("step-newer"), stepOlder = $("step-older");
+  var SITE = "赵楠精选";
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+  function byId(id){ for(var i = 0; i < EPS.length; i++){ if(EPS[i].id === id){ return i; } } return -1; }
+  function each(list, fn){ Array.prototype.forEach.call(list, fn); }
+  function texts(root, sel){ return root ? Array.prototype.map.call(root.querySelectorAll(sel), function(e){ return e.textContent.replace(/\s+/g, " ").trim(); }) : []; }
+
+  /* ---------- 首页 ---------- */
+  /* 标题在第一个逗号或冒号处分成黑、灰两段 */
+  function phrases(text){
+    return text.split(/(?<=[，：？！；])/).map(function(p){ return '<span class="ph">' + esc(p) + '</span>'; }).join("");
+  }
+  function twoTone(title){
+    var m = title.match(/^(.{4,}?[，：])(.{4,})$/);
+    return m ? phrases(m[1]) + '<span>' + phrases(m[2]) + '</span>' : phrases(title);
+  }
+  /* 藏品编号：最早收录的一期是 No.001，之后每新增一期顺延，旧编号不变
+     （EPS 按新到旧排列，新的一期加在最前面即可） */
+  function serial(ep){ return "No." + String(EPS.length - byId(ep.id)).padStart(3, "0"); }
+  function kick(ep){ return '<span class="no">' + serial(ep) + '</span>' + ep.pod + ' ' + ep.no; }
+  /* 题记用中文数字：10 → 十，2026.10.04 → 二〇二六年十月四日 */
+  var CN = "〇一二三四五六七八九";
+  function cnNum(n){
+    n = +n;
+    if(n < 10){ return CN[n]; }
+    if(n < 20){ return "十" + (n % 10 ? CN[n % 10] : ""); }
+    if(n < 100){ return CN[Math.floor(n / 10)] + "十" + (n % 10 ? CN[n % 10] : ""); }
+    var h = Math.floor(n / 100), r = n % 100;
+    return CN[h] + "百" + (r === 0 ? "" : r < 10 ? "〇" + CN[r] : (r < 20 ? "一" : "") + cnNum(r));
+  }
+  function cnDate(d){
+    var m = d.match(/^(\d{4})\.(\d{1,2})\.(\d{1,2})$/);
+    return m ? m[1].split("").map(function(c){ return CN[+c]; }).join("") + "年" + cnNum(m[2]) + "月" + cnNum(m[3]) + "日" : d;
+  }
+  function when(ep){ return ep.date + ' · ' + ep.duration; }
+  function link(ep, cls){ return '<a class="' + cls + '" href="#/ep/' + ep.id + '" data-id="' + ep.id + '"'; }
+
+  function feature(ep){
+    var a = $("ep-" + ep.id);
+    var points = texts(a, ".p-title");
+    var node = a && a.querySelector(".ig-node"), small = node && node.querySelector("small");
+    var nodeTitle = node ? node.firstChild.textContent.trim() : "";
+    /* 一期内容只占一张卡片：整张卡是同一片浅色渐变，左边是文字，右边压一张白色"纸页"列出核心观点 */
+    return link(ep, "block feat") + ' aria-label="最新一期：' + esc(ep.title) + '">' + drawArt("wash", ep.id) +
+      '<span class="feat-copy">' +
+        '<span class="kick">' + kick(ep) + ' · ' + when(ep) + '</span>' +
+        '<h2 class="t2">' + twoTone(ep.title) + '</h2>' +
+        '<span class="feat-sum">' + ep.summary + '</span>' +
+        (nodeTitle ? '<span class="feat-note"><b>' + esc(nodeTitle) + '</b>' + (small ? '<span>' + esc(small.textContent.trim()) + '</span>' : '') + '</span>' : '') +
+        '<span class="feat-cta"><span class="btn btn-dark">阅读这一期' + ARROW + '</span></span>' +
+      '</span>' +
+      '<span class="sheet"><span class="sheet-top"><b>核心观点</b><span>共 ' + points.length + ' 条</span></span>' +
+        '<span class="sheet-list">' + points.slice(0, 5).map(function(t, i){ return '<span class="sheet-li" style="--k:' + i + '"><i>0' + (i + 1) + '</i><span>' + esc(t) + '</span></span>'; }).join("") + '</span>' +
+        '</span>' +
+    '</a>';
+  }
+  function wide(ep){
+    return link(ep, "wide") + '>' + drawArt("field", ep.id) +
+      '<p class="kick">' + kick(ep) + ' · ' + when(ep) + '</p><h3 class="t2">' + twoTone(ep.title) + '</h3>' +
+      '<p class="sum">' + ep.summary + '</p></a>';
+  }
+  function card(ep){
+    return link(ep, "card") + '><span class="art-box" style="--tint:' + tint(ep.id) + '">' + drawArt(cardArt(ep.id), ep.id) + '</span>' +
+      '<span class="card-body"><span class="kick">' + kick(ep) + '</span><h3>' + phrases(ep.title) + '</h3>' +
+      '<span class="sum">' + ep.summary + '</span><span class="when">' + when(ep) + '</span></span></a>';
+  }
+  function textItem(ep){
+    return link(ep, "text-item") + '><h3>' + phrases(ep.title) + '</h3><span class="sum">' + ep.summary + '</span>' +
+      '<span class="when"><span>' + kick(ep) + '</span><span>' + ep.date + '</span><span>' + ep.duration + '</span></span>' +
+      '<span class="go" aria-hidden="true">' + ARROW + '</span></a>';
+  }
+
+  var exIndex = 0, exCount = 0;
+  function renderHome(){
+    $("stat-count").textContent = EPS.length;
+    $("stat-count-top").textContent = EPS.length;
+    var latestDate = EPS.map(function(e){ return e.collected || e.date; }).sort().pop() || "";
+    $("stat-date2").textContent = latestDate;
+
+    /* 题记：最新一件藏品的编号与入藏日期 */
+    var colophon = "";
+    if(EPS.length){
+      var title = "第" + cnNum(EPS.length) + "件藏品";
+      colophon = '<div class="colophon" role="group" aria-label="' + title + '，' + cnDate(EPS[0].collected || EPS[0].date) + '入藏">' +
+        '<p class="colo-no" aria-hidden="true">' + serial(EPS[0]) + '</p>' +
+        '<p class="colo-title" aria-hidden="true">' + title.split("").map(function(c, n){ return '<span style="--n:' + n + '">' + c + '</span>'; }).join("") + '</p>' +
+        '<p class="colo-rule" aria-hidden="true"><i></i></p>' +
+        '<p class="colo-date" aria-hidden="true">' + cnDate(EPS[0].collected || EPS[0].date) + ' 入藏</p></div>';
+    }
+    /* 版式按内容分配：配插画的几期进"一宽一窄"和"三张并排"，不配插画的几期进纯文字区；
+       两类各自保持收录顺序，期数增加后自动往下排 */
+    var html = colophon + (EPS.length ? feature(EPS[0]) : "");
+    var rest = EPS.slice(1);
+    var visual = rest.filter(function(ep){ return lookOf(ep.id) !== "none"; });
+    var plain = rest.filter(function(ep){ return lookOf(ep.id) === "none"; });
+    var round = 0;
+    while(visual.length || plain.length){
+      if(visual.length){
+        var two = visual.splice(0, 2);
+        html += '<section class="block pair">' + wide(two[0]) + (two[1] ? card(two[1]) : '') + '</section>';
+      }
+      if(plain.length){
+        html += '<section class="block texts ruled"><h2>' + (round ? '再往前' : '更早收录的几期') + '</h2><div class="texts-grid">' + plain.splice(0, 4).map(textItem).join("") + '</div></section>';
+      }
+      if(visual.length){
+        /* 只剩一期时并到上面的宽卡里，不留一张孤零零的三分之一卡片 */
+        html += visual.length === 1 ? '<section class="block pair">' + wide(visual.shift()) + '</section>'
+          : '<section class="block trio">' + visual.splice(0, 3).map(card).join("") + '</section>';
+      }
+      round++;
+    }
+    feedEl.innerHTML = html;
+
+    var slides = EPS.map(function(ep){
+      var pts = $("ep-" + ep.id) ? $("ep-" + ep.id).querySelectorAll(".point") : [];
+      var picks = (EXCERPT[ep.id] || [0]).map(function(n){ return pts[n]; }).filter(Boolean);
+      if(!picks.length){ return ""; }
+      var label = picks[0].querySelector(".p-title");
+      var body = {textContent: picks.map(function(pt){ var b = pt.querySelector(".p-body"); return b ? b.textContent.trim() : ""; }).join("")};
+      return '<div class="ex-slide" role="group" aria-roledescription="摘录">' +
+        '<p class="ex-label">' + esc(label ? label.textContent.trim() : "") + '</p>' +
+        '<p class="ex-text">' + esc(body ? body.textContent.replace(/\s+/g, " ").replace(/([一-鿿，。；：？！」』]) (?=[一-鿿「『])/g, "$1").trim() : "") + '</p>' +
+        '<a class="ex-by" href="#/ep/' + ep.id + '">' + kick(ep) + ' · ' + esc(ep.title) + ARROW + '</a></div>';
+    }).filter(Boolean);
+    exCount = slides.length;
+    exStage.innerHTML = slides.join("");
+    exDots.innerHTML = slides.map(function(_, n){ return '<button type="button" class="ex-dot" data-n="' + n + '" aria-label="第 ' + (n + 1) + ' 段摘录"><i></i><span class="ex-hit"></span></button>'; }).join("");
+    showExcerpt(0);
+  }
+  function showExcerpt(n){
+    if(!exCount){ return; }
+    exIndex = (n + exCount) % exCount;
+    each(exStage.children, function(s, j){
+      var on = j === exIndex;
+      s.classList.toggle("on", on);
+      s.setAttribute("aria-hidden", String(!on));
+      var a = s.querySelector("a");
+      if(a){ a.tabIndex = on ? 0 : -1; }
+    });
+    each(exDots.children, function(d, j){ d.setAttribute("aria-current", String(j === exIndex)); });
+  }
+  /* 自动轮播由当前圆点里的进度条驱动（CSS 动画走满即切下一段）：
+     鼠标停留、键盘聚焦时动画暂停；系统要求减少动效时不自动切换 */
+  exDots.addEventListener("animationend", function(){
+    if(exCount > 1){ showExcerpt(exIndex + 1); }
+  });
+  $("ex-prev").addEventListener("click", function(){ showExcerpt(exIndex - 1); });
+  $("ex-next").addEventListener("click", function(){ showExcerpt(exIndex + 1); });
+  exDots.addEventListener("click", function(e){
+    var d = e.target.closest(".ex-dot");
+    if(d){ showExcerpt(+d.getAttribute("data-n")); }
+  });
+  $("excerpts").addEventListener("keydown", function(e){
+    if(e.key === "ArrowLeft"){ showExcerpt(exIndex - 1); }
+    if(e.key === "ArrowRight"){ showExcerpt(exIndex + 1); }
+  });
+
+  /* ---------- 详情页 ---------- */
+  var currentSecs = [], lastEpId = null;
+
+  function buildTabs(art){
+    currentSecs = Array.prototype.slice.call(art.querySelectorAll("section.ep-sec"));
+    tabsEl.innerHTML = currentSecs.map(function(sec, i){
+      var h = sec.querySelector("h2");
+      var label = (h ? h.textContent : "第 " + (i + 1) + " 部分").replace(/^播客|^核心|摘录$/g, "");
+      return '<button type="button" class="ep-tab" data-i="' + i + '">' + esc(label) + '</button>';
+    }).join("");
+  }
+  tabsEl.addEventListener("click", function(e){
+    var b = e.target.closest(".ep-tab");
+    if(!b){ return; }
+    var sec = currentSecs[+b.getAttribute("data-i")];
+    if(sec && sec.classList.contains("fulltext")){ openFull(sec, true); }
+    if(sec){ sec.scrollIntoView({behavior: reduceMotion ? "auto" : "smooth", block: "start"}); }
+  });
+
+  function pagerCell(ep, dir, endText){
+    if(!ep){
+      return '<a class="pager-cell is-end" href="#/"><span class="pager-txt"><span class="pager-dir">' + dir + '</span><span class="pager-title">' + endText + '，回到全部精选</span></span></a>';
+    }
+    return '<a class="pager-cell" href="#/ep/' + ep.id + '">' +
+      '<span class="pager-txt"><span class="pager-dir">' + dir + ' · ' + serial(ep) + ' · ' + ep.pod + ' ' + ep.no + '</span>' +
+      '<span class="pager-title">' + phrases(ep.title) + '</span></span></a>';
+  }
+  function setStep(a, ep, label){
+    if(ep){
+      a.setAttribute("href", "#/ep/" + ep.id);
+      a.setAttribute("aria-disabled", "false");
+      a.setAttribute("aria-label", label + "：" + ep.title);
+      a.title = label + "：" + ep.title;
+    } else {
+      a.removeAttribute("href");
+      a.setAttribute("aria-disabled", "true");
+      a.setAttribute("aria-label", "没有" + label);
+      a.title = "";
+    }
+  }
+  function buildPager(idx){
+    var newer = EPS[idx - 1], older = EPS[idx + 1];
+    pagerEl.innerHTML = pagerCell(newer, "较新一期", "已是最新一期") + pagerCell(older, "较早一期", "已是最早一期");
+    setStep(stepNewer, newer, "较新一期");
+    setStep(stepOlder, older, "较早一期");
+  }
+
+  var toastTimer = 0;
+  function toast(msg){
+    toastEl.textContent = msg;
+    toastEl.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toastEl.classList.remove("show"); }, 1800);
+  }
+  function copyText(text){
+    if(navigator.clipboard && window.isSecureContext){
+      return navigator.clipboard.writeText(text);
+    }
+    return new Promise(function(resolve, reject){
+      var ta = document.createElement("textarea");
+      ta.value = text; ta.setAttribute("readonly", ""); ta.style.cssText = "position:fixed;top:0;left:0;opacity:0;";
+      document.body.appendChild(ta); ta.select();
+      var ok = false;
+      try{ ok = document.execCommand("copy"); }catch(err){}
+      document.body.removeChild(ta);
+      ok ? resolve() : reject();
+    });
+  }
+  function enhance(art, id, ep){
+    if(art.getAttribute("data-ready")){ return; }
+    art.setAttribute("data-ready", "1");
+    var head = art.querySelector(".detail-head");
+    if(head && lookOf(id) !== "none"){
+      var cover = document.createElement("div");
+      cover.className = "ep-cover";
+      cover.style.setProperty("--tint", tint(id));
+      cover.innerHTML = drawArt(lookOf(id), id);
+      head.insertBefore(cover, head.querySelector(".thesis"));
+    } else if(head){
+      head.classList.add("no-cover");
+    }
+    var h1 = art.querySelector("h1");
+    if(h1){ h1.innerHTML = phrases(h1.textContent); }
+    /* 有全文的条目：详情页底部放一个"查看全文"入口，全文在单独的页面里 */
+    var fullArt = $("full-" + id), foot = art.querySelector(".ep-foot");
+    if(fullArt && foot){
+      var meta = fullArt.querySelector(".ft-meta");
+      foot.insertAdjacentHTML("afterend", '<a class="full-entry" href="#/full/' + id + '"><span><b>查看全文</b><span class="sub">' + (meta ? esc(meta.textContent) : "") + ' · 可切换中英对照</span></span><span class="go" aria-hidden="true">' + ARROW + '</span></a>');
+    }
+    var kicker = art.querySelector(".detail-head .kicker");
+    if(kicker && ep){ kicker.insertAdjacentHTML("afterbegin", '<span class="no">藏品 ' + serial(ep) + '</span>'); }
+    var node = art.querySelector(".ig-node");
+    if(node){ node.insertAdjacentHTML("afterbegin", drawArt("field", id)); }
+    each(art.querySelectorAll(".quote"), function(q){
+      q.setAttribute("role", "button");
+      q.setAttribute("tabindex", "0");
+      q.setAttribute("title", "点击复制这句话");
+      q.setAttribute("data-src", ep ? "《" + ep.pod + "》" + ep.no + "：" + ep.title : "");
+    });
+  }
+  function copyQuote(q){
+    var no = q.querySelector(".q-no");
+    var text = q.textContent.slice(no ? no.textContent.length : 0).trim();
+    var src = q.getAttribute("data-src");
+    copyText(text + (src ? "\n—— " + src : "")).then(function(){
+      q.classList.add("copied");
+      setTimeout(function(){ q.classList.remove("copied"); }, 1800);
+      toast("已复制金句与出处");
+    }, function(){ toast("复制失败，请手动选择文字"); });
+  }
+  epView.addEventListener("click", function(e){
+    var q = e.target.closest(".quote");
+    if(!q || String(window.getSelection()).length){ return; }
+    copyQuote(q);
+  });
+  /* 全文：展开 / 收起，切换语言 */
+  function openFull(sec, open){
+    sec.classList.toggle("open", open);
+    var b = sec.querySelector(".ft-toggle");
+    if(b){ b.textContent = open ? "收起全文" : "展开全文"; b.setAttribute("aria-expanded", String(open)); }
+  }
+  epView.addEventListener("click", function(e){
+    var t = e.target.closest(".ft-toggle");
+    if(t){
+      var sec = t.closest(".fulltext"), open = !sec.classList.contains("open");
+      openFull(sec, open);
+      if(!open){ sec.scrollIntoView({behavior: reduceMotion ? "auto" : "smooth", block: "start"}); }
+      return;
+    }
+    var m = e.target.closest(".ft-modes button");
+    if(m){
+      var box = m.closest(".fulltext");
+      box.setAttribute("data-mode", m.getAttribute("data-mode"));
+      each(box.querySelectorAll(".ft-modes button"), function(x){ x.setAttribute("aria-pressed", String(x === m)); });
+      openFull(box, true);
+    }
+  });
+  epView.addEventListener("keydown", function(e){
+    if((e.key === "Enter" || e.key === " ") && e.target.classList && e.target.classList.contains("quote")){
+      e.preventDefault();
+      copyQuote(e.target);
+    }
+  });
+
+  var readTick = false;
+  function updateReading(){
+    readTick = false;
+    if(epView.hidden){ return; }
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    progressEl.style.transform = "scaleX(" + (max > 0 ? Math.min(1, window.scrollY / max) : 0) + ")";
+    var active = -1;
+    for(var i = 0; i < currentSecs.length; i++){
+      if(currentSecs[i].getBoundingClientRect().top <= 130){ active = i; }
+    }
+    each(tabsEl.children, function(t, i){ t.setAttribute("aria-current", String(i === active)); });
+  }
+  window.addEventListener("scroll", function(){
+    if(!readTick){ readTick = true; window.requestAnimationFrame(updateReading); }
+  }, {passive:true});
+
+  /* ---------- 路由 ----------
+     路由状态存在内存里，地址栏 hash 只是同步用：
+     在预览面板、内嵌 iframe 等改不了地址的环境里，点击同样能切换视图 */
+  var homeY = 0, firstRender = true, lastFull = null;
+  try{ if("scrollRestoration" in history){ history.scrollRestoration = "manual"; } }catch(err){}
+  var route = location.hash || "#/";
+  function go(hash){
+    if(hash === route){ return; }
+    route = hash;
+    try{ history.pushState(null, "", hash); }catch(err){}
+    render();
+  }
+  function syncFromLocation(){
+    var h = location.hash || "#/";
+    if(h !== route){ route = h; render(); }
+  }
+  document.addEventListener("click", function(e){
+    if(e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey){ return; }
+    var a = e.target.closest && e.target.closest('a[href^="#/"]');
+    if(!a){ return; }
+    e.preventDefault();
+    go(a.getAttribute("href"));
+  });
+
+  function render(){
+    var m = route.match(/^#\/(ep|full)\/([\w-]+)$/);
+    var isFull = !!m && m[1] === "full";
+    if(m){ m = [m[0], m[2]]; }
+    var art = m && $((isFull ? "full-" : "ep-") + m[1]);
+    document.body.classList.toggle("is-full", !!art && isFull);
+    var backA = epView.querySelector(".back");
+    if(backA){
+      backA.setAttribute("href", isFull ? "#/ep/" + m[1] : "#/");
+      backA.setAttribute("aria-label", isFull ? "返回本期" : "返回全部精选");
+      backA.lastElementChild.textContent = isFull ? "返回本期" : "全部精选";
+    }
+    if(!home.hidden && !firstRender){ homeY = window.scrollY; }
+    each(epView.querySelectorAll("article"), function(a){ a.hidden = a !== art; });
+    if(art){
+      var idx = byId(m[1]);
+      home.hidden = true;
+      epView.hidden = false;
+      lastEpId = m[1];
+      buildTabs(isFull ? document.createElement("div") : art);
+      buildPager(idx);
+      if(!isFull){ enhance(art, m[1], EPS[idx]); }
+      var h1 = art.querySelector("h1");
+      document.title = (isFull ? "全文｜" : "") + (h1 ? h1.textContent + "｜" : "") + SITE;
+      epView.classList.remove("enter");
+      void epView.offsetWidth;
+      epView.classList.add("enter");
+      window.scrollTo(0, 0);
+      /* 从全文页返回本期时，回到底部的"查看全文"入口 */
+      if(!isFull && lastFull === m[1]){
+        var entry = art.querySelector(".full-entry");
+        if(entry){ entry.scrollIntoView({block: "center"}); entry.focus({preventScroll:true}); }
+      }
+      lastFull = isFull ? m[1] : null;
+      if(h1 && !firstRender && !(entry && !isFull)){ h1.setAttribute("tabindex", "-1"); h1.focus({preventScroll:true}); }
+      updateReading();
+    } else {
+      epView.hidden = true;
+      home.hidden = false;
+      document.title = SITE;
+      lastFull = null;
+      if(firstRender && !reduceMotion){
+        home.classList.add("intro");
+        setTimeout(function(){ home.classList.remove("intro"); }, 2800);
+      }
+      window.scrollTo(0, homeY);
+      if(lastEpId){
+        var from = feedEl.querySelector('[data-id="' + lastEpId + '"]');
+        if(from){ from.focus({preventScroll:true}); }
+      }
+    }
+    firstRender = false;
+  }
+
+  document.addEventListener("keydown", function(e){
+    if(e.metaKey || e.ctrlKey || e.altKey){ return; }
+    if(!epView.hidden && e.key === "Escape"){ go("#/"); }
+  });
+
+  renderHome();
+  window.addEventListener("hashchange", syncFromLocation);
+  window.addEventListener("popstate", syncFromLocation);
+  render();
+})();
+</script>
+</body>
+</html>
