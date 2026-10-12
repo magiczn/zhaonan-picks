@@ -186,24 +186,13 @@
   .card .sum{font-size:15px;line-height:1.7;color:var(--mute);}
   .card .when{margin-top:auto;padding-top:20px;font-size:14px;color:var(--mute);font-variant-numeric:tabular-nums;}
 
-  /* 3. 纯文字：左侧小标题 + 右侧两列 */
-  .texts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px var(--gap);margin:calc(64px - var(--inset)) 0 64px;padding:44px var(--inset) 52px;border-bottom:1px solid var(--rule);}
-  .texts > h2{padding-left:28px;}
-  .texts > h2{font-size:22px;font-weight:400;line-height:1.4;}
-  .texts-grid{grid-column:2 / -1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:44px var(--gap);}
-  /* 纯文字条目：悬停时整块铺上浅底，右上角出现箭头，标题加下划线 */
-  .text-item{position:relative;display:block;margin:-20px 0;padding:20px 56px 22px 28px;border-radius:20px;transition:background .25s;}
-  .text-item:hover,.text-item:focus-visible{background:var(--panel);}
-  .text-item .go{position:absolute;right:16px;top:18px;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:#fff;opacity:0;transform:translate(-6px,6px) scale(.8);transition:opacity .25s,transform .35s var(--ease);}
-  .text-item:hover .go,.text-item:focus-visible .go{opacity:1;transform:none;}
-  .text-item:hover .sum{color:#5d5852;}
-  .text-item h3{font-size:20px;font-weight:400;line-height:1.45;margin-bottom:8px;text-decoration:underline;text-decoration-color:transparent;text-underline-offset:5px;text-decoration-thickness:1.5px;transition:text-decoration-color .2s;}
-  .text-item:hover h3{text-decoration-color:currentColor;}
-  .text-item .sum{font-size:16px;line-height:1.75;color:var(--mute);}
-  .text-item .when{display:flex;flex-wrap:wrap;gap:2px 0;margin-top:12px;font-size:14px;color:var(--mute);font-variant-numeric:tabular-nums;}
-  .text-item .when span{white-space:nowrap;}
-  .text-item .when > span:first-child{flex-basis:100%;}
-  .text-item .when > span:nth-child(2)::after{content:"·";margin:0 .4em;}
+  /* 3. 不配插画的几期：两列文字卡片 */
+  .duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gap);}
+  .card-text .card-body{padding:30px 36px 32px;}
+  .card-text .kick{margin-bottom:28px;}
+  .card-text h3{font-size:24px;line-height:1.42;margin-bottom:14px;text-wrap:balance;}
+  .card-text .sum{font-size:16px;line-height:1.75;max-width:34em;}
+  .card-text .when{padding-top:28px;}
 
   /* 4. 三张并排 */
   .trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap);}
@@ -252,10 +241,7 @@
     .feat-cta{padding-top:28px;}
     .sheet{margin:36px 0 0 32px;}
     :root{--tx:32px;}
-    .texts{grid-template-columns:minmax(0,1fr);}
-    .texts > h2,.foot-main .brand,.foot-about,.foot-base{padding-left:12px;padding-right:12px;}
-    .text-item{padding-left:12px;padding-right:48px;}
-    .texts-grid{grid-column:1;}
+    .foot-main .brand,.foot-about,.foot-base{padding-left:12px;padding-right:12px;}
     .trio{grid-template-columns:repeat(2,minmax(0,1fr));}
     .foot-about{grid-column:1 / -1;}
     .foot-main{row-gap:20px;}
@@ -270,8 +256,7 @@
     :root{--gap:12px;--inset:12px;--tx:20px;}
     .frame{padding:0;border:0;margin:0;}
     .ruled::before,.ruled::after{display:none;}
-    .texts > h2,.foot-main .brand,.foot-about,.foot-base{padding-left:8px;padding-right:8px;}
-    .text-item{padding-left:8px;padding-right:44px;margin:-14px 0;padding-top:14px;padding-bottom:16px;}
+    .foot-main .brand,.foot-about,.foot-base{padding-left:8px;padding-right:8px;}
     .nav{height:60px;}
     .brand{font-size:16px;}
     .nav-meta{font-size:13px;white-space:nowrap;}
@@ -291,9 +276,11 @@
     .wide{min-height:380px;padding:26px 22px;}
     .card .art-box{border-radius:16px;}
     .card-body{padding:18px 20px 22px;}
-    .texts-grid{grid-template-columns:minmax(0,1fr);gap:32px;}
+    .duo{grid-template-columns:minmax(0,1fr);}
+    .card-text .card-body{padding:22px 20px 24px;}
+    .card-text .kick{margin-bottom:18px;}
+    .card-text h3{font-size:21px;}
     .trio{grid-template-columns:minmax(0,1fr);}
-    .texts{margin:36px 0 48px;padding:32px var(--inset) 40px;}
     .excerpts{margin-top:36px;padding:48px var(--tx) 64px;}
     .ex-label{margin-bottom:20px;}
     .foot-main{grid-template-columns:minmax(0,1fr);}
@@ -2255,10 +2242,10 @@
       '<span class="card-body"><span class="kick">' + kick(ep) + '</span><h3>' + phrases(ep.title) + '</h3>' +
       '<span class="sum">' + ep.summary + '</span><span class="when">' + when(ep) + '</span></span></a>';
   }
-  function textItem(ep){
-    return link(ep, "text-item") + '><h3>' + phrases(ep.title) + '</h3><span class="sum">' + ep.summary + '</span>' +
-      '<span class="when"><span>' + kick(ep) + '</span><span>' + ep.date + '</span><span>' + ep.duration + '</span></span>' +
-      '<span class="go" aria-hidden="true">' + ARROW + '</span></a>';
+  /* 不配插画的几期：同一种卡片底色，只用文字排版 */
+  function textCard(ep){
+    return link(ep, "card card-text") + '><span class="card-body"><span class="kick">' + kick(ep) + '</span>' +
+      '<h3>' + phrases(ep.title) + '</h3><span class="sum">' + ep.summary + '</span><span class="when">' + when(ep) + '</span></span></a>';
   }
 
   var exIndex = 0, exCount = 0;
@@ -2278,27 +2265,25 @@
         '<p class="colo-rule" aria-hidden="true"><i></i></p>' +
         '<p class="colo-date" aria-hidden="true">' + cnDate(EPS[0].collected || EPS[0].date) + ' 入藏</p></div>';
     }
-    /* 版式按内容分配：配插画的几期进"一宽一窄"和"三张并排"，不配插画的几期进纯文字区；
+    /* 版式按内容分配：配插画的几期进"一宽一窄"和"三张并排"，不配插画的几期进两列文字卡片；
        两类各自保持收录顺序，期数增加后自动往下排 */
     var html = colophon + (EPS.length ? feature(EPS[0]) : "");
     var rest = EPS.slice(1);
     var visual = rest.filter(function(ep){ return lookOf(ep.id) !== "none"; });
     var plain = rest.filter(function(ep){ return lookOf(ep.id) === "none"; });
-    var round = 0;
     while(visual.length || plain.length){
       if(visual.length){
         var two = visual.splice(0, 2);
         html += '<section class="block pair">' + wide(two[0]) + (two[1] ? card(two[1]) : '') + '</section>';
       }
       if(plain.length){
-        html += '<section class="block texts ruled"><h2>' + (round ? '再往前' : '更早收录的几期') + '</h2><div class="texts-grid">' + plain.splice(0, 4).map(textItem).join("") + '</div></section>';
+        html += '<section class="block duo">' + plain.splice(0, 4).map(textCard).join("") + '</section>';
       }
       if(visual.length){
         /* 只剩一期时并到上面的宽卡里，不留一张孤零零的三分之一卡片 */
         html += visual.length === 1 ? '<section class="block pair">' + wide(visual.shift()) + '</section>'
           : '<section class="block trio">' + visual.splice(0, 3).map(card).join("") + '</section>';
       }
-      round++;
     }
     feedEl.innerHTML = html;
 
