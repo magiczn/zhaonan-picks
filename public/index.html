@@ -2210,7 +2210,7 @@
     var m = d.match(/^(\d{4})\.(\d{1,2})\.(\d{1,2})$/);
     return m ? m[1].split("").map(function(c){ return CN[+c]; }).join("") + "年" + cnNum(m[2]) + "月" + cnNum(m[3]) + "日" : d;
   }
-  function when(ep){ return ep.date + ' · ' + ep.duration; }
+  function when(ep){ return ep.date; }
   function link(ep, cls){ return '<a class="' + cls + '" href="#/ep/' + ep.id + '" data-id="' + ep.id + '"'; }
 
   function feature(ep){
