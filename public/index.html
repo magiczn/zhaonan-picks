@@ -208,6 +208,9 @@
   .intro{padding:60px var(--tx) 0;}
   .intro-lead{max-width:30em;font-size:clamp(26px,3.1vw,40px);font-weight:300;line-height:1.42;letter-spacing:-.005em;text-wrap:balance;}
   .intro-lead span{color:var(--faint);}
+  .intro-lead b,.intro-sub b{display:inline-block;font-weight:inherit;}
+  .intro-sub{margin-top:20px;font-size:15px;line-height:1.7;color:var(--mute);}
+  .intro-sub i{font-style:normal;margin:0 .6em;color:var(--faint);}
 
   /* 洞见紧跟在介绍下面，同样左对齐 */
   .excerpts{padding:56px var(--tx) 64px;}
@@ -290,6 +293,7 @@
     .trio{grid-template-columns:minmax(0,1fr);}
     .intro{padding:32px var(--tx) 0;}
     .intro-lead{font-size:22px;}
+    .intro-sub{margin-top:14px;font-size:14px;}
     .excerpts{padding:36px var(--tx) 48px;}
     .ex-label{margin-bottom:20px;}
     .foot-base{margin-top:20px;}
@@ -529,7 +533,8 @@
       <p class="nav-meta">藏品 <span id="stat-count-top">0</span> 件</p>
     </header>
     <section class="intro ruled" aria-label="关于">
-      <h2 class="intro-lead">我是赵楠，中国传媒大学研究生业界导师。<span>做过咖啡师、雅思老师，也在飞书、阿里云做过产品设计。这里收藏着我觉得值得反复听的播客演讲，希望也能对你有所启发。</span></h2>
+      <h2 class="intro-lead"><b>我是赵楠，</b><span><b>这里收藏着我觉得</b><b>值得反复听的播客与演讲，</b><b>希望对你能有所启发。</b></span></h2>
+      <p class="intro-sub"><b>中国传媒大学研究生业界导师</b><i aria-hidden="true">·</i><b>做过咖啡师、雅思老师</b><i aria-hidden="true">·</i><b>曾在飞书、阿里云做产品设计</b></p>
     </section>
 
     <section class="excerpts" id="excerpts" aria-roledescription="轮播" aria-label="观点摘录">
