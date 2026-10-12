@@ -2280,9 +2280,9 @@
         html += '<section class="block duo">' + plain.splice(0, 4).map(textCard).join("") + '</section>';
       }
       if(visual.length){
-        /* 只剩一期时并到上面的宽卡里，不留一张孤零零的三分之一卡片 */
+        /* 三张并排的一行只用文字卡，不配插画；只剩一期时并到上面的宽卡里，不留一张孤零零的三分之一卡片 */
         html += visual.length === 1 ? '<section class="block pair">' + wide(visual.shift()) + '</section>'
-          : '<section class="block trio">' + visual.splice(0, 3).map(card).join("") + '</section>';
+          : '<section class="block trio">' + visual.splice(0, 3).map(textCard).join("") + '</section>';
       }
     }
     feedEl.innerHTML = html;
