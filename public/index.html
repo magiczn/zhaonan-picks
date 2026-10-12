@@ -186,11 +186,10 @@
   .card .sum{font-size:15px;line-height:1.7;color:var(--mute);}
   .card .when{margin-top:auto;padding-top:20px;font-size:14px;color:var(--mute);font-variant-numeric:tabular-nums;}
 
-  /* 3. 不配插画的几期：两列文字卡片 */
-  .duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gap);}
+  /* 3. 纯文字卡片 */
   .card-text .card-body{padding:30px 36px 32px;}
   .card-text .kick{margin-bottom:28px;}
-  .card-text h3{font-size:24px;line-height:1.42;margin-bottom:14px;text-wrap:balance;}
+  .card-text h3{font-size:22px;line-height:1.42;margin-bottom:14px;text-wrap:balance;}
   .card-text .sum{font-size:16px;line-height:1.75;max-width:34em;}
   .card-text .when{padding-top:28px;}
 
@@ -276,7 +275,6 @@
     .wide{min-height:380px;padding:26px 22px;}
     .card .art-box{border-radius:16px;}
     .card-body{padding:18px 20px 22px;}
-    .duo{grid-template-columns:minmax(0,1fr);}
     .card-text .card-body{padding:22px 20px 24px;}
     .card-text .kick{margin-bottom:18px;}
     .card-text h3{font-size:21px;}
@@ -2265,25 +2263,16 @@
         '<p class="colo-rule" aria-hidden="true"><i></i></p>' +
         '<p class="colo-date" aria-hidden="true">' + cnDate(EPS[0].collected || EPS[0].date) + ' 入藏</p></div>';
     }
-    /* 版式按内容分配：配插画的几期进"一宽一窄"和"三张并排"，不配插画的几期进两列文字卡片；
-       两类各自保持收录顺序，期数增加后自动往下排 */
     var html = colophon + (EPS.length ? feature(EPS[0]) : "");
     var rest = EPS.slice(1);
-    var visual = rest.filter(function(ep){ return lookOf(ep.id) !== "none"; });
-    var plain = rest.filter(function(ep){ return lookOf(ep.id) === "none"; });
-    while(visual.length || plain.length){
-      if(visual.length){
-        var two = visual.splice(0, 2);
-        html += '<section class="block pair">' + wide(two[0]) + (two[1] ? card(two[1]) : '') + '</section>';
-      }
-      if(plain.length){
-        html += '<section class="block duo">' + plain.splice(0, 4).map(textCard).join("") + '</section>';
-      }
-      if(visual.length){
-        /* 三张并排的一行只用文字卡，不配插画；只剩一期时并到上面的宽卡里，不留一张孤零零的三分之一卡片 */
-        html += visual.length === 1 ? '<section class="block pair">' + wide(visual.shift()) + '</section>'
-          : '<section class="block trio">' + visual.splice(0, 3).map(textCard).join("") + '</section>';
-      }
+    /* 头条之后保留一组"一宽一窄"带插画的卡片，其余全部按收录顺序用纯文字卡片三列往下铺 */
+    var top = rest.filter(function(ep){ return lookOf(ep.id) !== "none"; }).slice(0, 2);
+    var others = rest.filter(function(ep){ return top.indexOf(ep) < 0; });
+    if(top.length){
+      html += '<section class="block pair">' + wide(top[0]) + (top[1] ? card(top[1]) : '') + '</section>';
+    }
+    if(others.length){
+      html += '<section class="block trio">' + others.map(textCard).join("") + '</section>';
     }
     feedEl.innerHTML = html;
 
