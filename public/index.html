@@ -100,7 +100,7 @@
 
   .kick{font-size:15px;color:var(--mute);font-variant-numeric:tabular-nums;}
   .t2 > span:not(.ph){color:var(--faint);}
-  #feed{padding-top:0;}
+  #feed{padding-top:var(--inset);}
   /* 藏品编号与印记 */
   .no{margin-right:.7em;color:var(--ink);font-variant-numeric:tabular-nums;letter-spacing:.02em;}
   .wide .no{color:#fff;}
@@ -195,28 +195,32 @@
 
   /* 4. 三张并排 */
   .trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap);}
+  /* 宽屏三列：最后一行不满时，剩下的卡片均分整行，不留空位 */
+  @media(min-width:961px){
+    .trio{grid-template-columns:repeat(6,minmax(0,1fr));}
+    .trio > *{grid-column:span 2;}
+    .trio > :nth-child(3n+1):nth-last-child(2),.trio > :nth-child(3n+2):last-child{grid-column:span 3;}
+    .trio > :nth-child(3n+1):last-child{grid-column:1 / -1;}
+  }
 
   /* 观点摘录：一次一段，居中大字 */
   /* 开篇自我介绍：一句大字说清是谁、这里是什么，下面三栏讲来历 */
-  .intro{padding:60px var(--tx) 56px;}
+  .intro{padding:60px var(--tx) 0;}
   .intro-lead{max-width:30em;font-size:clamp(26px,3.1vw,40px);font-weight:300;line-height:1.42;letter-spacing:-.005em;text-wrap:balance;}
   .intro-lead span{color:var(--faint);}
-  .intro-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 48px;margin-top:40px;}
-  .intro-k{font-size:14px;color:var(--mute);margin-bottom:10px;}
-  .intro-col p:last-child{font-size:16px;line-height:1.8;}
 
-  .excerpts{padding:64px var(--tx) 72px;text-align:center;}
-  .ex-head{font-size:13px;letter-spacing:.42em;margin:0 -.42em 36px 0;color:var(--mute);}
-  .ex-stage{display:grid;max-width:940px;margin:0 auto;}
-  .ex-slide{grid-area:1/1;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease,visibility 0s .5s;}
+  /* 洞见紧跟在介绍下面，同样左对齐 */
+  .excerpts{padding:56px var(--tx) 64px;}
+  .ex-stage{display:grid;max-width:940px;}
+  .ex-slide{grid-area:1/1;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease,visibility 0s .5s;}
   .ex-slide.on{opacity:1;visibility:visible;transform:none;transition:opacity .5s ease .15s,transform .5s ease .15s;}
   .ex-label{display:inline-flex;align-items:center;min-height:32px;padding:4px 14px;border-radius:9999px;background:var(--panel);font-size:14px;color:var(--mute);margin-bottom:28px;}
   .ex-text{font-size:clamp(20px,2.2vw,28px);font-weight:400;line-height:1.6;}
-  .ex-by{display:inline-flex;align-items:center;gap:8px;margin-top:28px;padding:6px 12px;border-radius:9999px;font-size:15px;color:var(--mute);transition:background .18s,color .18s;}
+  .ex-by{display:inline-flex;align-items:center;gap:8px;margin:24px 0 0 -12px;padding:6px 12px;border-radius:9999px;font-size:15px;color:var(--mute);transition:background .18s,color .18s;}
   .ex-by:hover{background:var(--panel);color:var(--ink);}
   .ex-by svg{transition:transform .25s var(--ease);}
   .ex-by:hover svg{transform:translateX(3px);}
-  .ex-ctrl{display:flex;align-items:center;justify-content:center;gap:28px;margin-top:52px;}
+  .ex-ctrl{display:flex;align-items:center;gap:28px;margin-top:44px;}
   .ex-ctrl .round{width:44px;height:44px;box-shadow:0 0 0 .5px var(--ring-strong) inset,0 2px 6px rgba(0,0,0,.06);}
   .ex-dots{display:flex;align-items:center;gap:10px;}
   .ex-dot{position:relative;width:5px;height:5px;padding:0;border-radius:9999px;background:rgba(0,0,0,.22);overflow:hidden;transition:width .35s var(--ease),background .3s;}
@@ -249,8 +253,6 @@
     :root{--tx:32px;}
     .foot-main .brand,.foot-base{padding-left:12px;padding-right:12px;}
     .trio{grid-template-columns:repeat(2,minmax(0,1fr));}
-    .intro-cols{grid-template-columns:repeat(2,minmax(0,1fr));}
-    .intro-col:last-child{grid-column:1 / -1;}
   }
   @media(min-width:601px) and (max-width:960px){
     /* 独占一行的卡片改成左图右文 */
@@ -286,14 +288,9 @@
     .card-text .kick{margin-bottom:18px;}
     .card-text h3{font-size:21px;}
     .trio{grid-template-columns:minmax(0,1fr);}
-    .intro{padding:32px var(--tx) 36px;}
+    .intro{padding:32px var(--tx) 0;}
     .intro-lead{font-size:22px;}
-    .intro-cols{grid-template-columns:minmax(0,1fr);gap:20px;margin-top:28px;}
-    .intro-col:last-child{display:none;}
-    .intro-col p:last-child{font-size:15px;line-height:1.75;}
-    .intro-k{margin-bottom:6px;}
-    .excerpts{padding:44px var(--tx) 56px;}
-    .ex-head{text-align:left;letter-spacing:.3em;margin-bottom:24px;}
+    .excerpts{padding:36px var(--tx) 48px;}
     .ex-label{margin-bottom:20px;}
     .foot-base{margin-top:20px;}
     .site-foot{padding:28px var(--inset);}
@@ -531,17 +528,11 @@
       <h1 class="brand"><span class="brand-mark" aria-hidden="true"></span>赵楠精选</h1>
       <p class="nav-meta">藏品 <span id="stat-count-top">0</span> 件</p>
     </header>
-    <section class="intro ruled" aria-labelledby="intro-lead">
-      <h2 class="intro-lead" id="intro-lead">我是赵楠。<span>这里收着我反复听、反复读过的播客、演讲与访谈，每一件都整理成几分钟就能读完的观点与原话。</span></h2>
-      <div class="intro-cols">
-        <div class="intro-col"><p class="intro-k">我是谁</p><p>中国传媒大学研究生业界导师。做过咖啡师、雅思老师，也在飞书、阿里云做过产品设计——一直在和「怎么把复杂的东西讲清楚」打交道。</p></div>
-        <div class="intro-col"><p class="intro-k">为什么做</p><p>好内容越来越多，也越来越长，一期播客动辄一两个小时。我想把真正值得反复听的那些挑出来，把关键判断理清楚，让没时间听完的人也能拿到要点，也给以后的自己留一份底稿。</p></div>
-        <div class="intro-col"><p class="intro-k">每件藏品里有什么</p><p>一张全景信息图、几条核心观点、可以直接引用的提炼句；有整理版文字稿的，附中英全文。</p></div>
-      </div>
+    <section class="intro ruled" aria-label="关于">
+      <h2 class="intro-lead">我是赵楠，中国传媒大学研究生业界导师。<span>做过咖啡师、雅思老师，也在飞书、阿里云做过产品设计。这里收着我觉得值得反复听的播客与演讲，每期提炼成几分钟能读完的要点。</span></h2>
     </section>
 
-    <section class="excerpts ruled" id="excerpts" aria-roledescription="轮播" aria-label="观点摘录">
-      <p class="ex-head">关键洞见</p>
+    <section class="excerpts" id="excerpts" aria-roledescription="轮播" aria-label="观点摘录">
       <div class="ex-stage" id="ex-stage" aria-live="polite"></div>
       <div class="ex-ctrl">
         <button type="button" class="round" id="ex-prev" aria-label="上一段摘录"><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M9.5 3.5 5 8l4.5 4.5"/></svg></button>
@@ -2274,26 +2265,11 @@
     var latestDate = EPS.map(function(e){ return e.collected || e.date; }).sort().pop() || "";
     $("stat-date2").textContent = latestDate;
 
-    /* 题记：最新一件藏品的编号与入藏日期 */
-    var colophon = "";
-    if(EPS.length){
-      var title = "第" + cnNum(EPS.length) + "件藏品";
-      colophon = '<div class="colophon" role="group" aria-label="' + title + '，' + cnDate(EPS[0].collected || EPS[0].date) + '入藏">' +
-        '<p class="colo-no" aria-hidden="true">' + serial(EPS[0]) + '</p>' +
-        '<p class="colo-title" aria-hidden="true">' + title.split("").map(function(c, n){ return '<span style="--n:' + n + '">' + c + '</span>'; }).join("") + '</p>' +
-        '<p class="colo-rule" aria-hidden="true"><i></i></p>' +
-        '<p class="colo-date" aria-hidden="true">' + cnDate(EPS[0].collected || EPS[0].date) + ' 入藏</p></div>';
-    }
-    var html = colophon + (EPS.length ? feature(EPS[0]) : "");
+    /* 只突出最新一件，其余各期统一用文字卡片按收录顺序往下铺 */
+    var html = EPS.length ? feature(EPS[0]) : "";
     var rest = EPS.slice(1);
-    /* 头条之后保留一组"一宽一窄"带插画的卡片，其余全部按收录顺序用纯文字卡片三列往下铺 */
-    var top = rest.filter(function(ep){ return lookOf(ep.id) !== "none"; }).slice(0, 2);
-    var others = rest.filter(function(ep){ return top.indexOf(ep) < 0; });
-    if(top.length){
-      html += '<section class="block pair">' + wide(top[0]) + (top[1] ? card(top[1]) : '') + '</section>';
-    }
-    if(others.length){
-      html += '<section class="block trio">' + others.map(textCard).join("") + '</section>';
+    if(rest.length){
+      html += '<section class="block trio">' + rest.map(textCard).join("") + '</section>';
     }
     feedEl.innerHTML = html;
 
